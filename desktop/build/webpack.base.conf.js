@@ -3,6 +3,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlgugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const cpus = require("os").cpus().length;
 const webpack = require("webpack");
 
 const resolve = filePath => {
@@ -11,8 +12,8 @@ const resolve = filePath => {
 
 module.exports = {
   entry: {
-    index: resolve("src/js/index.js"),
-    about: resolve("src/js/about.js")
+    index: resolve("src/js/index.ts"),
+    about: resolve("src/js/about.ts")
   },
   mode: "production",
   output: {
@@ -27,6 +28,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -44,6 +46,11 @@ module.exports = {
           "postcss-loader",
           "sass-loader"
         ]
+      },
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        loader: ['babel-loader']
       }
     ]
   },
