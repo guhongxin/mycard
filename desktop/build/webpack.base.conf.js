@@ -1,58 +1,45 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlgugin = require("copy-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const cpus = require("os").cpus().length;
 const webpack = require("webpack");
+const CopyWebpackPlgugin = require("copy-webpack-plugin");
 
 const resolve = filePath => {
   return path.join(__dirname, "../", filePath);
 };
-
 module.exports = {
   entry: {
     index: resolve("src/js/index.ts"),
     about: resolve("src/js/about.ts")
   },
-  mode: "production",
   output: {
-    filename: "js/[name]_[chunkhash:8].js",
+    filename: "js/[name]_[hash:8].js",
     path: resolve("dist")
   },
   module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      },
-      {
-        test: /\.scss$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              // 这里可以指定一个 publicPath
-              // 默认使用 webpackOptions.output中的publicPath
-              // publicPath的配置，和plugins中设置的filename和chunkFilename的名字有关
-              // 如果打包后，background属性中的图片显示不出来，请检查publicPath的配置是否有误
-              publicPath: "../"
-              // publicPath: devMode ? './' : '../',   // 根据不同环境指定不同的publicPath
-              // hmr: devMode, // 仅dev环境启用HMR功能
+    rules: [{
+      test: /\.tsx?$/,
+      exclude: /node_modules/,
+      loader: ['babel-loader']
+    }, {
+      test: /\.(ico|png|jpg|gif|jpeg|webp|svg|eot|ttf|woff|woff2)$/,
+      use: [
+        {
+          loader: 'url-loader',
+          options: {
+            limit: 10240,
+            fallback: {
+              loader: 'file-loader',
+              options: {
+                name: 'assets/[name].[hash:6].[ext]',
+                esModule:false
+              }
             }
-          },
-          "css-loader",
-          "postcss-loader",
-          "sass-loader"
-        ]
-      },
-      {
-        test: /\.tsx?$/,
-        exclude: /node_modules/,
-        loader: ['babel-loader']
-      }
-    ]
+          }
+        }
+      ],
+      exclude: /node_modules/
+    }]
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -65,33 +52,32 @@ module.exports = {
         }
       ]
     }),
-    new MiniCssExtractPlugin({
-      filename: "css/[name].css"
-    }),
     new HtmlWebpackPlugin({
       // 打包输出HTML
       title: "Hello World app",
-      minify: {
-        // 压缩HTML文件
-        // removeComments: true, // 移除HTML中的注释
-        // collapseWhitespace: true, // 删除空白符与换行符
-        // minifyCSS: true// 压缩内联css
-      },
+      // minify: {
+      //   // 压缩HTML文件
+      //   // removeComments: true, // 移除HTML中的注释
+      //   // collapseWhitespace: true, // 删除空白符与换行符
+      //   // minifyCSS: true// 压缩内联css
+      // },
       inject: "body", // 注入的位置不经相同
       filename: "index.html",
       chunks: ["index"],
+      minify: false,
       favicon: resolve("public/favicon.ico"),
       template: resolve("src/page/index.html")
     }),
     new HtmlWebpackPlugin({
       // 打包输出HTML
       title: "Hello World app",
-      minify: {
-        // 压缩HTML文件
-        // removeComments: true, // 移除HTML中的注释
-        // collapseWhitespace: true, // 删除空白符与换行符
-        // minifyCSS: true// 压缩内联css
-      },
+      // minify: {
+      //   // 压缩HTML文件
+      //   // removeComments: true, // 移除HTML中的注释
+      //   // collapseWhitespace: true, // 删除空白符与换行符
+      //   // minifyCSS: true// 压缩内联css
+      // },
+      minify: false,
       chunks: ["about"],
       filename: "about.html",
       favicon: resolve("public/favicon.ico"),
