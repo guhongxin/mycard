@@ -48,7 +48,9 @@ module.exports = {
       patterns: [
         {
           from: resolve("static"),
-          to: "static"
+          to: "static",
+          force: true,
+          toType: 'dir'
         }
       ]
     }),
