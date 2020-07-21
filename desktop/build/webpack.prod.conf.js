@@ -11,6 +11,7 @@ const resolve = filePath => {
 };
 module.exports = merge(common, {
   mode: "development",
+  // mode: "production",
   module: {
     rules: [
       {
