@@ -6,8 +6,9 @@ import "../scss/swiper-bundle.min.css";
 
 let swiper = new Swiper('.swiper-container', {
   direction: 'vertical',
+  mousewheel: true,
   pagination: {
     el: '.swiper-pagination',
-    type : 'progressbar'
+    type : 'progressbar',
   },
 });

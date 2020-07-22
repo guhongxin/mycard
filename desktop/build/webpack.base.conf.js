@@ -10,7 +10,7 @@ const resolve = filePath => {
 module.exports = {
   entry: {
     index: resolve("src/js/index.ts"),
-    about: resolve("src/js/about.ts"),
+    payment: resolve("src/js/payment.ts"),
     
   },
   output: {
@@ -79,7 +79,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       // 打包输出HTML
-      title: "Hello World app",
+      title: "剑灵",
       // minify: {
       //   // 压缩HTML文件
       //   // removeComments: true, // 移除HTML中的注释
@@ -95,7 +95,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       // 打包输出HTML
-      title: "Hello World app",
+      title: "剑灵",
       // minify: {
       //   // 压缩HTML文件
       //   // removeComments: true, // 移除HTML中的注释
@@ -103,10 +103,10 @@ module.exports = {
       //   // minifyCSS: true// 压缩内联css
       // },
       minify: false,
-      chunks: ["about"],
-      filename: "about.html",
+      chunks: ["payment"],
+      filename: "payment.html",
       favicon: resolve("public/favicon.ico"),
-      template: resolve("src/page/about.html")
+      template: resolve("src/page/payment.html")
     })
   ]
 };
