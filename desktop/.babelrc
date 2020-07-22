@@ -12,7 +12,7 @@
     [ 
       "@babel/plugin-transform-runtime",
       {
-        "corejs": 2 // 推荐
+        "corejs": 3 // 推荐
       }
     ]
   ]
