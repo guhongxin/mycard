@@ -11,4 +11,9 @@ let swiper = new Swiper('.swiper-container', {
     el: '.swiper-pagination',
     type : 'progressbar',
   },
+  on: {
+    slideChangeTransitionStart: function(){
+      console.log(this.activeIndex) 
+    }
+  }
 });

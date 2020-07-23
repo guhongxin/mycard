@@ -1,2 +1,2 @@
-import { a, b } from "./test"; 
-b();
+import "normalize.css";
+import "../scss/payment.scss";
