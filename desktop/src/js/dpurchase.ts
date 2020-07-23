@@ -32,6 +32,9 @@ function submit() {
     console.log("characterName:", characterName.value);
     console.log("amount:", amount.value);
     console.log("accept:", accept.checked);
+
+    // @ts-ignore
+    console.log($("#amount"))
   }
 }
 // 复位表单
