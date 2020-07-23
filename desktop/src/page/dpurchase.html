@@ -24,7 +24,7 @@
             <li class="Allcz-item">
               <div>
                 <h3>Choose a server:</h3>
-                <select>
+                <select id="server">
                   <option value ="volvo">Volvo</option>
                   <option value ="saab">Saab</option>
                   <option value="opel">Opel</option>
@@ -35,7 +35,7 @@
             <li class="Allcz-item">
               <div>
                 <h3>Select in-game currency:</h3>
-                <select>
+                <select id="game">
                   <option value ="volvo">Volvo</option>
                   <option value ="saab">Saab</option>
                   <option value="opel">Opel</option>
@@ -48,13 +48,15 @@
                 <h3>Character ID:</h3>
                 <input type="text"
                   class="roleidTBox"
+                  id="characterID"
+                  onkeyup="this.value=this.value.replace(/\D/g,'')"
                   placeholder="Please enter the Character ID"/>
               </div>
             </li>
             <li class="Allcz-item">
               <div>
                 <h3>Character Name:</h3>
-                <select>
+                <select id="characterName">
                   <option value ="volvo">Volvo</option>
                   <option value ="saab">Saab</option>
                   <option value="opel">Opel</option>
@@ -65,7 +67,7 @@
             <li class="Allcz-item">
               <div>
                 <h3>Amount:</h3>
-                <select>
+                <select id="amount">
                   <option value ="volvo">Volvo</option>
                   <option value ="saab">Saab</option>
                   <option value="opel">Opel</option>
