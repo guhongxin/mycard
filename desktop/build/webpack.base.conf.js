@@ -12,6 +12,7 @@ module.exports = {
     index: resolve("src/js/index.ts"),
     payment: resolve("src/js/payment.ts"),
     dpurchase: resolve("src/js/dpurchase.ts"),
+    voucherall: resolve("src/js/voucherall.ts"),
   },
   output: {
     filename: "js/[name]_[hash:8].js",
@@ -122,6 +123,21 @@ module.exports = {
       filename: "dpurchase.html",
       favicon: resolve("public/favicon.ico"),
       template: resolve("src/page/dpurchase.html")
+    }),
+    new HtmlWebpackPlugin({
+      // 打包输出HTML
+      title: "剑灵",
+      // minify: {
+      //   // 压缩HTML文件
+      //   // removeComments: true, // 移除HTML中的注释
+      //   // collapseWhitespace: true, // 删除空白符与换行符
+      //   // minifyCSS: true// 压缩内联css
+      // },
+      minify: false,
+      chunks: ["voucherall"],
+      filename: "voucherall.html",
+      favicon: resolve("public/favicon.ico"),
+      template: resolve("src/page/voucherall.html")
     })
   ]
 };
