@@ -17,10 +17,10 @@ module.exports = merge(common, {
   devServer: {
     contentBase: resolve("dist"),
     compress: true,
+    host: '0.0.0.0',
     port: 9000,
     inline: true,
-    hot: true,
-    open: "Chrome"
+    hot: true
   },
   module: {
     rules: [{
