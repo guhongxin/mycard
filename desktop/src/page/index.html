@@ -4,32 +4,123 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= htmlWebpackPlugin.options.title %></title>
-  <style>
-    html,
-    body {
-      position: relative;
-      height: 100%;
-    }
-  </style>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <a href="./payment.html">支付页面</a>
-      </div>
-      <div class="swiper-slide">Slide 2</div>
-      <div class="swiper-slide">Slide 3</div>
-      <div class="swiper-slide">Slide 4</div>
-      <div class="swiper-slide">Slide 5</div>
-      <div class="swiper-slide">Slide 6</div>
-      <div class="swiper-slide">Slide 7</div>
-      <div class="swiper-slide">Slide 8</div>
-      <div class="swiper-slide">Slide 9</div>
-      <div class="swiper-slide">Slide 10</div>
+  <div class="box">
+    <div class="menu">
+      <ul class="menu-ul">
+        <li class="menu-ul-li">
+          <div>
+            <img src="<%= require('../assets/img/youtube.png') %>" />
+          </div>
+        </li>
+        <li class="menu-ul-li">
+          <div>
+            <img src="<%= require('../assets/img/facebook.png') %>" />
+          </div>
+        </li>
+        <li class="menu-ul-li">
+          <div>
+            <img src="<%= require('../assets/img/instagram.png') %>" />
+          </div>
+        </li>
+        <li class="menu-ul-li">
+          <div>
+            <img src="<%= require('../assets/img/Twitter.png') %>" />
+          </div>
+        </li>
+        <li class="menu-ul-li">
+          <div>
+            <img src="<%= require('../assets/img/menu.png') %>" />
+          </div>
+          <div class="indicator">
+            <div class="vertical-line"></div>
+            <div class="indicator-icon indicator-active" data-swiper="switchSwiper" data-index="0"></div>
+            <div class="vertical-line"></div>
+            <div class="indicator-icon indicator-noActive" data-swiper="switchSwiper" data-index="1"></div>
+            <div class="vertical-line"></div>
+            <div class="indicator-icon indicator-noActive" data-swiper="switchSwiper" data-index="2"></div>
+            <div class="vertical-line"></div>
+            <div class="indicator-icon indicator-noActive" data-swiper="switchSwiper" data-index="3"></div>
+          </div>
+        </li>
+      </ul>
     </div>
-    <!-- Add Pagination -->
-    <div class="swiper-pagination" style="right: 0;left: auto;"></div>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="page page1">
+            <div class="recharge-box">
+              <ul class="recharge-ul">
+                <li>
+                  <div class="recharge-item" id="recharge">
+                    <div class="icon icon_dollar"></div>
+                    <div class="right">
+                      <p class="ft-en">Recharge</p>
+                      <p class="ft-zh">官网充值</p>
+                    </div>
+                  </div>
+                </li>
+                <div class="hz-line"></div>
+                <li>
+                  <div class="recharge-item" id="downApple">
+                    <div class="icon icon_apple"></div>
+                    <div class="right">
+                      <p class="ft-en">Download on the</p>
+                      <p class="ft-zh">App Store</p>
+                    </div>
+                  </div>
+                </li>
+                <div class="hz-line"></div>
+                <li>
+                  <div class="recharge-item" id="downGoogle">
+                    <div class="icon icon_google-play"></div>
+                    <div class="right">
+                      <p class="ft-en">GET IT ON</p>
+                      <p class="ft-zh">Google Play</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="page1-clouds-top">
+              <img src="<%= require('../assets/img/bj1-1.png') %>" />
+            </div>
+            <div class="page1-footer">
+              <div class="page1-footer-clouds">
+                <img src="<%= require('../assets/img/bj1-2.png') %>" />
+              </div>
+              <div class="page1-footer-clouds">
+                <img src="<%= require('../assets/img/bj1-3.png') %>" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="page page2">
+            <div class="description-box">
+              <img src="<%= require('../assets/img/page2.png') %>" />
+              <div class="description-wz">
+                <p class="title">壹 · 荆棘流域</p>
+                <div class="hz-line"></div>
+                <p>樵村渔浦，毁于一旦。</p>
+                <p>渔夫村老，十不存一。</p>
+                <p>妖兽天灾，堪如灭顶。</p>
+                <p>昔日风光，何时再现。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="page page3"></div>
+        </div>
+        <div class="swiper-slide">
+          <div class="page page4"></div>
+        </div>
+      </div>
+    </div>
   </div>
+ 
 </body>
 </html>
