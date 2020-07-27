@@ -62,14 +62,6 @@
     }
   }
 }
-@keyframes cloudMove {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.05);
-  }
-}
 
 .page1-footer {
   width: 100%;
@@ -81,20 +73,13 @@
   animation-iteration-count: infinite;
   animation-timing-function: cubic-bezier(0.63, 0.04, 0.49, 1.01);
 }
-@keyframes cloudMove1 {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.05);
-  }
-}
+
 .page2 {
-  background-image: url("../assets/img/bj2.png");
+  background-image: url("../assets/img/bj2.jpg");
   background-size: 100% 100%;
   .cloud {
     width: 100%;
-    opacity: 0.4;
+    opacity: 0.7;
     display: block;
     animation-name: cloudMove1;
     animation-duration: 3s;
@@ -102,20 +87,51 @@
     animation-iteration-count: infinite;
     animation-timing-function: cubic-bezier(0.63, 0.04, 0.49, 1.01);
   }
-  .checkpoint1 {
-    width: 190px;
-    height: 200px;
+  .checkpoint {
+    width: 200px;
     position: absolute;
-    top: 38.1%;
-    left: 5.35%;
-    z-index: 3;
-    background: url("../assets/img/db1.png") no-repeat center;
-    background-size: contain;
     cursor: pointer;
-   
+    z-index: 3;
+    img {
+      width: 100%;
+      display: block;
+    }
   }
-  .checkpoint1:hover {
-    transform: scale(1.1);
+  .checkpoint1 {
+    top: 42%;
+    left: 6%;
+  }
+  .checkpoint2 {
+    top: 22%;
+    left: 18%;
+  }
+  .checkpoint3 {
+    top: 43%;
+    left: 18%;
+  }
+  .checkpoint4 {
+    top: 22%;
+    left: 33%;
+  }
+  .checkpoint5 {
+    top: 40%;
+    left: 30%;
+  }
+  .checkpoint6 {
+    top: 58%;
+    left: 28%;
+  }
+  .checkpoint4 {
+    top: 22%;
+    left: 33%;
+  }
+  .checkpoint1:hover,
+  .checkpoint2:hover, 
+  .checkpoint3:hover,
+  .checkpoint4:hover,
+  .checkpoint5:hover,
+  .checkpoint6:hover {
+    animation: checkpointMove 600ms linear infinite alternate-reverse;
   }
   .description-box {
     width: 400px;
@@ -159,19 +175,6 @@
   }
 }
 
-@keyframes heroName {
-  0% {
-    opacity: 0;
-    left: -10px;
-  }
-  0% {
-    left: none;
-    opacity: 1;
-  }
-}
-.page4 {
-  background: #000000;
-}
 .recharge-box {
   width: 220px;
   height: 259px;
@@ -260,6 +263,54 @@
           display: block;
           cursor: pointer;
         }
+      }
+      & > .youtube img:first-child {
+        display: block;
+      }
+      & > .youtube img:last-child {
+        display: none;
+      }
+      & > .youtube:hover img:first-child {
+        display: none;
+      }
+      & > .youtube:hover img:last-child {
+        display: block;
+      }
+      & > .facebook img:first-child {
+        display: block;
+      }
+      & > .facebook img:last-child {
+        display: none;
+      }
+      & > .facebook:hover img:first-child {
+        display: none;
+      }
+      & > .facebook:hover img:last-child {
+        display: block;
+      }
+      & > .instagram img:first-child {
+        display: block;
+      }
+      & > .instagram img:last-child {
+        display: none;
+      }
+      & > .instagram:hover img:first-child {
+        display: none;
+      }
+      & > .instagram:hover img:last-child {
+        display: block;
+      }
+      & > .twitter img:first-child {
+        display: block;
+      }
+      & > .twitter img:last-child {
+        display: none;
+      }
+      & > .twitter:hover img:first-child {
+        display: none;
+      }
+      & > .twitter:hover img:last-child {
+        display: block;
       }
       .indicator {
         position: absolute;
@@ -411,3 +462,48 @@
     }
   }
 }
+.page4 {
+  overflow: hidden;
+  overflow-x: auto;
+  background: #000000;
+  img {
+    height: 100%;
+  }
+}
+
+@keyframes heroName {
+  0% {
+    opacity: 0;
+    left: -10px;
+  }
+  0% {
+    left: none;
+    opacity: 1;
+  }
+}
+
+@keyframes cloudMove1 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes cloudMove {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+@keyframes checkpointMove {
+  0% {
+    transform: scale(1.1) translateY(-2px);
+  }
+  100% {
+    transform: scale(1.1) translateY(2px);
+  }
+} 
