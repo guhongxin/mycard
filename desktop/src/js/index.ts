@@ -20,6 +20,22 @@ const heroData = [
   {
     name: "李白",
     introduce: "可以针对不同的媒体类型定义不同的样式"
+  },
+  {
+    name: "李白1",
+    introduce: "可以针对不同的媒体类型定义不同的样式"
+  },
+  {
+    name: "李白2",
+    introduce: "可以针对不同的媒体类型定义不同的样式"
+  },
+  {
+    name: "李白3",
+    introduce: "可以针对不同的媒体类型定义不同的样式"
+  },
+  {
+    name: "李白4",
+    introduce: "可以针对不同的媒体类型定义不同的样式"
   }
 ]
 const levelDescript = [{
@@ -114,7 +130,8 @@ function init() {
     let target:any  = e.target;
     if (target.dataset.galleryImg === "img") {
       removeClass(heroName, "hero-name-move");
-      let index:number = Number(target.dataset.galleryIndex);
+      let _galleryIndex:number = Number(target.dataset.galleryIndex);
+      let index:number = _galleryIndex;
       (document.querySelector(".hero-name .hero-name-txt") as any).innerHTML = heroData[index]["name"];
       (document.querySelector(".hero-name .introduce") as HTMLElement).innerHTML = heroData[index]["introduce"];
       let timer = setTimeout(() => {
