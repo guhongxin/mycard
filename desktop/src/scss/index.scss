@@ -121,16 +121,48 @@
     top: 58%;
     left: 28%;
   }
-  .checkpoint4 {
-    top: 22%;
-    left: 33%;
+  .checkpoint7 {
+    top: 6%;
+    left: 57%;
   }
-  .checkpoint1:hover,
-  .checkpoint2:hover, 
-  .checkpoint3:hover,
-  .checkpoint4:hover,
-  .checkpoint5:hover,
-  .checkpoint6:hover {
+  .checkpoint8 {
+    top: 23%;
+    left: 54%;
+  }
+  .checkpoint9 {
+    top: 42%;
+    left: 49%;
+  }
+  .checkpoint10 {
+    top: 59%;
+    left: 43%;
+  }
+  .checkpoint11 {
+    top: 18%;
+    left: 72%;
+    width: 240px;
+  }
+  .checkpoint12 {
+    top: 40%;
+    left: 65%;
+    width: 260px;
+  }
+  .checkpoint13 {
+    top: 65%;
+    left: 52%;
+    width: 260px;
+  }
+  .checkpoint14 {
+    top: 50%;
+    left: 79%;
+    width: 260px;
+  }
+  .checkpoint15 {
+    top: 61%;
+    left: 82%;
+    width: 220px;
+  }
+  .checkpoint:hover {
     animation: checkpointMove 600ms linear infinite alternate-reverse;
   }
   .description-box {
