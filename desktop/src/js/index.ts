@@ -88,7 +88,7 @@ const pageIndex = 0; // 当前页
 function init() {
   // 初始化
   removeClass(heroName, "hero-name-move");
-  let swiper = new Swiper('.swiper-container', {
+  let swiper = new Swiper('.swiper-container-h', {
     direction: 'vertical',
     mousewheel: true,
     on: {
@@ -103,6 +103,14 @@ function init() {
       }
     }
   });
+
+  
+  let swiper1 = new Swiper('.swiper-container-v', {
+    direction: 'horizontal',
+    initialSlide: 0,
+    slidesPerView: 'auto',
+  });
+
   // 支付点击事件
   recharge.addEventListener("click", function(e:any) {
     location.href = "./payment.html";

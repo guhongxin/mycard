@@ -51,7 +51,7 @@
         </li>
       </ul>
     </div>
-    <div class="swiper-container">
+    <div class="swiper-container swiper-container-h">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <div class="page page1">
@@ -223,7 +223,20 @@
         </div>
         <div class="swiper-slide">
           <div class="page page4">
-            <img src="<%= require('../assets/img/weapondisplay.png') %>" />
+            <!-- <img src="<%= require('../assets/img/weapondisplay.png') %>" /> -->
+            <div class="swiper-container swiper-container-v" id="swiper1">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" style="width: fit-content;">
+                  <img src="<%= require('../assets/img/weapondisplay01.png') %>" />
+                </div>
+                <div class="swiper-slide" style="width: fit-content;">
+                  <img src="<%= require('../assets/img/weapondisplay02.png') %>" />
+                </div>
+                <div class="swiper-slide" style="width: fit-content;">
+                  <img src="<%= require('../assets/img/weapondisplay03.png') %>" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

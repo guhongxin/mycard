@@ -526,9 +526,13 @@
   overflow: hidden;
   overflow-x: auto;
   background: #000000;
-  img {
-    height: 100%;
+  .swiper-container-v {
+    width: 100%;
+    img {
+      height: 100%;
+    }
   }
+  
 }
 
 @keyframes heroName {
