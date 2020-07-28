@@ -132,6 +132,9 @@ function init() {
       removeClass(heroName, "hero-name-move");
       let _galleryIndex:number = Number(target.dataset.galleryIndex);
       let index:number = _galleryIndex;
+      if (index === 5 || index === 6) {
+        return false;
+      }
       (document.querySelector(".hero-name .hero-name-txt") as any).innerHTML = heroData[index]["name"];
       (document.querySelector(".hero-name .introduce") as HTMLElement).innerHTML = heroData[index]["introduce"];
       let timer = setTimeout(() => {
