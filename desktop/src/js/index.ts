@@ -108,7 +108,8 @@ function init() {
   let swiper1 = new Swiper('.swiper-container-v', {
     direction: 'horizontal',
     initialSlide: 0,
-    slidesPerView: 'auto',
+    updateOnImagesReady : true,
+    slidesPerView: 'auto'
   });
 
   // 支付点击事件

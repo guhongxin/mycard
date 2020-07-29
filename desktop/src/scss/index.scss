@@ -3,7 +3,7 @@
 }
 .swiper-container {
   width: 100%;
-  min-width: 1600px;
+  min-width: 1220px;
   height: 100vh;
   --swiper-theme-color: #FFEE22;
 }
@@ -571,3 +571,40 @@
     transform: scale(1.1) translateY(2px);
   }
 } 
+@media screen and (min-width: 1220px) and (max-width: 1439px) {
+  .page2 {
+    .cloud2 {
+      position: absolute;
+      height: 130px;
+    }
+    .checkpoint4 {
+      top: 18%;
+      left: 38%;
+    }
+    .checkpoint5 {
+      top: 36%;
+      left: 33%;
+    }
+    .checkpoint13 {
+      z-index: 5;
+    }
+    .description-box {
+      width: 300px;
+      .description-wz {
+        padding: 20px 10px;
+        p {
+          font-size: 16px;
+        }
+        .title {
+          font-size: 24px;
+        }
+        .hz-line {
+          width: 70%;
+          height: 1px;
+          background-color: #D2BDA4;
+          margin: 10px auto;
+        }
+      }
+    }
+  }
+}
