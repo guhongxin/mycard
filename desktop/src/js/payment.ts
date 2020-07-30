@@ -1,5 +1,5 @@
 import "normalize.css";
-import "../scss/payment.scss";
+import "../scss/voucherall.scss";
 
 function init() {
   // 初始化
