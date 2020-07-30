@@ -9,6 +9,9 @@
 
   <!-- JS, Popper.js, and jQuery -->
   <script src="https://www.paypal.com/sdk/js?client-id=SB_CLIENT_ID"></script>
+  <script src="/static/js/jquery.min.js"></script>
+  <script src="/static/js/jquery.i18n.properties.min.js"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=SB_CLIENT_ID"></script>
 </head>
 <body>
   <div class="head">
@@ -19,7 +22,7 @@
     <form id="form1">
       <div class="stored">
         <div class="conts">
-          <h3>Best recharging promotion recommended:</h3>
+          <h3 data-locale="Recommended Recharge">Best recharging promotion recommended:</h3>
           <ul class="Allcz">
             <li class="li">
               <a href="dpurchase.html?paymentMethod=PayPal">
@@ -28,7 +31,7 @@
               </a>
             </li>
           </ul>
-          <h3>Please choose the recharge in your country:</h3>
+          <h3 data-locale="choose Country">Please choose the recharge in your country:</h3>
           <ul class="Allcz">
             <li class="li">
               <a href="voucherall.html">
@@ -85,7 +88,7 @@
               </a>
             </li>
           </ul>
-          <h3>Recharge in other countries:</h3>
+          <h3 data-locale="orther Countries">Recharge in other countries:</h3>
           <ul class="Allcz">
             <li class="li">
               <a href="javascript:void(0)">
