@@ -93,7 +93,14 @@ function init() {
     mousewheel: true,
     on: {
       slideChangeTransitionStart: function(){
-        //
+        // 第三部分的时候禁用外面滚动
+        if (this.activeIndex === 3) {
+          this.mousewheel.disable()
+        } else {
+          if (!this.mousewheel.enabled) {
+            this.mousewheel.enable()
+          }
+        }
         pagination(this.activeIndex);
         if (this.activeIndex === 2) {
           heroName.classList.add("hero-name-move")
@@ -107,6 +114,7 @@ function init() {
   
   let swiper1 = new Swiper('.swiper-container-v', {
     direction: 'horizontal',
+    mousewheel: true,
     initialSlide: 0,
     updateOnImagesReady : true,
     slidesPerView: 'auto'
