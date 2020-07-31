@@ -11,7 +11,9 @@ const downGoogle:HTMLElement = document.getElementById("downGoogle");
 const indicator:HTMLElement = document.querySelector(".indicator");
 const heroName:HTMLElement = document.querySelector(".hero-name");
 const heroGallery:HTMLElement = document.querySelector(".hero-gallery");
-const checkpointDom:any = document.querySelectorAll(".page2 .checkpoint")
+const modal:HTMLElement = document.querySelector(".modal");
+const submitBtn:HTMLElement = document.querySelector("#submitBtn");
+const checkpointDom:any = document.querySelectorAll(".page2 .checkpoint");
 const heroData = [
   {
     name: "东陵圣母",
@@ -85,6 +87,7 @@ const levelDescript = [{
   text: ["妖临城下，御水之危。", "人心惶惶，满城风雨。", "阳城一笑，非我所念。", "浪里孤舟，干城之将。"]
 }]
 const pageIndex = 0; // 当前页
+let token; // 用户token
 function init() {
   // 初始化
   removeClass(heroName, "hero-name-move");
@@ -122,7 +125,28 @@ function init() {
 
   // 支付点击事件
   recharge.addEventListener("click", function(e:any) {
-    location.href = "./payment.html";
+    // 用户是否登录，未登录先登录，登录直接跳转到支付页面
+    if (token) {
+      location.href = "./payment.html";   
+    } else {
+      modal.classList.add("show");
+      let login:HTMLElement = document.querySelector(".login");
+      let timer = setTimeout(() => {
+        login.classList.add("login-scale");
+        clearTimeout(timer)
+      }, 2)
+    }
+  })
+  // 点击弹窗，隐藏
+  modal.addEventListener("click", function(e:any) {
+    let target = e.target;
+    if (target.dataset.tag === "modal") {
+      // 点击阴影部分
+      removeClass(this, "show");
+      let login:HTMLElement = document.querySelector(".login");
+      removeClass(this, "show");
+      removeClass(login, "login-scale");
+    }
   })
   // 下载apple官网
   downApple.addEventListener("click", function(e:any) {
@@ -161,6 +185,7 @@ function init() {
     }
   })
   checkpointDom.forEach(element => {
+    // 鼠标移动到地图上面执行动画
     let index:number = Number(element.dataset.levelIndex);
     element.addEventListener("mouseover", function(e) {
       document.querySelector(".description-wz .title").innerHTML = levelDescript[index].title;
@@ -170,6 +195,15 @@ function init() {
       }, "");
       document.querySelector(".description-wz .description-txt").innerHTML = txt;
     })
+  });
+  submitBtn.addEventListener("click", function(e:any) {
+    // 登录
+    let userNameDom = document.getElementById("userName") as HTMLInputElement;
+    let passwordDom = document.getElementById("password") as HTMLInputElement;
+    let userName = userNameDom.value.trim();
+    let password = passwordDom.value.trim();
+    console.log("userName", userName)
+    console.log("password", password)
   });
 }
 

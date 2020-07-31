@@ -12,7 +12,7 @@ module.exports = {
     index: resolve("src/js/index.ts"),
     payment: resolve("src/js/payment.ts"),
     dpurchase: resolve("src/js/dpurchase.ts"),
-    voucherall: resolve("src/js/voucherall.ts"),
+    voucherall: resolve("src/js/voucherall.ts")
   },
   output: {
     filename: "js/[name]_[hash:8].js",
@@ -80,7 +80,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       // 打包输出HTML
-      title: "剑灵",
+      title: "戒灵",
       // minify: {
       //   // 压缩HTML文件
       //   // removeComments: true, // 移除HTML中的注释
@@ -96,7 +96,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       // 打包输出HTML
-      title: "剑灵",
+      title: "戒灵",
       // minify: {
       //   // 压缩HTML文件
       //   // removeComments: true, // 移除HTML中的注释
@@ -111,7 +111,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       // 打包输出HTML
-      title: "剑灵",
+      title: "戒灵",
       // minify: {
       //   // 压缩HTML文件
       //   // removeComments: true, // 移除HTML中的注释
@@ -126,7 +126,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       // 打包输出HTML
-      title: "剑灵",
+      title: "戒灵",
       // minify: {
       //   // 压缩HTML文件
       //   // removeComments: true, // 移除HTML中的注释
