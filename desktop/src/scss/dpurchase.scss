@@ -128,6 +128,12 @@
     text-align: left;
   }
 }
+#paypal-button-container {
+  .paypal-button {
+    width: 100px;
+    border-radius: 50%;
+  }
+}
 @media (max-width: 850px) {
   .head {
     width: 100%;

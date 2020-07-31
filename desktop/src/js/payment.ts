@@ -12,8 +12,8 @@ function init() {
           mode: 'map',
           language: lang,     //这就是国家代号 name+language刚好组成属性文件名：strings+zh -> strings_zh.properties
           callback: function () {
-            $("[data-locale]").each(function () {
-              $(this).html(i18n.prop($(this).data("locale")));
+            ($ as any)("[data-locale]").each(function () {
+              ($ as any)(this).html(i18n.prop($(this).data("locale")));
             });
           }
       });

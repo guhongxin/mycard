@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=AQQb0039GJAgHsqzTX1QCC_waO7_eBHk5RIHWBVVM2i2eQU3mothZPId8-V_tm4cLJGxfwriAfoJhces&disable-funding=card"></script>
 </head>
 <body>
   <div class="dpurchase-head">
@@ -90,7 +91,11 @@
                   <p class="v-text">(1) First recharge double rewards only affect on one account's first recharge for each big cat coins recharge category in-game.</p>
                   <p class="v-text">(2) Monthly Premium purchase limit is 3 times, and the reset time is at 5:00 a.m.(GMT+7) 30 days after your last purchase, the exceeded purchase will exchange to Big Cat Coins of that amount.</p>
                 </div>
-                <div class="button">Recharge Now</div>
+                <div id="paypal-button-container">
+                  <div class="button">Recharge Now
+                  
+                  </div>
+                </div>
               </div>
             </li>
           </ul>
