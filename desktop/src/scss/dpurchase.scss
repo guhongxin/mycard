@@ -8,9 +8,6 @@
   .top-pc {
     display: block;
   }
-  .top-m {
-    display: none;
-  }
   h1 {
     margin: 0 auto;
     font-size: 24px;
@@ -135,12 +132,6 @@
     img {
       max-width: 100%;
       vertical-align: middle;
-    }
-    .top-pc {
-      display: none;
-    }
-    .top-m {
-      display: block;
     }
     h1 {
       font-size: 12px;

@@ -5,12 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://www.paypal.com/sdk/js?client-id=AQQb0039GJAgHsqzTX1QCC_waO7_eBHk5RIHWBVVM2i2eQU3mothZPId8-V_tm4cLJGxfwriAfoJhces&disable-funding=card"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=AQQb0039GJAgHsqzTX1QCC_waO7_eBHk5RIHWBVVM2i2eQU3mothZPId8-V_tm4cLJGxfwriAfoJhces&disable-funding=card&commit=false"></script>
 </head>
 <body>
   <div class="dpurchase-head">
     <img class="top-pc" src="/static/img/top-02.jpg" />
-    <img class="top-m" src="/static/img/top-02-m.jpg" />
     <h1>
       <a href="javascript:void(0)">
         Payment Type: 
@@ -26,26 +25,18 @@
             <li class="Allcz-item">
               <div>
                 <h3>Choose a server:</h3>
-                <select id="server">
-                  <option value ="volvo">Volvo</option>
-                  <option value ="saab">Saab</option>
-                  <option value="opel">Opel</option>
-                  <option value="audi">Audi</option>
-                </select>
+                <select id="server"></select>
               </div>
             </li>
             <li class="Allcz-item">
               <div>
                 <h3>Select in-game currency:</h3>
-                <select id="game">
-                  <option value ="volvo">Volvo</option>
-                  <option value ="saab">Saab</option>
-                  <option value="opel">Opel</option>
-                  <option value="audi">Audi</option>
+                <select id="gameCurrency">
+                  <option value="CNY">CNY</option>
                 </select>
               </div>
             </li>
-            <li class="Allcz-item">
+            <!-- <li class="Allcz-item">
               <div>
                 <h3>Character ID:</h3>
                 <input type="text"
@@ -54,26 +45,21 @@
                   onkeyup="this.value=this.value.replace(/\D/g,'')"
                   placeholder="Please enter the Character ID"/>
               </div>
-            </li>
+            </li> -->
             <li class="Allcz-item">
               <div>
                 <h3>Character Name:</h3>
-                <select id="characterName">
-                  <option value ="volvo">Volvo</option>
-                  <option value ="saab">Saab</option>
-                  <option value="opel">Opel</option>
-                  <option value="audi">Audi</option>
-                </select>
+                <select id="characterName"></select>
               </div>
             </li>
             <li class="Allcz-item">
               <div>
                 <h3>Amount:</h3>
                 <select id="amount">
-                  <option value ="volvo">Volvo</option>
+                  <!-- <option value ="volvo">Volvo</option>
                   <option value ="saab">Saab</option>
                   <option value="opel">Opel</option>
-                  <option value="audi">Audi</option>
+                  <option value="audi">Audi</option> -->
                 </select>
               </div>
             </li>
