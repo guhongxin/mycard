@@ -29,10 +29,12 @@ export function removeClass(obj: HTMLElement, classname: string){
 export const paymentCountry = [{
   country: "马拉西亚",
   nationalflag: "/static/img/ml.gif",
+  payMentIcon: "",
   dataloacle: "Malaysia"
 }, {
   country: "新加坡",
   nationalflag: "/static/img/xjp.gif",
+  payMentIcon: "",
   dataloacle: "Singapore"
 }]
 // 国家有哪几种支付种类
@@ -40,6 +42,7 @@ export const ountryPaymentType = {
   Malaysia: {
     "E-Wallet": [{
       name: "Razer Gold Wallet",
+      icon: "/static/img/1.png",
       id: 1
     }, {
       name: "Boost",
@@ -50,34 +53,42 @@ export const ountryPaymentType = {
     }],
     "Online Banking": [{
       name: "FPX",
+      icon:"static/img/12.png",
       id: 12
     }, {
       name: "CIMB Clicks",
+      icon: "/static/img/21.png",
       id: 21
     }, {
       name: "Hong Leong Connect",
+      icon: "/static/img/22.png",
       id: 22
     }, {
       name: "Public Bank",
+      icon: "/static/img/24.png",
       id: 24
     }, {
       name: "RHB Now",
+      icon: "/static/img/25.png",
       id: 25
     }]
   },
   Singapore: {
     "E-Wallet": [{
       name: "Razer Gold Wallet",
+      icon: "/static/img/1.png",
       id: 1
     }, {
       name: "Singtel Dash",
       id: 70
     }, {
       name: "GrabPay",
+      icon: "/static/img/124.png",
       id: 124
     }],
     "Online Banking": [{
       name: "eNETS",
+      icon: "/static/img/40.png",
       id: 40
     }]
   }

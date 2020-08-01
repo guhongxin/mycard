@@ -50,10 +50,10 @@ function createPaymentChannelList(channel:Array<any>):string {
 function createPaymentChannelItem(channel):string {
   let paymentTpe:string = `<li class="li channelItem">
     <a href="javascript:void(0)" onclick="channelItemClick()" data-tag="channel" data-channelid=${channel.id} data-channelname=${channel.name}>
-      <img src="/static/img/Razer Pin.png" />
+      <img src="${channel.icon}" />
       ${channel.name}
       <div class="sub">
-        <img src="/static/img/ico-04.png" />
+        <img src="${channel.icon}" />
       </div>
     </a>
   </li>`

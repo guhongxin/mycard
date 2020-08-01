@@ -49,8 +49,7 @@ function init(): void {
       let obj = {
         serverId: serverId,
         playerId: playerId,
-        currencyCode: this.value,
-        appId: 123
+        currencyCode: this.value
       }
       getitemsList(obj).then((res:any) => {
         createAmountOptionDom(amount, res);
@@ -68,8 +67,7 @@ function init(): void {
     let obj = {
       serverId: serverId,
       playerId: this.value,
-      currencyCode: currencyCode,
-      appId: 123
+      currencyCode: currencyCode
     }
     getitemsList(obj).then((res:any) => {
       createAmountOptionDom(amount, res);
@@ -114,8 +112,7 @@ function getCharacterList(serverId:string) {
 interface ItemRequestParam {
   serverId:string | number;
   playerId:string | number;
-  currencyCode:string |number,
-  appId: string |number
+  currencyCode:string |number
 }
 // 充值道具列表
 function getitemsList(param: ItemRequestParam) {
@@ -124,7 +121,6 @@ function getitemsList(param: ItemRequestParam) {
       url: "/items",
       method: "GET",
       params: {
-        app_id: param.appId,
         server_id: param.serverId,
         player_id: param.playerId,
         currency_code: param.currencyCode
