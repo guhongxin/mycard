@@ -148,3 +148,91 @@
     }
   }
 }
+
+.modal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(#000000, 0.5);
+  z-index: 2000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  .login {
+    padding: 40px 15px 15px;
+    box-sizing: border-box;
+    width: 300px;
+    max-width: 350px;
+    margin: 0px auto;
+    border: 1px solid #DCDFE6;
+    border-radius: 5px;
+    background-color: #ffffff;
+    transform: scale(0);
+    transition: all 0.3s linear;
+    .item {
+      margin-bottom: 15px;
+      .input-style {
+        background: #fff;
+        width: 100%;
+        border: 1px solid #c1c1c1;
+        border-radius: 5px;
+        line-height: 40px;
+        text-align: left;
+        box-sizing: border-box;
+        font-size: 14px;
+        padding: 0px 20px;
+      }
+      .input-style:focus {
+        outline-color: blue;
+      }
+    }
+    .btn {
+      width: 100%;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      color: #ffffff;
+      background-color: #79bbff;
+      border-radius: 5px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      .btn-txt {
+        position: relative;
+        z-index: 1;
+      }
+    }
+    .btn::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      //设置径向渐变
+      background-image: radial-gradient(circle,  #409EFF 10%, transparent 10.01%);
+      background-repeat: no-repeat;
+      background-position: 50%;
+      transform: scale(10, 10);
+      opacity: 0;
+      transition: transform .3s, opacity .5s;
+    }
+    .btn:active::after {
+      transform: scale(0, 0);
+      opacity: .3;
+      //设置初始状态
+      transition: 0s;
+    }
+  }
+}
+.show {
+  display: flex;
+  .login-scale {
+    transform: scale(1);
+  }
+}
