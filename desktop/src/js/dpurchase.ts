@@ -3,6 +3,7 @@ import "../scss/dpurchase.scss";
 
 import { getQueryVariable } from "../utils/common";
 import Request from "../utils/request"
+import md5 from "blueimp-md5"
 
 // 全局变量
 const server: HTMLSelectElement = document.getElementById(
@@ -79,7 +80,7 @@ init();
 // 获取服务器列表
 function getServerList() {
   return new Promise((resolve, reject) => {
-    httpRequest.getfetch("/servers?app_id=1").then((res:any) => {
+    httpRequest.getfetch("/servers").then((res:any) => {
       if (res.code === 0) {
         resolve(res.data)
       } else {
@@ -95,8 +96,6 @@ function getCharacterList(serverId:string) {
       url: "/characters",
       method: "GET",
       params: {
-        user_id: 123,
-        app_id: 1,
         server_id: serverId
       }
     }).then((res:any) => {
@@ -161,8 +160,32 @@ function submit() {
     console.log("characterName:", characterName.value);
     console.log("amount:", amount.value);
     console.log("accept:", accept.checked);
+    let _characterNameIndex = characterName.selectedIndex;
+    let _amountIndex = amount.selectedIndex;
+
+    let obj = {
+      appId: 12312,
+      channelId: 12312,
+      userId: 1,
+      consumerId: characterName.value, // playerId
+      consumerName: characterName.options[_characterNameIndex].text, // playerId
+      orderDetail: amount.options[_amountIndex].text, // amount id
+      productId: amount.value
+    };
+    var hash = createncryption(obj);
+    console.log("--hash--", hash)
   };
 }
+
+function createncryption(param:any):string {
+  let objKey = Object.keys(param).sort();
+  let result = objKey.reduce((total, item) => {
+    total.push(item + "=" + param[item])
+    return total
+  }, []);
+  return md5(result.join("&"))
+}
+
 // @ts-ignore
 paypal.Buttons().render("#paypal-button-container");
 // 复位表单

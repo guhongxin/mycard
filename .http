@@ -1,10 +1,10 @@
 ### 请求服务器列表
-GET http://192.168.1.16:8080/servers?app_id=1
+GET http://192.168.1.16:8080/servers?
 
 
 ### 请求角色列表
-GET http://192.168.1.16:8080/characters?user_id=123&app_id=1&server_id=1
+GET http://192.168.1.16:8080/characters?user_id=123&server_id=1
 
 
 ### 请求充值道具
-GET http://192.168.1.16:8080/items?player_id=123&app_id=123&server_id=123&currency_code=CNY
+GET http://192.168.1.16:8080/items?player_id=123&server_id=123&currency_code=CNY
