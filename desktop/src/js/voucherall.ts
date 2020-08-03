@@ -61,7 +61,9 @@ function init() {
         let _channelName = dom[i].dataset.channelname;
         paymentMethod = _channelName
         channelId = _channelId
-        location.href =  `dpurchase.html?paymentMethod=${_channelName}&channelId=${_channelId}`
+        setTimeout(() => {
+          location.href =  `./dpurchase.html?paymentMethod=${_channelName}&channelId=${_channelId}`
+        }, 1)
       } else {
         modal.classList.add("show");
         let login:HTMLElement = document.querySelector(".login");

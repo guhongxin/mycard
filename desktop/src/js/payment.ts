@@ -41,7 +41,10 @@ function init() {
   // payPal支付
   payPalClick.addEventListener("click", function() {
     if (jwt) {
-      location.href = "./dpurchase.html?paymentMethod=PayPal";
+      let _channelId = sessionStorage.getItem("_channelId")
+      setTimeout(() => {
+        location.href = `./dpurchase.html?paymentMethod=PayPal&channelId=${_channelId}`;
+      }, 2)
     } else {
       modal.classList.add("show");
       let login:HTMLElement = document.querySelector(".login");
@@ -105,7 +108,8 @@ function login(param:LoginParam) {
       sessionStorage.setItem("jwt", data.token);
       sessionStorage.setItem("appId", data.appId);
       sessionStorage.setItem("userId", data.userId);
-      location.href = `./dpurchase.html?paymentMethod=payPal&channelId=${data.channelId}`
+      sessionStorage.setItem("_channelId", data.channelId);
+      // location.href = `./dpurchase.html?paymentMethod=payPal&channelId=${data.channelId}`
     } else {
       alert(res.code)
     }
