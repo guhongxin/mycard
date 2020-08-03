@@ -27,15 +27,17 @@ class Request {
     // post 请求
     let _url = this.baseURL + url;
     let self = this;
+    
+    let myHeaders:any = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Accept", "application/json");
+    if (self.jwt) {
+      myHeaders.append("jwt", self.jwt);
+    }
     return (window as any).fetch(_url, {
       body: JSON.stringify(data),
       method: "POST",
-      headers: {
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'jwt': self.jwt
-      }
+      headers: myHeaders
     }).then(response => {
       return  response.json()
     })

@@ -14,7 +14,8 @@ const submitBtn:HTMLElement = document.querySelector("#submitBtn");
 
 const httpRequest = new Request("http://192.168.1.16:8087");
 
-let token; // 用户token
+let jwt:string = sessionStorage.getItem("jwt"); // 用户token
+
 function init() {
   // 初始化
   let lang = navigator.language || (navigator as any).userLanguage;
@@ -39,8 +40,8 @@ function init() {
   countryUl.innerHTML = countryStr
   // payPal支付
   payPalClick.addEventListener("click", function() {
-    if (token) {
-      location.href = "dpurchase.html?paymentMethod=PayPal";
+    if (jwt) {
+      location.href = "./dpurchase.html?paymentMethod=PayPal";
     } else {
       modal.classList.add("show");
       let login:HTMLElement = document.querySelector(".login");
@@ -55,14 +56,14 @@ function init() {
     let target = e.target;
     if (target.dataset.tag === "modal") {
       // 点击阴影部分
-      removeClass(this, "show");
-      let login:HTMLElement = document.querySelector(".login");
-      removeClass(this, "show");
-      removeClass(login, "login-scale");
       let userNameDom = document.getElementById("userName") as HTMLInputElement;
       let passwordDom = document.getElementById("password") as HTMLInputElement;
       userNameDom.value = "";
       passwordDom.value = "";
+      removeClass(this, "show");
+      let login:HTMLElement = document.querySelector(".login");
+      removeClass(this, "show");
+      removeClass(login, "login-scale");
     }
   })
   submitBtn.addEventListener("click", function(e:any) {
@@ -104,7 +105,7 @@ function login(param:LoginParam) {
       sessionStorage.setItem("jwt", data.token);
       sessionStorage.setItem("appId", data.appId);
       sessionStorage.setItem("userId", data.userId);
-      // location.href = `./dpurchase.html?paymentMethod=payPal&channelId=${data.channelId}`
+      location.href = `./dpurchase.html?paymentMethod=payPal&channelId=${data.channelId}`
     } else {
       alert(res.code)
     }

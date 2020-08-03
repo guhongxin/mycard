@@ -34,6 +34,10 @@ const httpRequest = new Request("http://192.168.1.16:8087/game", jwt) // 请求
 const httpRequest1 = new Request("http://192.168.1.16:8093") // 请求
 function init(): void {
   // 初始化
+  if (!jwt) {
+    // 如果token 不存在返回到支付页面
+    location.href="./payment.html"
+  }
   let paymentMethod: string = getQueryVariable("paymentMethod");
   channelId =  getQueryVariable("channelId");
   paymentMethodDom.innerHTML = paymentMethod;
