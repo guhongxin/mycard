@@ -206,10 +206,10 @@ paypal.Buttons({
       appId: sessionStorage.getItem('appId'),
       channelId: channelId,
       userId: sessionStorage.getItem('userId'),
-      consumerId: characterName.value, // playerId
+      consumerId: server.value + ',' + characterName.value, // playerId
       consumerName: characterName.options[_characterNameIndex].text, // playerId
       orderDetail: amount.options[_amountIndex].text, // amount id
-      productId: amount.value
+      productId: amount.value,
     };
     let hash:string = createncryption(obj);
     obj.sign = hash
