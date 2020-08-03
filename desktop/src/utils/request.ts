@@ -31,8 +31,8 @@ class Request {
       body: JSON.stringify(data),
       method: "POST",
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        //'Content-Type': 'application/json',
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
         'Accept': 'application/json',
         'jwt': self.jwt
       }

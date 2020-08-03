@@ -71,12 +71,10 @@ function init() {
     let passwordDom = document.getElementById("password") as HTMLInputElement;
     let userName:string = userNameDom.value.trim();
     let password:string = passwordDom.value.trim();
-    console.log("userName", userName)
-    console.log("password", password)
     login({
       username: userName,
       password: password
-    })
+    });
   });
   // 设置token
   // Cookies.set('name', 'value', { expires: 7 });
@@ -100,15 +98,13 @@ interface LoginParam {
 }
 function login(param:LoginParam) {
   httpRequest.postfetch("/user/auth", param).then(res => {
-    console.log("----",res)
     if (res.code === 0) {
       // 
       let data = res.data; 
       sessionStorage.setItem("jwt", data.token);
       sessionStorage.setItem("appId", data.appId);
-      sessionStorage.setItem("channelId", data.channelId);
       sessionStorage.setItem("userId", data.userId);
-      location.href = "./dpurchase.html?paymentMethod=payPal"
+      // location.href = `./dpurchase.html?paymentMethod=payPal&channelId=${data.channelId}`
     } else {
       alert(res.code)
     }

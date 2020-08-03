@@ -29,11 +29,13 @@ const paymentMethodDom: HTMLElement = document.querySelector(".paymentMethod");
 const jwt = sessionStorage.getItem("jwt");
 const sign = "69a54ac4afafa44ec1ff5bae05a9010c";
 let orderId:string; // 订单编号
+let channelId:string; //
 const httpRequest = new Request("http://192.168.1.16:8087/game", jwt) // 请求
 const httpRequest1 = new Request("http://192.168.1.16:8093") // 请求
 function init(): void {
   // 初始化
   let paymentMethod: string = getQueryVariable("paymentMethod");
+  channelId =  getQueryVariable("channelId");
   paymentMethodDom.innerHTML = paymentMethod;
   orderId = "";
   restForm(); // 复位
@@ -158,18 +160,18 @@ function createAmountOptionDom(dom:HTMLElement, options:Array<any>) {
 function submit() {
   let button: HTMLElement = document.querySelector(".button");
   button.onclick = () => {
-    let _characterNameIndex = characterName.selectedIndex;
-    let _amountIndex = amount.selectedIndex;
-    let obj = {
-      appId: sessionStorage.getItem('appId'),
-      channelId: sessionStorage.getItem('channelId'),
-      userId: sessionStorage.getItem('userId'),
-      consumerId: characterName.value, // playerId
-      consumerName: characterName.options[_characterNameIndex].text, // playerId
-      orderDetail: amount.options[_amountIndex].text, // amount id
-      productId: amount.value
-    };
-    var hash = createncryption(obj);
+    // let _characterNameIndex = characterName.selectedIndex;
+    // let _amountIndex = amount.selectedIndex;
+    // let obj = {
+    //   appId: sessionStorage.getItem('appId'),
+    //   channelId: channelId,
+    //   userId: sessionStorage.getItem('userId'),
+    //   consumerId: characterName.value, // playerId
+    //   consumerName: characterName.options[_characterNameIndex].text, // playerId
+    //   orderDetail: amount.options[_amountIndex].text, // amount id
+    //   productId: amount.value
+    // };
+    // var hash = createncryption(obj);
   };
 }
 
@@ -196,7 +198,7 @@ paypal.Buttons({
     let _amountIndex = amount.selectedIndex;
     let obj:any = {
       appId: sessionStorage.getItem('appId'),
-      channelId: sessionStorage.getItem('channelId'),
+      channelId: channelId,
       userId: sessionStorage.getItem('userId'),
       consumerId: characterName.value, // playerId
       consumerName: characterName.options[_characterNameIndex].text, // playerId

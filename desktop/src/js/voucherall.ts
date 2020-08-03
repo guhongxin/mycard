@@ -2,11 +2,15 @@ import "normalize.css";
 import "../scss/voucherall.scss";
 import { ountryPaymentType, getQueryVariable } from "../utils/common"; 
 import { removeClass } from "../utils/common";
-
+import Request from "../utils/request";
 const conts:HTMLElement = document.querySelector(".conts");
 const modal:HTMLElement = document.querySelector(".modal");
 const submitBtn:HTMLElement = document.querySelector("#submitBtn");
-let token; // 用户token
+let token:string = sessionStorage.getItem("jwt"); // 用户token
+let paymentMethod:string;
+let channelId: string;
+
+const httpRequest = new Request("http://192.168.1.16:8087");
 
 function init() {
   // 初始化
@@ -28,6 +32,10 @@ function init() {
       let login:HTMLElement = document.querySelector(".login");
       removeClass(this, "show");
       removeClass(login, "login-scale");
+      let userNameDom = document.getElementById("userName") as HTMLInputElement;
+      let passwordDom = document.getElementById("password") as HTMLInputElement;
+      userNameDom.value = "";
+      passwordDom.value = "";
     }
   })
   submitBtn.addEventListener("click", function(e:any) {
@@ -36,8 +44,10 @@ function init() {
     let passwordDom = document.getElementById("password") as HTMLInputElement;
     let userName = userNameDom.value.trim();
     let password = passwordDom.value.trim();
-    console.log("userName", userName)
-    console.log("password", password)
+    login({
+      username: userName,
+      password: password
+    });
   });
 }
 // 点击渠道绑定事件
@@ -47,9 +57,11 @@ function init() {
     let tag = dom[i].dataset.tag
     if (tag === "channel") {
       if (token) {
-        let channelId = dom[i].dataset.channelid;
-        let channelName = dom[i].dataset.channelname;
-        location.href =  `dpurchase.html?paymentMethod=${channelName}&channelId=${channelId}`
+        let _channelId = dom[i].dataset.channelid;
+        let _channelName = dom[i].dataset.channelname;
+        paymentMethod = _channelName
+        channelId = _channelId
+        location.href =  `dpurchase.html?paymentMethod=${_channelName}&channelId=${_channelId}`
       } else {
         modal.classList.add("show");
         let login:HTMLElement = document.querySelector(".login");
@@ -63,6 +75,27 @@ function init() {
   }
 }
 
+interface LoginParam {
+  username: string;
+  password: string;
+}
+function login(param:LoginParam) {
+  httpRequest.postfetch("/user/auth", param).then(res => {
+    if (res.code === 0) {
+      // 
+      let data = res.data; 
+      sessionStorage.setItem("jwt", data.token);
+      sessionStorage.setItem("appId", data.appId);
+      sessionStorage.setItem("userId", data.userId);
+      location.href = `./dpurchase.html?paymentMethod=${paymentMethod}&channelId=${channelId}`
+    } else {
+      alert(res.code)
+    }
+  }).catch(err => {
+    console.log("err", err)
+    return false
+  })
+}
 // 创建支付类型
 function createPaymentType(key:string, channelData:Array<any>):string {
   console.log("channelData", channelData)
