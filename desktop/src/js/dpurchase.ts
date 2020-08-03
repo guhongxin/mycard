@@ -187,8 +187,8 @@ function createncryption(param:any):string {
     total.push(item + "=" + param[item])
     return total
   }, []);
-  console.log(result.join("&") )
-  return md5(result.join("&") + sign)
+  console.log(result.join("&"))
+  return md5(result.join("&") + md5(sign))
 }
 
 // @ts-ignore

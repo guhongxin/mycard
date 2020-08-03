@@ -82,7 +82,7 @@ interface LoginParam {
   password: string;
 }
 function login(param:LoginParam) {
-  httpRequest.postfetch("/user/auth", param).then(res => {
+  httpRequest.postfetch(`/user/auth?username=${param.username}&password=${param.password}`).then(res => {
     if (res.code === 0) {
       // 
       let data = res.data; 
