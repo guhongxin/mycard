@@ -98,9 +98,8 @@
             border: none;
           }
           #paypal-button-container {
-            width: 268px;
-            height: 60px;
-            border-radius: 60px;
+            width: 300px;
+            margin-top: 20px;
           }
         }
       }
@@ -164,6 +163,9 @@
             .button {
               width: 92%;
               margin-bottom: 2em;
+            }
+            #paypal-button-container {
+              width: 92%;
             }
           }
         }

@@ -46,9 +46,11 @@ export const ountryPaymentType = {
       id: 1
     }, {
       name: "Boost",
+      icon: "/static/img/164.png",
       id: 164
     }, {
       name: "Touch 'n Go",
+      icon: "/static/img/165.png",
       id: 165
     }],
     "Online Banking": [{
@@ -80,6 +82,7 @@ export const ountryPaymentType = {
       id: 1
     }, {
       name: "Singtel Dash",
+      icon: "/static/img/70.png",
       id: 70
     }, {
       name: "GrabPay",

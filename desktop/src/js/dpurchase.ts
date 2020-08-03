@@ -21,9 +21,9 @@ const characterName: HTMLSelectElement = document.getElementById(
 const amount: HTMLSelectElement = document.getElementById(
   "amount"
 ) as HTMLSelectElement;
-const accept: HTMLInputElement = document.getElementById(
-  "accept"
-) as HTMLInputElement;
+// const accept: HTMLInputElement = document.getElementById(
+//   "accept"
+// ) as HTMLInputElement;
 const paymentMethodDom: HTMLElement = document.querySelector(".paymentMethod");
 
 const jwt = sessionStorage.getItem("jwt");
@@ -31,7 +31,7 @@ const sign = "69a54ac4afafa44ec1ff5bae05a9010c";
 let orderId:string; // 订单编号
 let channelId:string; //
 const httpRequest = new Request("http://192.168.1.16:8087/game", jwt) // 请求
-const httpRequest1 = new Request("http://192.168.1.16:8093") // 请求
+const httpRequest1 = new Request("http://192.168.1.16:8091/interface/user-pay/paypal") // 请求
 function init(): void {
   // 初始化
   if (!jwt) {
@@ -162,21 +162,23 @@ function createAmountOptionDom(dom:HTMLElement, options:Array<any>) {
 
 // 提交
 function submit() {
-  let button: HTMLElement = document.querySelector(".button");
-  button.onclick = () => {
-    // let _characterNameIndex = characterName.selectedIndex;
-    // let _amountIndex = amount.selectedIndex;
-    // let obj = {
-    //   appId: sessionStorage.getItem('appId'),
-    //   channelId: channelId,
-    //   userId: sessionStorage.getItem('userId'),
-    //   consumerId: characterName.value, // playerId
-    //   consumerName: characterName.options[_characterNameIndex].text, // playerId
-    //   orderDetail: amount.options[_amountIndex].text, // amount id
-    //   productId: amount.value
-    // };
-    // var hash = createncryption(obj);
-  };
+  let button: HTMLElement | undefined = document.querySelector(".button");
+  if (button) {
+    button.onclick = () => {
+      // let _characterNameIndex = characterName.selectedIndex;
+      // let _amountIndex = amount.selectedIndex;
+      // let obj = {
+      //   appId: sessionStorage.getItem('appId'),
+      //   channelId: channelId,
+      //   userId: sessionStorage.getItem('userId'),
+      //   consumerId: characterName.value, // playerId
+      //   consumerName: characterName.options[_characterNameIndex].text, // playerId
+      //   orderDetail: amount.options[_amountIndex].text, // amount id
+      //   productId: amount.value
+      // };
+      // var hash = createncryption(obj);
+    };
+  }
 }
 
 function createncryption(param:any):string {
@@ -212,45 +214,34 @@ paypal.Buttons({
     let hash:string = createncryption(obj);
     obj.sign = hash
     orderId = "";
-    return httpRequest1.getfetch("/paypal/create", obj).then(res => {
+    return httpRequest1.getfetch("/create", obj).then(res => {
       console.log("创建订单", res)
+      if (res.code === 200) {
+        orderId = res.content.orderNo
+        console.log("---", orderId);
+        return orderId
+      } else {
+        alert(res.message)
+      }
     });
   },
 
   // Call your server to finalize the transaction
   onApprove: function (data, actions) {
-      console.trace(data);
-      return fetch('http://192.168.1.16:8093/paypal/approve', {
-          method: 'post',
-          body: JSON.stringify({orderId: data.orderID})
-      }).then(function (res) {
-          return res.json();
-      }).then(function (orderData) {
-          // Three cases to handle:
-          //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
-          //   (2) Other non-recoverable errors -> Show a failure message
-          //   (3) Successful transaction -> Show a success / thank you message
+    console.log("llll", data);
+    let obj:any = {
+      orderId: orderId
+    };
+    let hash:string = createncryption(obj);
+    obj.sign = hash
+    return  httpRequest1.getfetch("/approve", obj).then(res => {
+      console.log("---", res)
+      if (res.code === 200) {
 
-          // Your server defines the structure of 'orderData', which may differ
-          var errorDetail = Array.isArray(orderData.details) && orderData.details[0];
-
-          if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED') {
-              // Recoverable state, see: "Handle Funding Failures"
-              // https://developer.paypal.com/docs/checkout/integration-features/funding-failure/
-              return actions.restart();
-          }
-
-          if (errorDetail) {
-              var msg = 'Sorry, your transaction could not be processed.';
-              if (errorDetail.description) msg += '\n\n' + errorDetail.description;
-              if (orderData.debug_id) msg += ' (' + orderData.debug_id + ')';
-              // Show a failure message
-              return alert(msg);
-          }
-
-          // Show a success message to the buyer
-          alert('Transaction completed by ' + orderData.payer.name.given_name);
-      });
+      } else {
+        alert(res.code)
+      }
+    })
   }
 }).render("#paypal-button-container")
 
@@ -260,5 +251,5 @@ function restForm() {
   gameCurrency.value = "";
   characterName.value = "";
   amount.value = "";
-  accept.checked = false;
+  // accept.checked = false;
 }
