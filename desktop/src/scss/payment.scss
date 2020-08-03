@@ -200,9 +200,9 @@
       overflow: hidden;
       .btn-txt {
         display: block;
-        height: 100%;
-        line-height: 40px;
-        position: relative;
+        position: absolute;
+        top: 0px;
+        width: 100%;
         z-index: 1;
       }
     }

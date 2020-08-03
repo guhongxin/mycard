@@ -3,7 +3,10 @@ GET http://192.168.1.16:8080/servers?
 
 
 ### 请求角色列表
-GET http://192.168.1.16:8080/characters?user_id=123&server_id=1
+POST http://192.168.1.16:8080/characters
+content-type: pplication/x-www-form-urlencoded
+jwt: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqd3QudXNlciI6IntcImFwcElkXCI6MSxcImNoYW5uZWxJZFwiOjEsXCJpZFwiOjF9In0.Y1p7HP0dweJOgDczB6546G0KjC-oNuXcotBEf_vI-tU
+
 
 
 ### 请求充值道具
@@ -17,3 +20,4 @@ content-type: application/json
   "username": "32",
   "password": "12"
 }
+

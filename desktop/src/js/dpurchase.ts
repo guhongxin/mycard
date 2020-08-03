@@ -25,11 +25,17 @@ const accept: HTMLInputElement = document.getElementById(
   "accept"
 ) as HTMLInputElement;
 const paymentMethodDom: HTMLElement = document.querySelector(".paymentMethod");
-const httpRequest = new Request("http://192.168.1.16:8087/game") // 请求
+
+const jwt = sessionStorage.getItem("jwt");
+const sign = "69a54ac4afafa44ec1ff5bae05a9010c";
+let orderId:string; // 订单编号
+const httpRequest = new Request("http://192.168.1.16:8087/game", jwt) // 请求
+const httpRequest1 = new Request("http://192.168.1.16:8093") // 请求
 function init(): void {
   // 初始化
   let paymentMethod: string = getQueryVariable("paymentMethod");
   paymentMethodDom.innerHTML = paymentMethod;
+  orderId = "";
   restForm(); // 复位
   submit(); // 提交
   getServerList().then((res:any) => {
@@ -93,11 +99,8 @@ function getServerList() {
 function getCharacterList(serverId:string) {
   return new Promise((resolve, reject) => {
     httpRequest.fetch({
-      url: "/characters",
-      method: "POST",
-      data: {
-        server_id: serverId
-      }
+      url: "/characters" + `?serverId=${serverId}`,
+      method: "POST"
     }).then((res:any) => {
       if (res.code === 0) {
         resolve(res.data)
@@ -117,7 +120,7 @@ interface ItemRequestParam {
 function getitemsList(param: ItemRequestParam) {
   return new Promise((resolve, reject) => {
     httpRequest.fetch({
-      url: "/items",
+      url: "/items" + `?serverId=${param.serverId}&playerId=${param.playerId}&currencyCode=${param.currencyCode}`,
       method: "POST",
       data: {
         server_id: param.serverId,
@@ -155,25 +158,18 @@ function createAmountOptionDom(dom:HTMLElement, options:Array<any>) {
 function submit() {
   let button: HTMLElement = document.querySelector(".button");
   button.onclick = () => {
-    console.log("服务值:", server.value);
-    console.log("游戏:", gameCurrency.value);
-    console.log("characterName:", characterName.value);
-    console.log("amount:", amount.value);
-    console.log("accept:", accept.checked);
     let _characterNameIndex = characterName.selectedIndex;
     let _amountIndex = amount.selectedIndex;
-
     let obj = {
-      appId: 12312,
-      channelId: 12312,
-      userId: 1,
+      appId: sessionStorage.getItem('appId'),
+      channelId: sessionStorage.getItem('channelId'),
+      userId: sessionStorage.getItem('userId'),
       consumerId: characterName.value, // playerId
       consumerName: characterName.options[_characterNameIndex].text, // playerId
       orderDetail: amount.options[_amountIndex].text, // amount id
       productId: amount.value
     };
     var hash = createncryption(obj);
-    console.log("--hash--", hash)
   };
 }
 
@@ -183,11 +179,76 @@ function createncryption(param:any):string {
     total.push(item + "=" + param[item])
     return total
   }, []);
-  return md5(result.join("&"))
+  console.log(result.join("&") )
+  return md5(result.join("&") + sign)
 }
 
 // @ts-ignore
-paypal.Buttons().render("#paypal-button-container");
+paypal.Buttons({
+  style: {
+    size: 'small',
+    color: 'blue',
+    shape: 'pill'
+  },
+  // Call your server to set up the transaction
+  createOrder: function (data, actions) {
+    let _characterNameIndex = characterName.selectedIndex;
+    let _amountIndex = amount.selectedIndex;
+    let obj:any = {
+      appId: sessionStorage.getItem('appId'),
+      channelId: sessionStorage.getItem('channelId'),
+      userId: sessionStorage.getItem('userId'),
+      consumerId: characterName.value, // playerId
+      consumerName: characterName.options[_characterNameIndex].text, // playerId
+      orderDetail: amount.options[_amountIndex].text, // amount id
+      productId: amount.value
+    };
+    let hash:string = createncryption(obj);
+    obj.sign = hash
+    orderId = "";
+    console.log("---", obj);
+    return httpRequest1.getfetch("/paypal/create", obj).then(res => {
+      console.log("创建订单", res)
+    });
+  },
+
+  // Call your server to finalize the transaction
+  onApprove: function (data, actions) {
+      console.trace(data);
+      return fetch('http://192.168.1.16:8093/paypal/approve', {
+          method: 'post',
+          body: JSON.stringify({orderId: data.orderID})
+      }).then(function (res) {
+          return res.json();
+      }).then(function (orderData) {
+          // Three cases to handle:
+          //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
+          //   (2) Other non-recoverable errors -> Show a failure message
+          //   (3) Successful transaction -> Show a success / thank you message
+
+          // Your server defines the structure of 'orderData', which may differ
+          var errorDetail = Array.isArray(orderData.details) && orderData.details[0];
+
+          if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED') {
+              // Recoverable state, see: "Handle Funding Failures"
+              // https://developer.paypal.com/docs/checkout/integration-features/funding-failure/
+              return actions.restart();
+          }
+
+          if (errorDetail) {
+              var msg = 'Sorry, your transaction could not be processed.';
+              if (errorDetail.description) msg += '\n\n' + errorDetail.description;
+              if (orderData.debug_id) msg += ' (' + orderData.debug_id + ')';
+              // Show a failure message
+              return alert(msg);
+          }
+
+          // Show a success message to the buyer
+          alert('Transaction completed by ' + orderData.payer.name.given_name);
+      });
+  }
+}).render("#paypal-button-container")
+
 // 复位表单
 function restForm() {
   server.value = "";

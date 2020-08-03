@@ -101,6 +101,17 @@ interface LoginParam {
 function login(param:LoginParam) {
   httpRequest.postfetch("/user/auth", param).then(res => {
     console.log("----",res)
+    if (res.code === 0) {
+      // 
+      let data = res.data; 
+      sessionStorage.setItem("jwt", data.token);
+      sessionStorage.setItem("appId", data.appId);
+      sessionStorage.setItem("channelId", data.channelId);
+      sessionStorage.setItem("userId", data.userId);
+      location.href = "./dpurchase.html?paymentMethod=payPal"
+    } else {
+      alert(res.code)
+    }
   }).catch(err => {
     console.log("err", err)
     return false

@@ -7,8 +7,10 @@ interface RequestParam {
 
 class Request {
   private baseURL:string;
-  constructor(url:string = "./") {
-    this.baseURL = url
+  private jwt: string | undefined;
+  constructor(url:string = "./", jwt?) {
+    this.baseURL = url;
+    this.jwt = jwt;
   }
   getfetch(url:string, params?):any {
     // get请求
@@ -17,20 +19,22 @@ class Request {
       urlParam = this.parseParam(params)
     }
     let _url = this.baseURL + url + urlParam
-
-    return (window as any).fetch(_url, {mode: 'no-cors'}).then(response => {
+    return (window as any).fetch(_url).then(response => {
       return  response.json()
     })
   }
   postfetch(url:string, data?):any {
     // post 请求
-    let _url = this.baseURL + url
+    let _url = this.baseURL + url;
+    let self = this;
     return (window as any).fetch(_url, {
       body: JSON.stringify(data),
       method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        //'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'jwt': self.jwt
       }
     }).then(response => {
       return  response.json()

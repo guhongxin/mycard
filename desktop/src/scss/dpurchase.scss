@@ -85,6 +85,7 @@
           .button {
             cursor: pointer;
             border-radius: 8px;
+            box-sizing: border-box;
             width: 268px;
             height: 50px;
             line-height: 50px;
@@ -95,6 +96,11 @@
             background: #ea554f;
             padding: 0 0 3px 15px;
             border: none;
+          }
+          #paypal-button-container {
+            width: 268px;
+            height: 60px;
+            border-radius: 60px;
           }
         }
       }
