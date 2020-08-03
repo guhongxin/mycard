@@ -8,9 +8,6 @@
   .top-pc {
     display: block;
   }
-  .top-m {
-    display: none;
-  }
 }
 .content {
   margin: 5em auto;
@@ -171,7 +168,8 @@
     border-radius: 5px;
     background-color: #ffffff;
     transform: scale(0);
-    transition: all 0.3s linear;
+    transition: all 0.3s linear 0.1s;
+    // transform: scale(1);
     .item {
       margin-bottom: 15px;
       .input-style {
@@ -201,6 +199,9 @@
       position: relative;
       overflow: hidden;
       .btn-txt {
+        display: block;
+        height: 100%;
+        line-height: 40px;
         position: relative;
         z-index: 1;
       }

@@ -17,7 +17,8 @@ class Request {
       urlParam = this.parseParam(params)
     }
     let _url = this.baseURL + url + urlParam
-    return (window as any).fetch(_url).then(response => {
+
+    return (window as any).fetch(_url, {mode: 'no-cors'}).then(response => {
       return  response.json()
     })
   }
@@ -28,7 +29,8 @@ class Request {
       body: JSON.stringify(data),
       method: "POST",
       headers: {
-        'content-type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       }
     }).then(response => {
       return  response.json()

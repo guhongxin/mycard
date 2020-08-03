@@ -29,12 +29,12 @@ export function removeClass(obj: HTMLElement, classname: string){
 export const paymentCountry = [{
   country: "马拉西亚",
   nationalflag: "/static/img/ml.gif",
-  payMentIcon: "",
+  payMentIcon: "/static/img/mls.png",
   dataloacle: "Malaysia"
 }, {
   country: "新加坡",
   nationalflag: "/static/img/xjp.gif",
-  payMentIcon: "",
+  payMentIcon: "/static/img/sgp.png",
   dataloacle: "Singapore"
 }]
 // 国家有哪几种支付种类

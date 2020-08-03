@@ -25,7 +25,7 @@ const accept: HTMLInputElement = document.getElementById(
   "accept"
 ) as HTMLInputElement;
 const paymentMethodDom: HTMLElement = document.querySelector(".paymentMethod");
-const httpRequest = new Request("http://192.168.1.16:8080") // 请求
+const httpRequest = new Request("http://192.168.1.16:8087/game") // 请求
 function init(): void {
   // 初始化
   let paymentMethod: string = getQueryVariable("paymentMethod");
@@ -80,7 +80,7 @@ init();
 // 获取服务器列表
 function getServerList() {
   return new Promise((resolve, reject) => {
-    httpRequest.getfetch("/servers").then((res:any) => {
+    httpRequest.postfetch("/servers").then((res:any) => {
       if (res.code === 0) {
         resolve(res.data)
       } else {
@@ -94,8 +94,8 @@ function getCharacterList(serverId:string) {
   return new Promise((resolve, reject) => {
     httpRequest.fetch({
       url: "/characters",
-      method: "GET",
-      params: {
+      method: "POST",
+      data: {
         server_id: serverId
       }
     }).then((res:any) => {
@@ -118,8 +118,8 @@ function getitemsList(param: ItemRequestParam) {
   return new Promise((resolve, reject) => {
     httpRequest.fetch({
       url: "/items",
-      method: "GET",
-      params: {
+      method: "POST",
+      data: {
         server_id: param.serverId,
         player_id: param.playerId,
         currency_code: param.currencyCode

@@ -8,3 +8,12 @@ GET http://192.168.1.16:8080/characters?user_id=123&server_id=1
 
 ### 请求充值道具
 GET http://192.168.1.16:8080/items?player_id=123&server_id=123&currency_code=CNY
+
+
+### 请求充值道具
+POST http://192.168.1.16:8087/user/auth
+content-type: application/json
+{
+  "username": "32",
+  "password": "12"
+}

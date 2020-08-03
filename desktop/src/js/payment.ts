@@ -1,12 +1,19 @@
+import Cookies from 'js-cookie';
+
 import "normalize.css";
 import "../scss/payment.scss";
+
 import { paymentCountry } from "../utils/common";
 import { removeClass } from "../utils/common";
+import Request from "../utils/request";
 let i18n:any = ($ as any).i18n;
 let countryUl = document.querySelector(".country-ul");
 let payPalClick:HTMLElement = document.getElementById("payPalClick");
 const modal:HTMLElement = document.querySelector(".modal");
 const submitBtn:HTMLElement = document.querySelector("#submitBtn");
+
+const httpRequest = new Request("http://192.168.1.16:8087");
+
 let token; // 用户token
 function init() {
   // 初始化
@@ -52,23 +59,33 @@ function init() {
       let login:HTMLElement = document.querySelector(".login");
       removeClass(this, "show");
       removeClass(login, "login-scale");
+      let userNameDom = document.getElementById("userName") as HTMLInputElement;
+      let passwordDom = document.getElementById("password") as HTMLInputElement;
+      userNameDom.value = "";
+      passwordDom.value = "";
     }
   })
   submitBtn.addEventListener("click", function(e:any) {
     // 登录
     let userNameDom = document.getElementById("userName") as HTMLInputElement;
     let passwordDom = document.getElementById("password") as HTMLInputElement;
-    let userName = userNameDom.value.trim();
-    let password = passwordDom.value.trim();
+    let userName:string = userNameDom.value.trim();
+    let password:string = passwordDom.value.trim();
     console.log("userName", userName)
     console.log("password", password)
+    login({
+      username: userName,
+      password: password
+    })
   });
+  // 设置token
+  // Cookies.set('name', 'value', { expires: 7 });
 }
 
 function createCountry(param):string {
   let li:string = `<li class="li">
   <a href="voucherall.html?country=${param.dataloacle}">
-    <img src="/static/img/th-all.jpg" />
+    <img src="${param.payMentIcon}" />
     <span data-locale="${param.dataloacle}" style="vertical-align: middle;">${param.dataloacle}</span>
     <div class="sub">
       <img src="${param.nationalflag}" />
@@ -77,5 +94,16 @@ function createCountry(param):string {
 </li>`
   return li
 }
-
+interface LoginParam {
+  username: string;
+  password: string;
+}
+function login(param:LoginParam) {
+  httpRequest.postfetch("/user/auth", param).then(res => {
+    console.log("----",res)
+  }).catch(err => {
+    console.log("err", err)
+    return false
+  })
+}
 init();
