@@ -109,7 +109,7 @@ function login(param:LoginParam) {
       sessionStorage.setItem("appId", data.appId);
       sessionStorage.setItem("userId", data.userId);
       sessionStorage.setItem("_channelId", data.channelId);
-      // location.href = `./dpurchase.html?paymentMethod=payPal&channelId=${data.channelId}`
+      location.href = `./dpurchase.html?paymentMethod=payPal&channelId=${data.channelId}`
     } else {
       alert(res.code)
     }

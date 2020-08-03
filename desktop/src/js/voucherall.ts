@@ -56,11 +56,11 @@ function init() {
   for (let i = 0; i < dom.length; i++) {
     let tag = dom[i].dataset.tag
     if (tag === "channel") {
+      let _channelId = dom[i].dataset.channelid;
+      let _channelName = dom[i].dataset.channelname;
+      paymentMethod = _channelName
+      channelId = _channelId
       if (token) {
-        let _channelId = dom[i].dataset.channelid;
-        let _channelName = dom[i].dataset.channelname;
-        paymentMethod = _channelName
-        channelId = _channelId
         setTimeout(() => {
           location.href =  `./dpurchase.html?paymentMethod=${_channelName}&channelId=${_channelId}`
         }, 1)

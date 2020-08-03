@@ -212,7 +212,6 @@ paypal.Buttons({
     let hash:string = createncryption(obj);
     obj.sign = hash
     orderId = "";
-    console.log("---", obj);
     return httpRequest1.getfetch("/paypal/create", obj).then(res => {
       console.log("创建订单", res)
     });

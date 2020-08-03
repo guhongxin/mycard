@@ -90,6 +90,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  
   .left {
     margin-bottom: 1em;
     margin-right: 55px;
@@ -137,7 +138,7 @@
     height: 150px;
     max-width: 360px;
     padding-bottom: 10px;
-    display: block;
+    flex-wrap: wrap;
     .left {
       margin-bottom: 1em;
       margin-right: 0;
