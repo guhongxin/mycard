@@ -99,8 +99,7 @@ export const ountryPaymentType = {
 // 币种
 export const currency = {
   "0": [
-    'USD', 'THB', 'PHP',
-    'MYR', 'SGD'    
+    'USD', 'THB', 'PHP', 'SGD'    
   ],
   "1": [
     'AUD', 'BRL', 'EUR', 

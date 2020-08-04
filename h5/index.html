@@ -8,33 +8,162 @@
   <link rel="stylesheet" type="text/css" href="./style/index.css" />
 </head>
 <body>
-  <div class="box1">
-    <div class="head">
-      <div class="head-left">
-        <img src="./img/game-icon.png" />
-        <div class="game-info">
-          <div class="game-name">戒灵</div>
-          <div class="game-type">轻松放置手游</div>
+  <div class="app">
+    <ul class="menu" id="menuId">
+      <li class="menu-ul-li">
+        <a class="youtube" href="https://www.youtube.com/channel/UCeRR7LWLPt5j6ZxrhoulW2A" target="_blank">
+          <img src="./img/youtube.png" />
+          <img src="./img/youtube1.png" />
+        </a>
+      </li>
+      <li class="menu-ul-li">
+        <a class="facebook" href="https://www.facebook.com/GRANSAGA.KR" target="_blank">
+          <img src="./img/facebook.png" />
+          <img src="./img/facebook1.png" />
+        </a>
+      </li>
+      <li class="menu-ul-li">
+        <a class="twitter" href="https://twitter.com/GRANSAGA_KR" target="_blank">
+          <img src="./img/twitter.png"/>
+          <img src="./img/twitter1.png" />
+        </a>
+      </li>
+      <li class="menu-ul-li">
+        <a class="instagram" href="https://www.instagram.com/gransaga" target="_blank">
+          <img src="./img/instagram.png" />
+          <img src="./img/instagram1.png" />
+        </a>
+      </li>
+      <li class="menu-ul-li">
+        <div class="menu-icon">
+          <img src="./img/menu.png" class="menu-img"/>
+        </div>
+        <div class="indicator">
+          <div class="vertical-line"></div>
+          <div class="indicator-icon indicator-active" data-swiper="switchSwiper" data-index="0"></div>
+          <div class="vertical-line"></div>
+          <div class="indicator-icon indicator-noActive" data-swiper="switchSwiper" data-index="1"></div>
+          <div class="vertical-line"></div>
+          <div class="indicator-icon indicator-noActive" data-swiper="switchSwiper" data-index="2"></div>
+          <div class="vertical-line"></div>
+          <div class="indicator-icon indicator-noActive" data-swiper="switchSwiper" data-index="3"></div>
+        </div>
+      </li>
+    </ul>
+    <div class="swiper-container-h">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="box box1">
+            <div class="head">
+              <div class="head-left">
+                <img src="./img/game-icon.png" />
+                <div class="game-info">
+                  <div class="game-name">戒灵</div>
+                  <div class="game-type">轻松放置手游</div>
+                </div>
+              </div>
+              <div class="head-right">
+                下载
+              </div>
+            </div>
+           <div class="img-box1"></div>
+           <div class="img-box3"></div>
+           <div class="img-box4"></div>
+           <div class="recharge-box">
+            <div class="recharge-content">
+              <ul>
+                <li>
+                  <div class="recharge-item" id="recharge">
+                    <div class="icon icon_dollar"></div>
+                    <div class="right">
+                     <p class="ft-en">Recharge</p>
+                     <p class="ft-zh">官网充值</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                 <div class="recharge-item" id="downApple">
+                   <div class="icon icon_app"></div>
+                   <div class="right">
+                     <p class="ft-en">Download on the</p>
+                     <p class="ft-zh">App Store</p>
+                   </div>
+                 </div>
+                </li>
+                <li>
+                 <div class="recharge-item" id="downGoogle">
+                   <div class="icon icon_google-play"></div>
+                   <div class="right">
+                     <p class="ft-en">GET IT ON</p>
+                     <p class="ft-zh">Google Play</p>
+                   </div>
+                 </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="box box2"></div>
+        </div>
+        <div class="swiper-slide">
+          <div class="box box3">
+            <div class="hero-img">
+              <img src="./img/box3-2.png" />
+            </div>
+            <div class="box3-title">
+              人物展示
+            </div>
+            <div class="hero-js ">
+              <div class="hero-name">
+                <img src="./img/z_icon_fo.png" />
+                <p>东陵圣母</p>
+              </div>
+              <div class="hero-js-txt">
+                东陵圣母介绍东陵圣母介绍
+              </div>
+            </div>
+            <div class="hero-gallery">
+              <div class="hero-gallery-item"></div>
+              <div class="hero-gallery-item"></div>
+              <div class="hero-gallery-item">
+                <img src="/img/hero2.png" data-gallery-img="img" data-gallery-index="1"/>
+              </div>
+              <div class="hero-gallery-item">
+                <img src="/img/hero1.png" data-gallery-img="img" data-gallery-index="2"/>
+              </div>
+              <div class="hero-gallery-item"></div>
+              <div class="hero-gallery-item">
+                <img src="/img/hero4.png" data-gallery-img="img" data-gallery-index="4"/>
+              </div>
+              <div class="hero-gallery-item">
+                <img src="/img/hero3.png" data-gallery-img="img" data-gallery-index="5"/>
+              </div>
+              <div class="hero-gallery-item"></div>
+              <div class="hero-gallery-item">
+                <img src="/img/key.png" data-gallery-img="img" data-gallery-index="5"/>
+              </div>
+              <div class="hero-gallery-item">
+                <img src="/img/key.png" data-gallery-img="img" data-gallery-index="5"/>
+              </div>
+              <div class="hero-gallery-item"></div>
+              <div class="hero-gallery-item"></div>
+              <div class="hero-gallery-item">
+                <img src="/img/key.png" data-gallery-img="img" data-gallery-index="5"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="box box4"></div>
         </div>
       </div>
-      <div class="head-right">
-        下载
-      </div>
     </div>
-   <div class="img-box1"></div>
-   <div class="img-box3"></div>
-   <div class="img-box4"></div>
-   <div class="recharge-box">
-     <div class="recharge-content">
-       <ul>
-         <li>
-           <div class="gw"></div>
-         </li>
-         <li></li>
-         <li></li>
-       </ul>
-     </div>
-   </div>
   </div>
+ 
+  <script src="./js/jquery-3.5.1.min.js"></script>
+  <script src="./js/swiper-bundle.min.js"></script>
+  <script src="./js/index.js"></script>
 </body>
 </html>

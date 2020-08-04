@@ -298,7 +298,7 @@ function jzPayment(params:any){
     if (res.code === 200) {
       window.location.href = res.content
     } else {
-      alert(res.message)
+      alert(res.content)
     }
   })
 }

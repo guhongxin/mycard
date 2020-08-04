@@ -140,7 +140,6 @@ function init() {
     if (target.dataset.swiper === 'switchSwiper') {
       // 点击指示器上
       let index:number = Number(target.dataset.index);
-      pagination(index);
       swiper.slideTo(index);
     }
   })
