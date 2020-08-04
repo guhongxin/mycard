@@ -96,3 +96,30 @@ export const ountryPaymentType = {
     }]
   }
 }
+// 币种
+export const currency = {
+  "0": [
+    'USD', 'THB', 'PHP',
+    'MYR', 'SGD'    
+  ],
+  "1": [
+    'AUD', 'BRL', 'EUR', 
+    'HKD', 'IDR', 'INR', 
+    'MYR', 'NZD', 'PHP', 
+    'SGD', 'THB', 'TWD', 
+    'USD', 'VND', 'CAD',
+    'MXN', 'COP', 'MMK',
+    'TRY'
+  ],
+  "12": ['MYR'],
+  "21": ['MYR'],
+  "22": ['MYR'],
+  "24": ['MYR'],
+  "25": ['MYR'],
+  "147": ['MYR'],
+  "164": ['MYR'],
+  "165": ['MYR'],
+  "40": ['SGD'],
+  "70": ['SGD'],
+  "124": ['SGD'],
+}

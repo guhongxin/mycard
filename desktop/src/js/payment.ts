@@ -12,7 +12,7 @@ let payPalClick:HTMLElement = document.getElementById("payPalClick");
 const modal:HTMLElement = document.querySelector(".modal");
 const submitBtn:HTMLElement = document.querySelector("#submitBtn");
 
-const httpRequest = new Request("http://192.168.1.16:8087");
+const httpRequest = new Request("http://192.168.1.16:8091/interface/h5");
 
 let jwt:string = sessionStorage.getItem("jwt"); // 用户token
 

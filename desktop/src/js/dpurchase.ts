@@ -1,7 +1,7 @@
 import "normalize.css";
 import "../scss/dpurchase.scss";
 
-import { getQueryVariable } from "../utils/common";
+import { getQueryVariable, currency } from "../utils/common";
 import Request from "../utils/request"
 import md5 from "blueimp-md5"
 
@@ -47,12 +47,14 @@ function init(): void {
   channelId =  getQueryVariable("channelId");
   let country = getQueryVariable("country");
   // 国际是否存在，存在走俊忠支付，否则走payPa来支付
+  let _currency:any;
   if (country) {
     let divDom:any = document.createElement("div");
     divDom.classList.add('button');
     divDom.id = "submintBtn";
     divDom.innerHTML = "Recharge Now";
     btnBox.appendChild(divDom);
+    _currency = currency[channelId]
   } else {
     let divDom:any = document.createElement("div");
     divDom.id = "paypal-button-container";
@@ -109,7 +111,15 @@ function init(): void {
         })
       }
     }).render("#paypal-button-container")
+    // 获取币种
+    _currency = currency['0']
   }
+  // 生成币种下拉
+  let currencyString = _currency.reduce((total, itme) => {
+    total += `<option value ="${itme}">${itme}</option>`
+    return total
+  }, "<option style='display: none'></option>")
+  gameCurrency.innerHTML = currencyString
   paymentMethodDom.innerHTML = paymentMethod;
   orderId = "";
   restForm(); // 复位
