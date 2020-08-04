@@ -284,7 +284,7 @@ function jzPayment(params:any){
   httpRequest2.getfetch("/getOrderNo", params).then(res => {
     console.log("res", res)
     data.btnLoading = false;
-    if (res.code === 0) {
+    if (res.code === 200) {
       window.location.href = res.content
     } else {
       alert(res.message)
