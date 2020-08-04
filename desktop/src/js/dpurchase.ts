@@ -25,13 +25,18 @@ const amount: HTMLSelectElement = document.getElementById(
 //   "accept"
 // ) as HTMLInputElement;
 const paymentMethodDom: HTMLElement = document.querySelector(".paymentMethod");
+const btnBox: HTMLElement = document.getElementById("btn-box");
 
 const jwt = sessionStorage.getItem("jwt");
 const sign = "69a54ac4afafa44ec1ff5bae05a9010c";
+let  data:any = {
+  btnLoading: false
+}
 let orderId:string; // 订单编号
 let channelId:string; //
-const httpRequest = new Request("http://192.168.1.16:8087/game", jwt) // 请求
+const httpRequest = new Request("http://192.168.1.16:8091/interface/h5/game", jwt) // 请求
 const httpRequest1 = new Request("http://192.168.1.16:8091/interface/user-pay/paypal") // 请求
+const httpRequest2 = new Request("http://192.168.1.15:8091/interface/user-pay/razer") // 请求
 function init(): void {
   // 初始化
   if (!jwt) {
@@ -40,6 +45,71 @@ function init(): void {
   }
   let paymentMethod: string = getQueryVariable("paymentMethod");
   channelId =  getQueryVariable("channelId");
+  let country = getQueryVariable("country");
+  // 国际是否存在，存在走俊忠支付，否则走payPa来支付
+  if (country) {
+    let divDom:any = document.createElement("div");
+    divDom.classList.add('button');
+    divDom.id = "submintBtn";
+    divDom.innerHTML = "Recharge Now";
+    btnBox.appendChild(divDom);
+  } else {
+    let divDom:any = document.createElement("div");
+    divDom.id = "paypal-button-container";
+    btnBox.appendChild(divDom);
+    // @ts-ignore
+    paypal.Buttons({
+      style: {
+        size: 'small',
+        color: 'blue',
+        shape: 'pill'
+      },
+      // Call your server to set up the transaction
+      createOrder: function (data, actions) {
+        let _characterNameIndex = characterName.selectedIndex;
+        let _amountIndex = amount.selectedIndex;
+        let obj:any = {
+          appId: sessionStorage.getItem('appId'),
+          userId: sessionStorage.getItem('userId'),
+          channelId: channelId,
+          consumerId: server.value + ',' + characterName.value, // playerId
+          consumerName: characterName.options[_characterNameIndex].text, // playerId
+          orderDetail: amount.options[_amountIndex].text, // amount id
+          productId: amount.value,
+        };
+        let hash:string = createncryption(obj);
+        obj.sign = hash
+        orderId = "";
+        return httpRequest1.getfetch("/create", obj).then(res => {
+          console.log("创建订单", res)
+          if (res.code === 200) {
+            orderId = res.content.orderNo
+            console.log("---", orderId);
+            return orderId
+          } else {
+            alert(res.message)
+          }
+        });
+      },
+
+      // Call your server to finalize the transaction
+      onApprove: function (data, actions) {
+        console.log("llll", data);
+        let obj:any = {
+          orderId: orderId
+        };
+        let hash:string = createncryption(obj);
+        obj.sign = hash
+        return  httpRequest1.getfetch("/approve", obj).then(res => {
+          if (res.code === 200) {
+
+          } else {
+            alert(res.code)
+          }
+        })
+      }
+    }).render("#paypal-button-container")
+  }
   paymentMethodDom.innerHTML = paymentMethod;
   orderId = "";
   restForm(); // 复位
@@ -165,18 +235,25 @@ function submit() {
   let button: HTMLElement | undefined = document.querySelector(".button");
   if (button) {
     button.onclick = () => {
-      // let _characterNameIndex = characterName.selectedIndex;
-      // let _amountIndex = amount.selectedIndex;
-      // let obj = {
-      //   appId: sessionStorage.getItem('appId'),
-      //   channelId: channelId,
-      //   userId: sessionStorage.getItem('userId'),
-      //   consumerId: characterName.value, // playerId
-      //   consumerName: characterName.options[_characterNameIndex].text, // playerId
-      //   orderDetail: amount.options[_amountIndex].text, // amount id
-      //   productId: amount.value
-      // };
-      // var hash = createncryption(obj);
+      if (!data.btnLoading) {
+        let _characterNameIndex = characterName.selectedIndex;
+        let _amountIndex = amount.selectedIndex;
+        let obj:any = {
+          appId: sessionStorage.getItem('appId'),
+          channelId: channelId,
+          userId: sessionStorage.getItem('userId'),
+          serverId: server.value,
+          playerId: characterName.value, // playerId
+          currencyCode: gameCurrency.value, // 币种
+          roleName: characterName.options[_characterNameIndex].text, // playerId
+          description: amount.options[_amountIndex].text, // amount id
+          productId: amount.value,
+        };
+        let hash:string = createncryption(obj);
+        obj.sign = hash
+        jzPayment(obj)
+      }
+      
     };
   }
 }
@@ -188,62 +265,10 @@ function createncryption(param:any):string {
     return total
   }, []);
   console.log(result.join("&"))
+  console.log(result.join("&") + md5(sign))
+  console.log( md5(result.join("&") + md5(sign)))
   return md5(result.join("&") + md5(sign))
 }
-
-// @ts-ignore
-paypal.Buttons({
-  style: {
-    size: 'small',
-    color: 'blue',
-    shape: 'pill'
-  },
-  // Call your server to set up the transaction
-  createOrder: function (data, actions) {
-    let _characterNameIndex = characterName.selectedIndex;
-    let _amountIndex = amount.selectedIndex;
-    let obj:any = {
-      appId: sessionStorage.getItem('appId'),
-      channelId: channelId,
-      userId: sessionStorage.getItem('userId'),
-      consumerId: server.value + ',' + characterName.value, // playerId
-      consumerName: characterName.options[_characterNameIndex].text, // playerId
-      orderDetail: amount.options[_amountIndex].text, // amount id
-      productId: amount.value,
-    };
-    let hash:string = createncryption(obj);
-    obj.sign = hash
-    orderId = "";
-    return httpRequest1.getfetch("/create", obj).then(res => {
-      console.log("创建订单", res)
-      if (res.code === 200) {
-        orderId = res.content.orderNo
-        console.log("---", orderId);
-        return orderId
-      } else {
-        alert(res.message)
-      }
-    });
-  },
-
-  // Call your server to finalize the transaction
-  onApprove: function (data, actions) {
-    console.log("llll", data);
-    let obj:any = {
-      orderId: orderId
-    };
-    let hash:string = createncryption(obj);
-    obj.sign = hash
-    return  httpRequest1.getfetch("/approve", obj).then(res => {
-      console.log("---", res)
-      if (res.code === 200) {
-
-      } else {
-        alert(res.code)
-      }
-    })
-  }
-}).render("#paypal-button-container")
 
 // 复位表单
 function restForm() {
@@ -253,3 +278,33 @@ function restForm() {
   amount.value = "";
   // accept.checked = false;
 }
+// 请求俊忠接口
+function jzPayment(params:any){
+  data.btnLoading = true;
+  httpRequest2.getfetch("/getOrderNo", params).then(res => {
+    console.log("res", res)
+    data.btnLoading = false;
+    if (res.code === 0) {
+      window.location.href = res.content
+    } else {
+      alert(res.message)
+    }
+  })
+}
+// 监听
+let temp = null
+Object.defineProperty(data, "btnLoading", {
+  get: function () {
+    return temp
+  },
+  // @ts-ignore
+  set: function(key, value) {
+    let submintBtnDom:HTMLElement = document.getElementById("submintBtn"); 
+    if (key) {
+      submintBtnDom.classList.add('buttonLoading');
+    } else {
+      submintBtnDom.classList.remove('buttonLoading');
+    }
+    temp = key
+  }
+})

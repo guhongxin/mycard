@@ -61,8 +61,9 @@ function init() {
       paymentMethod = _channelName
       channelId = _channelId
       if (token) {
+        let country:string = getQueryVariable("country"); // 获取选中的国家
         setTimeout(() => {
-          location.href =  `./dpurchase.html?paymentMethod=${_channelName}&channelId=${_channelId}`
+          location.href =  `./dpurchase.html?country=${country}&paymentMethod=${_channelName}&channelId=${_channelId}`
         }, 1)
       } else {
         modal.classList.add("show");
@@ -84,12 +85,13 @@ interface LoginParam {
 function login(param:LoginParam) {
   httpRequest.postfetch(`/user/auth?username=${param.username}&password=${param.password}`).then(res => {
     if (res.code === 0) {
-      // 
+      //
+      let country:string = getQueryVariable("country"); // 获取选中的国家
       let data = res.data; 
       sessionStorage.setItem("jwt", data.token);
       sessionStorage.setItem("appId", data.appId);
       sessionStorage.setItem("userId", data.userId);
-      location.href = `./dpurchase.html?paymentMethod=${paymentMethod}&channelId=${channelId}`
+      location.href = `./dpurchase.html?country=${country}&paymentMethod=${paymentMethod}&channelId=${channelId}`
     } else {
       alert(res.code)
     }
