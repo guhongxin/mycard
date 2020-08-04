@@ -193,7 +193,9 @@
     height: 150px;
     max-width: 360px;
     padding-bottom: 10px;
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     .left {
       margin-bottom: 1em;
       margin-right: 0;

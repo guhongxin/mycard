@@ -78,6 +78,7 @@ function init(): void {
           consumerName: characterName.options[_characterNameIndex].text, // playerId
           orderDetail: amount.options[_amountIndex].text, // amount id
           productId: amount.value,
+          currencyCode: gameCurrency.value // 币种
         };
         let hash:string = createncryption(obj);
         obj.sign = hash
