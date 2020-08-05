@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie';
-
+import md5 from "blueimp-md5";
 import "normalize.css";
 import "../scss/payment.scss";
 
@@ -12,7 +12,7 @@ let payPalClick:HTMLElement = document.getElementById("payPalClick");
 const modal:HTMLElement = document.querySelector(".modal");
 const submitBtn:HTMLElement = document.querySelector("#submitBtn");
 
-const httpRequest = new Request("http://interface.18183g.top/interface/h5");
+const httpRequest = new Request("http://192.168.1.16:8091/interface/h5");
 
 let jwt:string = sessionStorage.getItem("jwt"); // 用户token
 
@@ -101,7 +101,8 @@ interface LoginParam {
   password: string;
 }
 function login(param:LoginParam) {
-  httpRequest.postfetch(`/user/auth?username=${param.username}&password=${param.password}`).then(res => {
+  let passwordMd5 = md5(md5(param.password));
+  httpRequest.postfetch(`/user/auth?username=${param.username}&password=${passwordMd5}`).then(res => {
     if (res.code === 0) {
       // 
       let data = res.data; 

@@ -349,6 +349,7 @@
   height: 100vh;
   overflow: hidden;
   overflow-x: auto;
+  position: relative;
 }
 @keyframes herojsmove {
   0% {
@@ -368,4 +369,105 @@
 #map-coordinates img{
   width: 40vw;
   display: block;
+}
+#map-coordinates .wz-describe {
+  position: absolute;
+  top: 0vh;
+  left: 0vw;
+  padding: 1vh 1vw;
+  box-sizing: border-box;
+  width: 100%;
+}
+#map-coordinates .wz-describe .wz-describe-title {
+  font-size: 14px;
+  color: #E5D4BF;
+  text-align: center;
+  width: 100%;
+}
+#map-coordinates .wz-describe .hz-line {
+  width: 85%;
+  height: 1px;
+  background-color: #9F825E;
+  margin: 2px auto;
+}
+#map-coordinates .wz-describe .description-txt {
+  width: 100%;
+}
+#map-coordinates .wz-describe .description-txt p{
+  width: 100%;
+  margin: 0px;
+  margin-bottom: 2px;
+  font-size: 12px;
+  color: #E5D4BF;
+  text-align: center;
+}
+.checkpoint {
+  width: 30vw;
+  position: absolute;
+  cursor: pointer;
+  z-index: 3;
+}
+.checkpoint img {
+  width: 100%;
+  display: block;
+}
+.checkpoint1 {
+  top: 40%;
+  left: 8%;
+}
+.checkpoint2 {
+  top: 19%;
+  left: 43%;
+}
+.checkpoint3 {
+  top: 37%;
+  left: 37%;
+}
+.checkpoint4 {
+  top: 21%;
+  left: 84%;
+}
+.checkpoint5 {
+  top: 36%;
+  left: 75%;
+}
+.checkpoint6 {
+  top: 54%;
+  left: 69%;
+}
+.checkpoint7 {
+  top: 9%;
+  left: 130%;
+}
+.checkpoint8 {
+  top: 25%;
+  left: 135%;
+}
+.checkpoint9 {
+  top: 42%;
+  left: 122%;
+}
+.checkpoint10 {
+  top: 54%;
+  left: 110%;
+}
+.checkpoint11 {
+  top: 22%;
+  left: 180%;
+}
+.checkpoint12 {
+  top: 39%;
+  left: 155%;
+}
+.checkpoint13 {
+  top: 61%;
+  left: 135%;
+}
+.checkpoint14 {
+  top: 51%;
+  left: 207%;
+}
+.checkpoint15 {
+  top: 61%;
+  left: 201%;
 }

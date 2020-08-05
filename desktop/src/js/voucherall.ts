@@ -1,3 +1,4 @@
+import md5 from "blueimp-md5";
 import "normalize.css";
 import "../scss/voucherall.scss";
 import { ountryPaymentType, getQueryVariable } from "../utils/common"; 
@@ -10,7 +11,7 @@ let token:string = sessionStorage.getItem("jwt"); // 用户token
 let paymentMethod:string;
 let channelId: string;
 
-const httpRequest = new Request("http://interface.18183g.top/interface/h5");
+const httpRequest = new Request("http://192.168.1.16:8091/interface/h5");
 
 function init() {
   // 初始化
@@ -83,7 +84,8 @@ interface LoginParam {
   password: string;
 }
 function login(param:LoginParam) {
-  httpRequest.postfetch(`/user/auth?username=${param.username}&password=${param.password}`).then(res => {
+  let passwordMd5 = md5(md5(param.password));
+  httpRequest.postfetch(`/user/auth?username=${param.username}&password=${passwordMd5}`).then(res => {
     if (res.code === 0) {
       //
       let country:string = getQueryVariable("country"); // 获取选中的国家

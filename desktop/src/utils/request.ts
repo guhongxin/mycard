@@ -4,7 +4,6 @@ interface RequestParam {
   params?: any;
   data?: any;
 }
-
 class Request {
   private baseURL:string;
   private jwt: string | undefined;
