@@ -27,6 +27,7 @@ $(function() {
         }
       }
     });
+    swiper.slideTo(1);
   }
   // 充值
   $("#recharge").click(function() {
