@@ -3,7 +3,7 @@ import md5 from "blueimp-md5";
 import "normalize.css";
 import "../scss/payment.scss";
 
-import { paymentCountry } from "../utils/common";
+import { paymentCountry, getQueryVariable } from "../utils/common";
 import { removeClass } from "../utils/common";
 import Request from "../utils/request";
 let i18n:any = ($ as any).i18n;
@@ -13,8 +13,6 @@ const modal:HTMLElement = document.querySelector(".modal");
 const submitBtn:HTMLElement = document.querySelector("#submitBtn");
 
 const httpRequest = new Request("http://192.168.1.16:8091/interface/h5");
-
-let jwt:string = sessionStorage.getItem("jwt"); // 用户token
 
 function init() {
   // 初始化
@@ -40,6 +38,7 @@ function init() {
   countryUl.innerHTML = countryStr
   // payPal支付
   payPalClick.addEventListener("click", function() {
+    let jwt:string = sessionStorage.getItem("jwt")
     if (jwt) {
       let _channelId = sessionStorage.getItem("_channelId")
       setTimeout(() => {
@@ -82,6 +81,11 @@ function init() {
   });
   // 设置token
   // Cookies.set('name', 'value', { expires: 7 });
+  // 路径获取token 存在获取用户信息
+  let Urltoken: string = getQueryVariable("token");
+  if (Urltoken) {
+    getUser(Urltoken)
+  }
 }
 
 function createCountry(param):string {
@@ -111,6 +115,24 @@ function login(param:LoginParam) {
       sessionStorage.setItem("userId", data.userId);
       sessionStorage.setItem("_channelId", data.channelId);
       location.href = `./dpurchase.html?paymentMethod=payPal&channelId=${data.channelId}`
+    } else {
+      alert(res.code)
+    }
+  }).catch(err => {
+    console.log("err", err)
+    return false
+  })
+}
+// 获取用户信息
+function getUser(param:string) {
+  httpRequest.postfetch(`/user/detail?token=${param}`).then(res => {
+    if (res.code === 0) {
+      // 
+      let data = res.data; 
+      sessionStorage.setItem("jwt", data.token);
+      sessionStorage.setItem("appId", data.appId);
+      sessionStorage.setItem("userId", data.userId);
+      sessionStorage.setItem("_channelId", data.channelId);
     } else {
       alert(res.code)
     }

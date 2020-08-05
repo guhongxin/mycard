@@ -7,7 +7,7 @@ import Request from "../utils/request";
 const conts:HTMLElement = document.querySelector(".conts");
 const modal:HTMLElement = document.querySelector(".modal");
 const submitBtn:HTMLElement = document.querySelector("#submitBtn");
-let token:string = sessionStorage.getItem("jwt"); // 用户token
+
 let paymentMethod:string;
 let channelId: string;
 
@@ -57,6 +57,7 @@ function init() {
   for (let i = 0; i < dom.length; i++) {
     let tag = dom[i].dataset.tag
     if (tag === "channel") {
+      let token:string = sessionStorage.getItem("jwt"); // 用户token
       let _channelId = dom[i].dataset.channelid;
       let _channelName = dom[i].dataset.channelname;
       paymentMethod = _channelName
