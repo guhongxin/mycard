@@ -11,7 +11,8 @@ let countryUl = document.querySelector(".country-ul");
 let payPalClick:HTMLElement = document.getElementById("payPalClick");
 const modal:HTMLElement = document.querySelector(".modal");
 const submitBtn:HTMLElement = document.querySelector("#submitBtn");
-
+const payPalbox:HTMLElement = document.getElementById("payPalbox");
+const countryId:HTMLElement = document.getElementById("countryId");
 const httpRequest = new Request("http://192.168.1.16:8091/interface/h5");
 
 function init() {
@@ -31,11 +32,31 @@ function init() {
       });
   }  
   loadProperties(lang);
-  let countryStr = paymentCountry.reduce((total, item) => {
-    total += createCountry(item)
-    return total
-  }, '')
-  countryUl.innerHTML = countryStr
+  // 
+  // 路径获取token 存在获取用户信息
+  let Urltoken: string = getQueryVariable("token");
+  if (Urltoken) {
+    getUser(Urltoken)
+  }
+  // 获取是否有paypal 支付 1关闭 0或者为空开启
+  let pp:string = getQueryVariable("pp");
+  if (pp === "1") {
+    payPalbox.classList.add("boxClosed")
+  } else {
+    payPalbox.classList.remove("boxClosed")
+  }
+  // 获取是否有raze gold 1关闭 0或者为空开启
+  let rg:string = getQueryVariable("rg");
+  if (rg !== "1") {
+    let countryStr = paymentCountry.reduce((total, item) => {
+      total += createCountry(item)
+      return total
+    }, '')
+    countryUl.innerHTML = countryStr
+    countryId.classList.remove("boxClosed")
+  } else {
+    countryId.classList.add("boxClosed")
+  }
   // payPal支付
   payPalClick.addEventListener("click", function() {
     let jwt:string = sessionStorage.getItem("jwt")
@@ -79,13 +100,7 @@ function init() {
       password: password
     });
   });
-  // 设置token
-  // Cookies.set('name', 'value', { expires: 7 });
-  // 路径获取token 存在获取用户信息
-  let Urltoken: string = getQueryVariable("token");
-  if (Urltoken) {
-    getUser(Urltoken)
-  }
+ 
 }
 
 function createCountry(param):string {
