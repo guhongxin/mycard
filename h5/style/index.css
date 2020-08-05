@@ -437,7 +437,7 @@
 }
 .checkpoint7 {
   top: 9%;
-  left: 130%;
+  left: 147%;
 }
 .checkpoint8 {
   top: 25%;
@@ -456,8 +456,8 @@
   left: 180%;
 }
 .checkpoint12 {
-  top: 39%;
-  left: 155%;
+  top: 41%;
+  left: 170%;
 }
 .checkpoint13 {
   top: 61%;
@@ -471,3 +471,14 @@
   top: 61%;
   left: 201%;
 }
+.checkpoint:hover {
+  animation: checkpointMove 600ms linear infinite alternate-reverse;
+}
+@keyframes checkpointMove {
+  0% {
+    transform: scale(1.1) translateY(-2px);
+  }
+  100% {
+    transform: scale(1.1) translateY(2px);
+  }
+} 

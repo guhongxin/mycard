@@ -2,6 +2,8 @@
   var docEl = document.documentElement
   var dpr = window.devicePixelRatio || 1
 
+  var scale = 1 / devicePixelRatio;
+  document.querySelector('meta[name="viewport"]').setAttribute('content','initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
   // adjust body font size
   function setBodyFontSize () {
     if (document.body) {
