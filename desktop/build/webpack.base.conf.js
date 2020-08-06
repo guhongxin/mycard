@@ -1,4 +1,5 @@
 const path = require("path");
+const glob = require("glob");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
@@ -7,6 +8,18 @@ const CopyWebpackPlgugin = require("copy-webpack-plugin");
 const resolve = filePath => {
   return path.join(__dirname, "../", filePath);
 };
+
+const setMPA = () => {
+  const entry = {};
+  const HtmlWebpackPlugins = [];
+  const entryFiles = glob.sync(resolve("src/js/*.ts"))
+  console.log('entryFiles', entryFiles)
+  return {
+    entry,
+    HtmlWebpackPlugins
+  }
+}
+setMPA();
 module.exports = {
   entry: {
     pcindex: resolve("src/js/pcindex.ts"),
