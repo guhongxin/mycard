@@ -6,7 +6,7 @@
   <title><%= htmlWebpackPlugin.options.title %></title>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script>
-    if(!(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent))) {
+    if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
       window.location.href = "http://t-h5.tyu89.wang";
     }
   </script>
