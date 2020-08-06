@@ -77,7 +77,7 @@ $(function() {
   }
   // 充值
   $("#recharge").click(function() {
-    location.href = "http://localhost:9000/payment.html"
+    location.href = "http://t-jl.tyu89.wang/payment.html"
   })
   function pagination(index) {
     // 分页指示器

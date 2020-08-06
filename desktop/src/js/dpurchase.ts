@@ -58,8 +58,11 @@ function init(): void {
   } else {
     let divDom:any = document.createElement("div");
     divDom.id = "paypal-button-container";
+    divDom.classList.add('button');
+    divDom.innerHTML = "Recharge Now";
     btnBox.appendChild(divDom);
     // @ts-ignore
+    /*
     paypal.Buttons({
       style: {
         size: 'small',
@@ -112,7 +115,39 @@ function init(): void {
         })
       }
     }).render("#paypal-button-container")
+    */
     // 获取币种
+    divDom.addEventListener("click", function() {
+      if (!data.btnLoading) {
+        data.btnLoading = true;
+        let _characterNameIndex = characterName.selectedIndex;
+        let _amountIndex = amount.selectedIndex;
+        let obj:any = {
+          appId: sessionStorage.getItem('appId'),
+          userId: sessionStorage.getItem('userId'),
+          channelId: channelId,
+          consumerId: server.value + ',' + characterName.value, // playerId
+          consumerName: characterName.options[_characterNameIndex].text, // playerId
+          orderDetail: amount.options[_amountIndex].text, // amount id
+          productId: amount.value,
+          currencyCode: gameCurrency.value // 币种
+        };
+        let hash:string = createncryption(obj);
+        obj.sign = hash
+        orderId = "";
+        httpRequest1.getfetch("/create", obj).then(res => {
+          console.log("创建订单", res)
+          data.btnLoading = false;
+          if (res.code === 200) {
+            location.href = res.content
+          } else {
+            alert(res.message)
+          }
+        }).catch(() => {
+          data.btnLoading = false;
+        });
+      }
+    })
     _currency = currency['0']
   }
   // 生成币种下拉
@@ -243,7 +278,7 @@ function createAmountOptionDom(dom:HTMLElement, options:Array<any>) {
 
 // 提交
 function submit() {
-  let button: HTMLElement | undefined = document.querySelector(".button");
+  let button: HTMLElement | undefined = document.getElementById("submintBtn");
   if (button) {
     button.onclick = () => {
       if (!data.btnLoading) {
@@ -300,6 +335,8 @@ function jzPayment(params:any){
     } else {
       alert(res.content)
     }
+  }).catch(() => {
+    data.btnLoading = false;
   })
 }
 // 监听
@@ -310,11 +347,14 @@ Object.defineProperty(data, "btnLoading", {
   },
   // @ts-ignore
   set: function(key, value) {
-    let submintBtnDom:HTMLElement = document.getElementById("submintBtn"); 
+    let submintBtnDom:HTMLElement = document.getElementById("submintBtn");
+    let paypalbuttoncontainer:HTMLElement = document.getElementById("paypal-button-container"); 
     if (key) {
-      submintBtnDom.classList.add('buttonLoading');
+      submintBtnDom&&submintBtnDom.classList.add('buttonLoading');
+      paypalbuttoncontainer&&paypalbuttoncontainer.classList.add('buttonLoading')
     } else {
-      submintBtnDom.classList.remove('buttonLoading');
+      submintBtnDom&&submintBtnDom.classList.remove('buttonLoading');
+      paypalbuttoncontainer&&paypalbuttoncontainer.classList.remove('buttonLoading')
     }
     temp = key
   }
