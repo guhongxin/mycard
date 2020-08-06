@@ -36,7 +36,7 @@ let orderId:string; // 订单编号
 let channelId:string; //
 const httpRequest = new Request("http://192.168.1.16:8091/interface/h5/game", jwt) // 请求
 const httpRequest1 = new Request("http://192.168.1.16:8091/interface/user-pay/paypal") // 请求
-const httpRequest2 = new Request("http://192.168.1.16:8091/interface/user-pay/razer") // 请求
+const httpRequest2 = new Request("http://192.168.1.15:8091/interface/user-pay/razer") // 请求
 function init(): void {
   // 初始化
   if (!jwt) {

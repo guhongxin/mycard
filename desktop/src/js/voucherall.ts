@@ -15,6 +15,7 @@ const httpRequest = new Request("http://192.168.1.16:8091/interface/h5");
 
 function init() {
   // 初始化
+  var vConsole = new VConsole();
   let country:string = getQueryVariable("country"); // 获取选中的国家
   let result:string = Object.keys(ountryPaymentType[country]).reduce((total, key) => {
     let str1:string = ""
@@ -50,16 +51,13 @@ function init() {
       password: password
     });
   });
-}
-// 点击渠道绑定事件
-(window as any).channelItemClick = function() {
-  let dom = (window.event as any).path;
-  for (let i = 0; i < dom.length; i++) {
-    let tag = dom[i].dataset.tag
-    if (tag === "channel") {
+  // 获取
+  let channelItemButton = document.querySelectorAll(".channelItemButton");
+  for (let i = 0; i < channelItemButton.length; i++) {
+    channelItemButton[i].addEventListener("click", function() {
       let token:string = sessionStorage.getItem("jwt"); // 用户token
-      let _channelId = dom[i].dataset.channelid;
-      let _channelName = dom[i].dataset.channelname;
+      let _channelId = this.dataset.channelid;
+      let _channelName = this.dataset.channelname;
       paymentMethod = _channelName
       channelId = _channelId
       if (token) {
@@ -75,10 +73,39 @@ function init() {
           clearTimeout(timer)
         }, 2)
       }
-      return false
-    }
+    });
   }
 }
+// 点击渠道绑定事件
+// (window as any).channelItemClick = function() {
+//   console.log(this);
+//   console.log(window.event);
+//   let dom = (window.event as any).path;
+//   for (let i = 0; i < dom.length; i++) {
+//     let tag = dom[i].dataset.tag
+//     if (tag === "channel") {
+//       let token:string = sessionStorage.getItem("jwt"); // 用户token
+//       let _channelId = dom[i].dataset.channelid;
+//       let _channelName = dom[i].dataset.channelname;
+//       paymentMethod = _channelName
+//       channelId = _channelId
+//       if (token) {
+//         let country:string = getQueryVariable("country"); // 获取选中的国家
+//         setTimeout(() => {
+//           location.href =  `./dpurchase.html?country=${country}&paymentMethod=${_channelName}&channelId=${_channelId}`
+//         }, 1)
+//       } else {
+//         modal.classList.add("show");
+//         let login:HTMLElement = document.querySelector(".login");
+//         let timer = setTimeout(() => {
+//           login.classList.add("login-scale");
+//           clearTimeout(timer)
+//         }, 2)
+//       }
+//       return false
+//     }
+//   }
+// }
 
 interface LoginParam {
   username: string;
@@ -124,7 +151,8 @@ function createPaymentChannelList(channel:Array<any>):string {
 // 创建单个支付渠道
 function createPaymentChannelItem(channel):string {
   let paymentTpe:string = `<li class="li channelItem">
-    <a href="javascript:void(0)" onclick="channelItemClick()" data-tag="channel" data-channelid=${channel.id} data-channelname=${channel.name}>
+    <a href="javascript:void(0)"
+      class="channelItemButton" data-tag="channel" data-channelid=${channel.id} data-channelname=${channel.name} style="cursor:pointer">
       <img src="${channel.icon}" />
       ${channel.name}
       <div class="sub">

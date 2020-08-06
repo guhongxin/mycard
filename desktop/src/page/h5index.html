@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Document</title>
   <script src="/static/js/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"></script>
   <script>
     if(!/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
       window.location.href = "./pcindex.html";
@@ -176,7 +177,7 @@
         <div class="swiper-slide">
           <div class="box box3">
             <div class="hero-img">
-              <img src="<%= require('../assets/img/box3-2.png') %>" />
+              <img src="<%= require('../assets/img/box3-2.png') %>" class="hero-img-move" />
             </div>
             <div class="box3-title">
               人物展示
