@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script>
+    if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+      window.location.href = "http://t-h5.tyu89.wang";
+    }
+  </script>
+</head>
+<body>
+  <div class="box">
+    <div class="menu">
+      <ul class="menu-ul">
+        <li class="menu-ul-li">
+          <a class="youtube" href="https://www.youtube.com/channel/UCeRR7LWLPt5j6ZxrhoulW2A" target="_blank">
+            <img src="<%= require('../assets/img/youtube.png') %>" />
+            <img src="<%= require('../assets/img/youtube1.png') %>" />
+          </a>
+        </li>
+        <li class="menu-ul-li">
+          <a class="facebook" href="https://www.facebook.com/GRANSAGA.KR" target="_blank">
+            <img src="<%= require('../assets/img/facebook.png') %>" />
+            <img src="<%= require('../assets/img/facebook1.png') %>" />
+          </a>
+        </li>
+        <li class="menu-ul-li">
+          <a class="twitter" href="https://twitter.com/GRANSAGA_KR" target="_blank">
+            <img src="<%= require('../assets/img/twitter.png') %>" class="no"/>
+            <img src="<%= require('../assets/img/twitter1.png') %>" />
+          </a>
+        </li>
+        <li class="menu-ul-li">
+          <a class="instagram" href="https://www.instagram.com/gransaga" target="_blank">
+            <img src="<%= require('../assets/img/instagram.png') %>" />
+            <img src="<%= require('../assets/img/instagram1.png') %>" />
+          </a>
+        </li>
+       
+        <li class="menu-ul-li">
+          <div>
+            <img src="<%= require('../assets/img/menu.png') %>" />
+          </div>
+          <div class="indicator">
+            <div class="vertical-line"></div>
+            <div class="indicator-icon indicator-active" data-swiper="switchSwiper" data-index="0"></div>
+            <div class="vertical-line"></div>
+            <div class="indicator-icon indicator-noActive" data-swiper="switchSwiper" data-index="1"></div>
+            <div class="vertical-line"></div>
+            <div class="indicator-icon indicator-noActive" data-swiper="switchSwiper" data-index="2"></div>
+            <div class="vertical-line"></div>
+            <div class="indicator-icon indicator-noActive" data-swiper="switchSwiper" data-index="3"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="swiper-container swiper-container-h">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="page page1">
+            <div class="image-box1">
+              <img src="<%= require('../assets/img/2.jpg') %>" />
+            </div>
+            <div class="image-box2">
+              <img src="<%= require('../assets/img/3.png') %>" />
+            </div>
+            <div class="recharge-box">
+              <ul class="recharge-ul">
+                <li>
+                  <div class="recharge-item" id="recharge">
+                    <div class="icon icon_dollar"></div>
+                    <div class="right">
+                      <p class="ft-en">Recharge</p>
+                      <p class="ft-zh">官网充值</p>
+                    </div>
+                  </div>
+                </li>
+                <div class="hz-line"></div>
+                <li>
+                  <div class="recharge-item" id="downApple">
+                    <div class="icon icon_apple"></div>
+                    <div class="right">
+                      <p class="ft-en">Download on the</p>
+                      <p class="ft-zh">App Store</p>
+                    </div>
+                  </div>
+                </li>
+                <div class="hz-line"></div>
+                <li>
+                  <div class="recharge-item" id="downGoogle">
+                    <div class="icon icon_google-play"></div>
+                    <div class="right">
+                      <p class="ft-en">GET IT ON</p>
+                      <p class="ft-zh">Google Play</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="page1-clouds-top">
+              <img src="<%= require('../assets/img/bj1-1.png') %>" />
+            </div>
+            <div class="page1-footer">
+              <div class="page1-footer-clouds">
+                <img src="<%= require('../assets/img/bj1-2.png') %>" />
+              </div>
+              <div class="page1-footer-clouds">
+                <img src="<%= require('../assets/img/bj1-3.png') %>" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="page page2">
+            <div class="cloud1">
+              <img src="<%= require('../assets/img/cloud1.png') %>"  />
+            </div>
+            <div class="checkpoint checkpoint1" data-level-index="0">
+              <img src="<%= require('../assets/img/db1.png') %>" >
+            </div>
+            <div class="checkpoint checkpoint2" data-level-index="2">
+              <img src="<%= require('../assets/img/db2.png') %>" >
+            </div>
+            <div class="checkpoint checkpoint3" data-level-index="1">
+              <img src="<%= require('../assets/img/db3.png') %>" >
+            </div>
+            <div class="checkpoint checkpoint4" data-level-index="3">
+              <img src="<%= require('../assets/img/db4.png') %>" >
+            </div>
+            <div class="checkpoint checkpoint5" data-level-index="4">
+              <img src="<%= require('../assets/img/db5.png') %>" >
+            </div>
+            <div class="checkpoint checkpoint6" data-level-index="5">
+              <img src="<%= require('../assets/img/db6.png') %>" >
+            </div>
+            <div class="checkpoint checkpoint7" data-level-index="10">
+              <img src="<%= require('../assets/img/db7.png') %>" >
+            </div>
+            <div class="checkpoint checkpoint8" data-level-index="9">
+              <img src="<%= require('../assets/img/db8.png') %>" >
+            </div>
+            <div class="checkpoint checkpoint9" data-level-index="8">
+              <img src="<%= require('../assets/img/db9.png') %>" >
+            </div>
+            <div class="checkpoint checkpoint10" data-level-index="6">
+              <img src="<%= require('../assets/img/db10.png') %>" >
+            </div>
+            <div class="checkpoint checkpoint11" data-level-index="11">
+              <img src="<%= require('../assets/img/db11.png') %>" >
+            </div>
+            <div class="checkpoint checkpoint12" data-level-index="12">
+              <img src="<%= require('../assets/img/db12.png') %>" >
+            </div>
+            <div class="checkpoint checkpoint13" data-level-index="7">
+              <img src="<%= require('../assets/img/db13.png') %>" >
+            </div>
+            <div class="checkpoint checkpoint14" data-level-index="13">
+              <img src="<%= require('../assets/img/db14.png') %>" >
+            </div>
+            <div class="checkpoint checkpoint15" data-level-index="14">
+              <img src="<%= require('../assets/img/db15.png') %>" >
+            </div>
+            <div class="description-box">
+              <img src="<%= require('../assets/img/page2.png') %>" />
+              <div class="description-wz">
+                <p class="title">壹 · 荆棘流域</p>
+                <div class="hz-line"></div>
+                <div class="description-txt">
+                  <p>樵村渔浦，毁于一旦。</p>
+                  <p>渔夫村老，十不存一。</p>
+                  <p>妖兽天灾，堪如灭顶。</p>
+                  <p>昔日风光，何时再现。</p>
+                </div>
+              </div>
+            </div>
+            <div class="cloud2">
+              <img src="<%= require('../assets/img/cloud2.png') %>"  />
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="page page3">
+            <div class="hero-infor">
+              <div class="hero-infor-title">英雄展示</div>
+              <div class="hero-infor-line">
+                <div class="hz-line"></div>
+                <div class="square1"></div>
+                <div class="square2"></div>
+              </div>
+              <div class="hero-name hero-name-move">
+                <div>
+                  <img src="<%= require('../assets/img/z_icon_fo.png') %>" />
+                  <div class="hero-name-txt">东陵圣母</div>
+                </div>
+                <div class="introduce">东陵圣母介绍</div>
+              </div>
+              
+            </div>
+            <div class="hero-pictures">
+              <img src="<%= require('../assets/img/hero1.png') %>" />
+            </div>
+            <div class="hero-gallery">
+              <div class="hero-gallery-item">
+                <!-- <img src="<%= require('../assets/img/hero1-1.png') %>" /> -->
+              </div>
+              <div class="hero-gallery-item">
+                <img src="<%= require('../assets/img/hero1-1.png') %>" data-gallery-img="img" data-gallery-index="0"/>
+              </div>
+              <div class="hero-gallery-item">
+                <img src="<%= require('../assets/img/hero1-1.png') %>" data-gallery-img="img" data-gallery-index="1"/>
+              </div>
+              <div class="hero-gallery-item">
+                <img src="<%= require('../assets/img/hero1-1.png') %>" data-gallery-img="img" data-gallery-index="2"/>
+              </div>
+              <div class="hero-gallery-item">
+                <img src="<%= require('../assets/img/hero1-1.png') %>" data-gallery-img="img" data-gallery-index="3"/>
+              </div>
+              <div class="hero-gallery-item">
+                <img src="<%= require('../assets/img/hero1-1.png') %>" data-gallery-img="img" data-gallery-index="4"/>
+              </div>
+              <div class="hero-gallery-item">
+                <img src="<%= require('../assets/img/key.png') %>" data-gallery-img="img" data-gallery-index="5"/>
+              </div>
+              <div class="hero-gallery-item">
+                <img src="<%= require('../assets/img/key.png') %>" data-gallery-img="img" data-gallery-index="6"/>
+              </div>
+              <div class="hero-gallery-item">
+                <!-- <img src="<%= require('../assets/img/key.png') %>" /> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="page page4">
+            <!-- <img src="<%= require('../assets/img/weapondisplay.png') %>" /> -->
+            <div class="swiper-container swiper-container-v" id="swiper1">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" style="width: fit-content;">
+                  <img src="<%= require('../assets/img/weapondisplay01.png') %>" />
+                </div>
+                <div class="swiper-slide" style="width: fit-content;">
+                  <img src="<%= require('../assets/img/weapondisplay02.png') %>" />
+                </div>
+                <div class="swiper-slide" style="width: fit-content;">
+                  <img src="<%= require('../assets/img/weapondisplay03.png') %>" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

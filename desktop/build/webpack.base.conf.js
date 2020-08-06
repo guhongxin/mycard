@@ -9,10 +9,11 @@ const resolve = filePath => {
 };
 module.exports = {
   entry: {
-    index: resolve("src/js/index.ts"),
+    pcindex: resolve("src/js/pcindex.ts"),
     payment: resolve("src/js/payment.ts"),
     dpurchase: resolve("src/js/dpurchase.ts"),
-    voucherall: resolve("src/js/voucherall.ts")
+    voucherall: resolve("src/js/voucherall.ts"),
+    h5index: resolve("src/js/h5index.js")
   },
   output: {
     filename: "js/[name]_[hash:8].js",
@@ -89,10 +90,42 @@ module.exports = {
       // },
       inject: "body", // 注入的位置不经相同
       filename: "index.html",
-      chunks: ["swiper", "index"],
+      chunks: [],
       minify: false,
       favicon: resolve("public/favicon.ico"),
       template: resolve("src/page/index.html")
+    }),
+    new HtmlWebpackPlugin({
+      // 打包输出HTML
+      title: "戒灵",
+      // minify: {
+      //   // 压缩HTML文件
+      //   // removeComments: true, // 移除HTML中的注释
+      //   // collapseWhitespace: true, // 删除空白符与换行符
+      //   // minifyCSS: true// 压缩内联css
+      // },
+      inject: "body", // 注入的位置不经相同
+      filename: "pcindex.html",
+      chunks: ["swiper", "pcindex"],
+      minify: false,
+      favicon: resolve("public/favicon.ico"),
+      template: resolve("src/page/pcindex.html")
+    }),
+    new HtmlWebpackPlugin({
+      // 打包输出HTML
+      title: "戒灵",
+      // minify: {
+      //   // 压缩HTML文件
+      //   // removeComments: true, // 移除HTML中的注释
+      //   // collapseWhitespace: true, // 删除空白符与换行符
+      //   // minifyCSS: true// 压缩内联css
+      // },
+      inject: "body", // 注入的位置不经相同
+      filename: "h5index.html",
+      chunks: ["swiper", "h5index"],
+      minify: false,
+      favicon: resolve("public/favicon.ico"),
+      template: resolve("src/page/h5index.html")
     }),
     new HtmlWebpackPlugin({
       // 打包输出HTML

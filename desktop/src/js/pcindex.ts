@@ -1,7 +1,7 @@
 // @ts-ignore
 import Swiper from "Swiper";
 import "normalize.css";
-import "../scss/index.scss";
+import "../scss/pcindex.scss";
 import "../scss/swiper-bundle.min.css";
 import { removeClass } from "../utils/common";
 const recharge:HTMLElement = document.getElementById("recharge");

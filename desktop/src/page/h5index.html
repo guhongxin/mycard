@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Document</title>
+  <script src="/static/js/jquery.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <ul class="menu" id="menuId">
+      <li class="menu-ul-li">
+        <a class="youtube" href="https://www.youtube.com/channel/UCeRR7LWLPt5j6ZxrhoulW2A" target="_blank">
+          <img src="<%= require('../assets/img/youtube.png') %>" />
+          <img src="<%= require('../assets/img/youtube1.png') %>" />
+        </a>
+      </li>
+      <li class="menu-ul-li">
+        <a class="facebook" href="https://www.facebook.com/GRANSAGA.KR" target="_blank">
+          <img src="<%= require('../assets/img/facebook.png') %>" />
+          <img src="<%= require('../assets/img/facebook1.png') %>" />
+        </a>
+      </li>
+      <li class="menu-ul-li">
+        <a class="twitter" href="https://twitter.com/GRANSAGA_KR" target="_blank">
+          <img src="<%= require('../assets/img/twitter.png') %>"/>
+          <img src="<%= require('../assets/img/twitter1.png') %>" />
+        </a>
+      </li>
+      <li class="menu-ul-li">
+        <a class="instagram" href="https://www.instagram.com/gransaga" target="_blank">
+          <img src="<%= require('../assets/img/instagram.png') %>" />
+          <img src="<%= require('../assets/img/instagram1.png') %>" />
+        </a>
+      </li>
+      <li class="menu-ul-li">
+        <div class="menu-icon">
+          <img src="<%= require('../assets/img/menu.png') %>" class="menu-img"/>
+        </div>
+        <div class="indicator">
+          <div class="vertical-line"></div>
+          <div class="indicator-icon indicator-active" data-swiper="switchSwiper" data-index="0"></div>
+          <div class="vertical-line"></div>
+          <div class="indicator-icon indicator-noActive" data-swiper="switchSwiper" data-index="1"></div>
+          <div class="vertical-line"></div>
+          <div class="indicator-icon indicator-noActive" data-swiper="switchSwiper" data-index="2"></div>
+          <div class="vertical-line"></div>
+          <div class="indicator-icon indicator-noActive" data-swiper="switchSwiper" data-index="3"></div>
+        </div>
+      </li>
+    </ul>
+    <div class="swiper-container-h">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="box box1">
+            <!-- <div class="head">
+              <div class="head-left">
+                <img src="<%= require('../assets/img/game-icon.png') %>" />
+                <div class="game-info">
+                  <div class="game-name">戒灵</div>
+                  <div class="game-type">轻松放置手游</div>
+                </div>
+              </div>
+              <div class="head-right">
+                下载
+              </div>
+            </div> -->
+           <div class="img-box1"></div>
+           <div class="img-box3"></div>
+           <div class="img-box4"></div>
+           <div class="recharge-box">
+            <div class="recharge-content">
+              <ul>
+                <li>
+                  <div class="recharge-item" id="recharge">
+                    <div class="icon icon_dollar"></div>
+                    <div class="right">
+                     <p class="ft-en">Recharge</p>
+                     <p class="ft-zh">官网充值</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                 <div class="recharge-item" id="downApple">
+                   <div class="icon icon_app"></div>
+                   <div class="right">
+                     <p class="ft-en">Download on the</p>
+                     <p class="ft-zh">App Store</p>
+                   </div>
+                 </div>
+                </li>
+                <li>
+                 <div class="recharge-item" id="downGoogle">
+                   <div class="icon icon_google-play"></div>
+                   <div class="right">
+                     <p class="ft-en">GET IT ON</p>
+                     <p class="ft-zh">Google Play</p>
+                   </div>
+                 </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="box box2">
+            <div id="map-coordinates">
+              <img src="<%= require('../assets/img/page2.png') %>" />
+              <div class="wz-describe">
+                <div class="wz-describe-title">荆棘流域·壹</div>
+                <div class="hz-line"></div>
+                <div class="description-txt">
+                  <p>樵村渔浦，毁于一旦。</p>
+                  <p>渔夫村老，十不存一。</p>
+                  <p>妖兽天灾，堪如灭顶。</p>
+                  <p>昔日风光，何时再现。</p>
+                </div>
+              </div>
+            </div>
+            <div class="map-img">
+              <img src="<%= require('../assets/img/gameMap.jpg') %>"  height="100%"/>
+              <div class="checkpoint checkpoint1" data-level-index="0">
+                <img src="<%= require('../assets/img/db1.png') %>" >
+              </div>
+              <div class="checkpoint checkpoint2" data-level-index="2">
+                <img src="<%= require('../assets/img/db2.png') %>" >
+              </div>
+              <div class="checkpoint checkpoint3" data-level-index="1">
+                <img src="<%= require('../assets/img/db3.png') %>" >
+              </div>
+              <div class="checkpoint checkpoint4" data-level-index="3">
+                <img src="<%= require('../assets/img/db4.png') %>" >
+              </div>
+              <div class="checkpoint checkpoint5" data-level-index="4">
+                <img src="<%= require('../assets/img/db5.png') %>" >
+              </div>
+              <div class="checkpoint checkpoint6" data-level-index="5">
+                <img src="<%= require('../assets/img/db6.png') %>" >
+              </div>
+              <div class="checkpoint checkpoint7" data-level-index="10">
+                <img src="<%= require('../assets/img/db7.png') %>" >
+              </div>
+              <div class="checkpoint checkpoint8" data-level-index="9">
+                <img src="<%= require('../assets/img/db8.png') %>" >
+              </div>
+              <div class="checkpoint checkpoint9" data-level-index="8">
+                <img src="<%= require('../assets/img/db9.png') %>" >
+              </div>
+              <div class="checkpoint checkpoint10" data-level-index="6">
+                <img src="<%= require('../assets/img/db10.png') %>" >
+              </div>
+              <div class="checkpoint checkpoint11" data-level-index="11">
+                <img src="<%= require('../assets/img/db11.png') %>" >
+              </div>
+              <div class="checkpoint checkpoint12" data-level-index="12">
+                <img src="<%= require('../assets/img/db12.png') %>" >
+              </div>
+              <div class="checkpoint checkpoint13" data-level-index="7">
+                <img src="<%= require('../assets/img/db13.png') %>" >
+              </div>
+              <div class="checkpoint checkpoint14" data-level-index="13">
+                <img src="<%= require('../assets/img/db14.png') %>" >
+              </div>
+              <div class="checkpoint checkpoint15" data-level-index="14">
+                <img src="<%= require('../assets/img/db15.png') %>" >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="box box3">
+            <div class="hero-img">
+              <img src="<%= require('../assets/img/box3-2.png') %>" />
+            </div>
+            <div class="box3-title">
+              人物展示
+            </div>
+            <div class="hero-js ">
+              <div class="hero-name">
+                <img src="<%= require('../assets/img/z_icon_fo.png') %>" />
+                <p>东陵圣母</p>
+              </div>
+              <div class="hero-js-txt">
+                东陵圣母介绍东陵圣母介绍
+              </div>
+            </div>
+            <div class="hero-gallery">
+              <div class="hero-gallery-item"></div>
+              <div class="hero-gallery-item"></div>
+              <div class="hero-gallery-item">
+                <img src="<%= require('../assets/img/hero2.png') %>" data-gallery-img="img" data-gallery-index="1"/>
+              </div>
+              <div class="hero-gallery-item">
+                <img src="<%= require('../assets/img/hero1.png') %>" data-gallery-img="img" data-gallery-index="2"/>
+              </div>
+              <div class="hero-gallery-item"></div>
+              <div class="hero-gallery-item">
+                <img src="<%= require('../assets/img/hero4.png') %>" data-gallery-img="img" data-gallery-index="4"/>
+              </div>
+              <div class="hero-gallery-item">
+                <img src="<%= require('../assets/img/hero3.png') %>" data-gallery-img="img" data-gallery-index="5"/>
+              </div>
+              <div class="hero-gallery-item"></div>
+              <div class="hero-gallery-item">
+                <img src="<%= require('../assets/img/key.png') %>" data-gallery-img="img" data-gallery-index="5"/>
+              </div>
+              <div class="hero-gallery-item">
+                <img src="<%= require('../assets/img/key.png') %>" data-gallery-img="img" data-gallery-index="5"/>
+              </div>
+              <div class="hero-gallery-item"></div>
+              <div class="hero-gallery-item"></div>
+              <div class="hero-gallery-item">
+                <img src="<%= require('../assets/img/key.png') %>" data-gallery-img="img" data-gallery-index="5"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="box box4">
+            <div class="box4-img">
+              <img src="<%= require('../assets/img/weapondisplay.jpg') %>"  height="100%"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <script src="./js/jquery-3.5.1.min.js"></script> -->
+  <!-- <script src="./js/swiper-bundle.min.js"></script>
+  <script src="./js/index.js"></script> -->
+</body>
+</html>
