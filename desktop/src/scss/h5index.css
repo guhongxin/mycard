@@ -252,8 +252,11 @@
 .hero-img img {
   width: 100%;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 50%;
+  transform: translateY(50%);
+}
+.hero-img .hero-img-move {
+  animation: heroImgMove 0.5s cubic-bezier(0.42, 0, 0.4, 0.79) forwards;
 }
 .box3 .box3-title {
   font-size: 16px;
@@ -359,6 +362,14 @@
     left: 0vw;
   }
 }
+@keyframes heroImgMove {
+  0% {
+    bottom: -100%;
+  }
+  100% {
+    bottom: 50%;
+  }
+}
 #map-coordinates {
   position: absolute;
   left: 2vw;
@@ -443,6 +454,7 @@
   top: 25%;
   left: 135%;
 }
+
 .checkpoint9 {
   top: 42%;
   left: 122%;

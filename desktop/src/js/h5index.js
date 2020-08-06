@@ -74,8 +74,10 @@ $(function() {
           pagination(this.activeIndex);
           if (this.activeIndex === 2) {
             $(".hero-js").addClass("hero-js-move")
+            $(".hero-img img").addClass("hero-img-move")
           } else {
             $(".hero-js").removeClass("hero-js-move")
+            $(".hero-img img").removeClass("hero-img-move")
           }
         }
       }
