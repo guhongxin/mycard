@@ -87,11 +87,12 @@ const httpRequest = new Request(
   jwt
 ); // 请求
 const httpRequest1 = new Request(
+  // "http://192.168.1.16:8091/interface/user-pay/paypal"
   "http://interface.18183g.top/interface/user-pay/paypal"
 ); // 请求
 const httpRequest2 = new Request(
   "http://interface.18183g.top/interface/user-pay/razer"
-); // 请求
+); // 请求俊忠
 function init(): void {
   // 初始化
   if (!jwt) {
@@ -405,7 +406,8 @@ function replacePalpayScript(currency) {
     btnBox.removeChild(paypalbuttoncontainer);
   }
   let paypalScriptUrl = paypalUrl(
-    "AQQb0039GJAgHsqzTX1QCC_waO7_eBHk5RIHWBVVM2i2eQU3mothZPId8-V_tm4cLJGxfwriAfoJhces",
+    // "AQQb0039GJAgHsqzTX1QCC_waO7_eBHk5RIHWBVVM2i2eQU3mothZPId8-V_tm4cLJGxfwriAfoJhces",
+    "ARUZtMVLoboHDijPhH-Rye-vdtd8R5ddNmaRQMMrquVECB_vxQq1VDUzATuB3auuD3W5rxaPkBrzT2kU",
     currency
   );
   let script = document.createElement("script");

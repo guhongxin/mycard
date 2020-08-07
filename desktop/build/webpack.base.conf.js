@@ -13,21 +13,38 @@ const setMPA = () => {
   const entry = {};
   const HtmlWebpackPlugins = [];
   const entryFiles = glob.sync(resolve("src/js/*"));
-  console.log('entryFiles', entryFiles)
+  for (let i = 0; i < entryFiles.length; i++) {
+    const filename = entryFiles[i].match(/\/js\/(.*)\./)[1]
+    entry[filename] = entryFiles[i];
+    let chunks = /index/.test(filename) ? [filename, 'swiper'] : [filename]
+    HtmlWebpackPlugins.push(
+      new HtmlWebpackPlugin({
+        // 打包输出HTML
+        title: "戒灵",
+        // minify: {
+        //   // 压缩HTML文件
+        //   // removeComments: true, // 移除HTML中的注释
+        //   // collapseWhitespace: true, // 删除空白符与换行符
+        //   // minifyCSS: true// 压缩内联css
+        // },
+        inject: "body", // 注入的位置不经相同
+        filename: `${filename}.html`,
+        chunks: chunks,
+        minify: false,
+        favicon: resolve("public/favicon.ico"),
+        template: resolve(`src/page/${filename}.html`)
+      })
+    )
+  }
   return {
     entry,
     HtmlWebpackPlugins
   }
 }
-setMPA();
+let { entry, HtmlWebpackPlugins } = setMPA();
+
 module.exports = {
-  entry: {
-    pcindex: resolve("src/js/pcindex.ts"),
-    payment: resolve("src/js/payment.ts"),
-    dpurchase: resolve("src/js/dpurchase.ts"),
-    voucherall: resolve("src/js/voucherall.ts"),
-    h5index: resolve("src/js/h5index.js")
-  },
+  entry: entry,
   output: {
     filename: "js/[name]_[hash:8].js",
     path: resolve("dist")
@@ -107,83 +124,6 @@ module.exports = {
       minify: false,
       favicon: resolve("public/favicon.ico"),
       template: resolve("src/page/index.html")
-    }),
-    new HtmlWebpackPlugin({
-      // 打包输出HTML
-      title: "戒灵",
-      // minify: {
-      //   // 压缩HTML文件
-      //   // removeComments: true, // 移除HTML中的注释
-      //   // collapseWhitespace: true, // 删除空白符与换行符
-      //   // minifyCSS: true// 压缩内联css
-      // },
-      inject: "body", // 注入的位置不经相同
-      filename: "pcindex.html",
-      chunks: ["swiper", "pcindex"],
-      minify: false,
-      favicon: resolve("public/favicon.ico"),
-      template: resolve("src/page/pcindex.html")
-    }),
-    new HtmlWebpackPlugin({
-      // 打包输出HTML
-      title: "戒灵",
-      // minify: {
-      //   // 压缩HTML文件
-      //   // removeComments: true, // 移除HTML中的注释
-      //   // collapseWhitespace: true, // 删除空白符与换行符
-      //   // minifyCSS: true// 压缩内联css
-      // },
-      inject: "body", // 注入的位置不经相同
-      filename: "h5index.html",
-      chunks: ["swiper", "h5index"],
-      minify: false,
-      favicon: resolve("public/favicon.ico"),
-      template: resolve("src/page/h5index.html")
-    }),
-    new HtmlWebpackPlugin({
-      // 打包输出HTML
-      title: "戒灵",
-      // minify: {
-      //   // 压缩HTML文件
-      //   // removeComments: true, // 移除HTML中的注释
-      //   // collapseWhitespace: true, // 删除空白符与换行符
-      //   // minifyCSS: true// 压缩内联css
-      // },
-      minify: false,
-      chunks: ["payment"],
-      filename: "payment.html",
-      favicon: resolve("public/favicon.ico"),
-      template: resolve("src/page/payment.html")
-    }),
-    new HtmlWebpackPlugin({
-      // 打包输出HTML
-      title: "戒灵",
-      // minify: {
-      //   // 压缩HTML文件
-      //   // removeComments: true, // 移除HTML中的注释
-      //   // collapseWhitespace: true, // 删除空白符与换行符
-      //   // minifyCSS: true// 压缩内联css
-      // },
-      minify: false,
-      chunks: ["dpurchase"],
-      filename: "dpurchase.html",
-      favicon: resolve("public/favicon.ico"),
-      template: resolve("src/page/dpurchase.html")
-    }),
-    new HtmlWebpackPlugin({
-      // 打包输出HTML
-      title: "戒灵",
-      // minify: {
-      //   // 压缩HTML文件
-      //   // removeComments: true, // 移除HTML中的注释
-      //   // collapseWhitespace: true, // 删除空白符与换行符
-      //   // minifyCSS: true// 压缩内联css
-      // },
-      minify: false,
-      chunks: ["voucherall"],
-      filename: "voucherall.html",
-      favicon: resolve("public/favicon.ico"),
-      template: resolve("src/page/voucherall.html")
     })
-  ]
+  ].concat(HtmlWebpackPlugins)
 };
