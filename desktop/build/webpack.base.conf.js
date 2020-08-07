@@ -112,12 +112,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       // 打包输出HTML
       title: "戒灵",
-      // minify: {
-      //   // 压缩HTML文件
-      //   // removeComments: true, // 移除HTML中的注释
-      //   // collapseWhitespace: true, // 删除空白符与换行符
-      //   // minifyCSS: true// 压缩内联css
-      // },
       inject: "body", // 注入的位置不经相同
       filename: "index.html",
       chunks: [],
