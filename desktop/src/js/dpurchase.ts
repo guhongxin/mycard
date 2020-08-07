@@ -30,6 +30,8 @@ const btnBox: HTMLElement = document.getElementById("btn-box");
 const jwt = sessionStorage.getItem("jwt");
 const sign = "69a54ac4afafa44ec1ff5bae05a9010c";
 
+let isPayPal:boolean = true;
+
 let data: any = {
   btnLoading: false
 };
@@ -116,8 +118,9 @@ function init(): void {
     gameCurrency.options[1].selected = true;
   }, 5)
   
-
-  if (country) {
+  // 是否是PayPal支付 true 为是
+  isPayPal = country ? false : true;
+  if (!isPayPal) {
     let divDom: any = document.createElement("div");
     divDom.classList.add("button");
     divDom.id = "submintBtn";
@@ -197,7 +200,9 @@ function init(): void {
         createAmountOptionDom(amount, res);
       });
     }
-    replacePalpayScript(this.value)
+    if (isPayPal) {
+      replacePalpayScript(this.value)
+    }
   });
   // 角色 change 是否选中币种，如果未选中提示，否则请求接口
   characterName.addEventListener("change", function () {

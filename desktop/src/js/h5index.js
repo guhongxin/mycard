@@ -115,7 +115,7 @@ $(function() {
       return tump
     },
     set: function(value) {
-      if (value !==0 ) {
+      if (value !== 0 ) {
         $("#menuId").addClass("menu-no-head")
       } else {
         $("#menuId").removeClass("menu-no-head")
