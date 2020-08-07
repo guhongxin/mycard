@@ -12,7 +12,7 @@ const resolve = filePath => {
 const setMPA = () => {
   const entry = {};
   const HtmlWebpackPlugins = [];
-  const entryFiles = glob.sync(resolve("src/js/*.ts"))
+  const entryFiles = glob.sync(resolve("src/js/*"));
   console.log('entryFiles', entryFiles)
   return {
     entry,

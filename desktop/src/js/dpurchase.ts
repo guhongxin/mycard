@@ -74,7 +74,8 @@ let channelId: string; //
     obj.sign = hash
     return  httpRequest1.getfetch("/approve", obj).then(res => {
       if (res.code === 200) {
-
+        alert("支付成功")
+        location.href = "./index.html"
       } else {
         alert(res.code)
       }
@@ -82,11 +83,11 @@ let channelId: string; //
   }
 };
 const httpRequest = new Request(
-  "http://192.168.1.16:8091/interface/h5/game",
+  "http://interface.18183g.top/interface/h5/game",
   jwt
 ); // 请求
 const httpRequest1 = new Request(
-  "http://192.168.1.16:8091/interface/user-pay/paypal"
+  "http://interface.18183g.top/interface/user-pay/paypal"
 ); // 请求
 const httpRequest2 = new Request(
   "http://interface.18183g.top/interface/user-pay/razer"

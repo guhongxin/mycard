@@ -11,11 +11,11 @@ const submitBtn:HTMLElement = document.querySelector("#submitBtn");
 let paymentMethod:string;
 let channelId: string;
 
-const httpRequest = new Request("http://192.168.1.16:8091/interface/h5");
+const httpRequest = new Request("http://interface.18183g.top/interface/h5");
 
 function init() {
   // 初始化
-  var vConsole = new VConsole();
+  // var vConsole = new VConsole();
   let country:string = getQueryVariable("country"); // 获取选中的国家
   let result:string = Object.keys(ountryPaymentType[country]).reduce((total, key) => {
     let str1:string = ""

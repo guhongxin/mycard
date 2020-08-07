@@ -57,7 +57,7 @@ $(function() {
   }
   function init() {
     // 初始化
-    var vConsole = new VConsole();
+    // var vConsole = new VConsole();
     swiper = new Swiper('.swiper-container-h', {
       direction: 'vertical',
       mousewheel: true,
