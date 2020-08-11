@@ -548,8 +548,41 @@
   background: #000000;
   .swiper-container-v {
     width: 100%;
-    img {
+    .scroll-box {
       height: 100%;
+    }
+    .swiper-slide {
+      position: relative;
+      .gif-box {
+        height: 80%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .gif-box1 {
+        left: 20%;
+      }
+      .gif-box3 {
+        left: 5%;
+      }
+      .gif-box4 {
+        left: 33%;
+      }
+      .gif-box5 {
+        left: 20%;
+      }
+      .gif-box6 {
+        left: -18%;
+      }
+      .gif-box8 {
+        left: 20%;
+      }
+      .gif-box9 {
+        left: 5%;
+      }
+      .gif-box10 {
+        left: 5%;
+      }
     }
   }
   
