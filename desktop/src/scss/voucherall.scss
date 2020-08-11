@@ -163,7 +163,7 @@
   justify-content: center;
   align-items: center;
   .login {
-    padding: 40px 15px 15px;
+    padding: 20px 15px 15px;
     box-sizing: border-box;
     width: 300px;
     max-width: 350px;
@@ -228,6 +228,14 @@
       opacity: .3;
       //设置初始状态
       transition: 0s;
+    }
+    .logo {
+      width: 100%;
+      margin: 0px 0px 30px 0px;
+      img {
+        width: 100%;
+        display: block;
+      }
     }
   }
 }

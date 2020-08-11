@@ -14,7 +14,7 @@ const submitBtn:HTMLElement = document.querySelector("#submitBtn");
 const payPalbox:HTMLElement = document.getElementById("payPalbox");
 const countryId:HTMLElement = document.getElementById("countryId");
 const httpRequest = new Request("http://interface.18183g.top/interface/h5");
-
+let submitBtnLoading:boolean = false; // 登录按钮等待状态
 function init() {
   // 初始化
   let lang = navigator.language || (navigator as any).userLanguage;
@@ -70,6 +70,15 @@ function init() {
       let login:HTMLElement = document.querySelector(".login");
       let timer = setTimeout(() => {
         login.classList.add("login-scale");
+        let isRememberPassword = Cookies.get('isRememberPassword');
+        if (isRememberPassword === '1') {
+          let userNameDom = document.getElementById("userName") as HTMLInputElement;
+          let passwordDom = document.getElementById("password") as HTMLInputElement;
+          let rememberPasswordDom = document.getElementById("rememberPassword") as HTMLInputElement;
+          userNameDom.value = Cookies.get('userName');
+          passwordDom.value = Cookies.get('password');
+          rememberPasswordDom.checked = true
+        } 
         clearTimeout(timer)
       }, 2)
     }
@@ -93,8 +102,19 @@ function init() {
     // 登录
     let userNameDom = document.getElementById("userName") as HTMLInputElement;
     let passwordDom = document.getElementById("password") as HTMLInputElement;
+    let rememberPasswordDom = document.getElementById("rememberPassword") as HTMLInputElement;
     let userName:string = userNameDom.value.trim();
     let password:string = passwordDom.value.trim();
+    if (rememberPasswordDom.checked) {
+      // 如果记住密码将密码缓存到cookie里面
+      Cookies.set('userName', userName);
+      Cookies.set('password', password);
+      Cookies.set('isRememberPassword', 1);
+    } else {
+      Cookies.remove('userName');
+      Cookies.remove('password');
+      Cookies.remove('isRememberPassword');
+    }
     login({
       username: userName,
       password: password
@@ -121,22 +141,27 @@ interface LoginParam {
 }
 function login(param:LoginParam) {
   let passwordMd5 = md5(md5(param.password));
-  httpRequest.postfetch(`/user/auth?username=${param.username}&password=${passwordMd5}`).then(res => {
-    if (res.code === 0) {
-      // 
-      let data = res.data; 
-      sessionStorage.setItem("jwt", data.token);
-      sessionStorage.setItem("appId", data.appId);
-      sessionStorage.setItem("userId", data.userId);
-      sessionStorage.setItem("_channelId", data.channelId);
-      location.href = `./dpurchase.html?paymentMethod=payPal&channelId=${data.channelId}`
-    } else {
-      alert(res.code)
-    }
-  }).catch(err => {
-    console.log("err", err)
-    return false
-  })
+  if (!submitBtnLoading) {
+    submitBtnLoading = true;
+    httpRequest.postfetch(`/user/auth?username=${param.username}&password=${passwordMd5}`).then(res => {
+      submitBtnLoading = false;
+      if (res.code === 0) {
+        // 
+        let data = res.data; 
+        sessionStorage.setItem("jwt", data.token);
+        sessionStorage.setItem("appId", data.appId);
+        sessionStorage.setItem("userId", data.userId);
+        sessionStorage.setItem("_channelId", data.channelId);
+        location.href = `./dpurchase.html?paymentMethod=payPal&channelId=${data.channelId}`
+      } else {
+        alert(res.code)
+      }
+    }).catch(err => {
+      console.log("err", err)
+      submitBtnLoading = false;
+      return false
+    })
+  }
 }
 // 获取用户信息
 function getUser(param:string) {

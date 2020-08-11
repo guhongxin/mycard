@@ -53,11 +53,17 @@
   </div>
   <div class="modal" data-tag="modal">
     <div class="login">
+      <div class="logo">
+        <img src="<%= require('../assets/img/KIWI_LOGO.png') %>" />
+      </div>
       <div class="item">
         <input type="text" placeholder="请输入账户" id="userName" class="input-style" />
       </div>
       <div class="item">
         <input type="password" placeholder="请输入密码" id="password" class="input-style" />
+      </div>
+      <div class="item">
+        <label><input type="checkbox" id="rememberPassword"> 记住密码</label>
       </div>
       <div class="btn" id="submitBtn">
         <span class="btn-txt">登录</span>
