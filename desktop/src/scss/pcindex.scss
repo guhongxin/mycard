@@ -515,7 +515,7 @@
     }
   }
   .hero-gallery {
-    width: 324px;
+    width: 400px;
     position: absolute;
     right: 60px;
     top: 50%;
@@ -527,8 +527,8 @@
     z-index: 3;
     transform: rotate(-45deg);
     .hero-gallery-item {
-      width: 108px;
-      height: 108px;
+      width: 100px;
+      height: 100px;
       padding: 8px;
       box-sizing: border-box;
       img {
