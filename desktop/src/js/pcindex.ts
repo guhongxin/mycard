@@ -13,30 +13,47 @@ const heroGallery:HTMLElement = document.querySelector(".hero-gallery");
 const arrowUp:HTMLElement = document.querySelector(".arrow-up");
 const arrowDown:HTMLElement = document.querySelector(".arrow-down");
 const checkpointDom:any = document.querySelectorAll(".page2 .checkpoint");
+// @ts-ignore
 const heroData = [
   {
-    name: "东陵圣母",
-    introduce: "可以针对不同的媒体类型定义不同的样式"
+    name: "哪吒",
+    type: require('../assets/img/ren.png'),
+    introduce: "灼烧队辅助"
   },
   {
-    name: "李白",
-    introduce: "可以针对不同的媒体类型定义不同的样式"
+    name: "杨戬",
+    type: require('../assets/img/ren.png'),
+    introduce: "灼烧队辅助"
   },
   {
-    name: "李白1",
-    introduce: "可以针对不同的媒体类型定义不同的样式"
+    name: "共工",
+    type: require('../assets/img/yao.png'),
+    introduce: "永动队辅助"
   },
   {
-    name: "李白2",
-    introduce: "可以针对不同的媒体类型定义不同的样式"
+    name: "燃灯",
+    type: require('../assets/img/fo.png'),
+    introduce: "暴力队辅助"
   },
   {
-    name: "李白3",
-    introduce: "可以针对不同的媒体类型定义不同的样式"
+    name: "孙悟空",
+    type: require('../assets/img/fo.png'),
+    introduce: "暴力队输出"
   },
   {
-    name: "李白4",
-    introduce: "可以针对不同的媒体类型定义不同的样式"
+    name: "姑获鸟",
+    type: require('../assets/img/yao.png'),
+    introduce: "永动队控制"
+  },
+  {
+    name: "妈祖",
+    type: require('../assets/img/ren.png'),
+    introduce: "灼烧队输出"
+  },
+  {
+    name: "九命猫",
+    type: require('../assets/img/yao.png'),
+    introduce: "永动队辅助"
   }
 ]
 const levelDescript = [{
@@ -105,7 +122,7 @@ function init() {
         }
         pagination(this.activeIndex);
         if (this.activeIndex === 2) {
-          heroName.classList.add("hero-name-move")
+          createHeroInfor(0)
         } else {
           removeClass(heroName, "hero-name-move");
         }
@@ -156,18 +173,20 @@ function init() {
   heroGallery.addEventListener("click", function(e:any) {
     let target:any  = e.target;
     if (target.dataset.galleryImg === "img") {
+      // 是否是锁的状态
+      if (target.dataset.lock === "1") {
+        return false
+      }
       removeClass(heroName, "hero-name-move");
       let _galleryIndex:number = Number(target.dataset.galleryIndex);
       let index:number = _galleryIndex;
-      if (index === 5 || index === 6) {
-        return false;
-      }
-      (document.querySelector(".hero-name .hero-name-txt") as any).innerHTML = heroData[index]["name"];
-      (document.querySelector(".hero-name .introduce") as HTMLElement).innerHTML = heroData[index]["introduce"];
-      let timer = setTimeout(() => {
-        heroName.classList.add("hero-name-move");
-        clearTimeout(timer)
-      }, 50)
+      // (document.querySelector(".hero-name .hero-name-txt") as any).innerHTML = heroData[index]["name"];
+      // (document.querySelector(".hero-name .introduce") as HTMLElement).innerHTML = heroData[index]["introduce"];
+      // let timer = setTimeout(() => {
+      //   heroName.classList.add("hero-name-move");
+      //   clearTimeout(timer)
+      // }, 50)
+      createHeroInfor(index)
     }
   })
   checkpointDom.forEach(element => {
@@ -204,6 +223,18 @@ function pagination(index:number) {
       indicatorIcon[i].classList.add("indicator-noActive");
     }
   }
+}
+// 创建英雄说明
+function createHeroInfor(index:number) {
+  (document.querySelector(".hero-name .hero-name-txt") as any).innerHTML = heroData[index]["name"];
+  (document.querySelector(".hero-name .introduce") as HTMLElement).innerHTML = heroData[index]["introduce"];
+  let herotype:any = document.getElementById("herotype");
+  console.log(herotype)
+  herotype.src = heroData[index].type;
+  let timer = setTimeout(() => {
+    heroName.classList.add("hero-name-move");
+    clearTimeout(timer)
+  }, 50)
 }
 
 init();

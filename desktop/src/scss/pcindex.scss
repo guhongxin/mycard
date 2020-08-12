@@ -430,7 +430,7 @@
   }
 }
 .page3 {
-  background: url("../assets/img/bj3.png") no-repeat center;
+  background: url("../assets/img/bj5.png") no-repeat center;
   .hero-infor {
     position: absolute;
     width: 250px;
@@ -442,7 +442,7 @@
     box-sizing: border-box;
     overflow: hidden;
     .hero-infor-title {
-      color: #502A15;
+      color: #092635;
       font-size: 30px;
       font-family:Microsoft YaHei;
       font-weight: 400;
@@ -456,18 +456,18 @@
       .hz-line {
         flex: 1;
         height: 1px;
-        background-color: #502A15;
+        background-color: #092635;
       }
       .square1 {
         width: 8px;
         height: 8px;
-        border: 1px solid #502A15;
+        border: 1px solid #092635;
         transform: rotate(45deg);
       }
       .square2 {
         width: 10px;
         height: 10px;
-        background-color: #502A15;
+        background-color: #092635;
         transform: rotate(45deg);
         margin-left: 3px;
       }
@@ -484,7 +484,7 @@
         vertical-align: middle;
       }
       .hero-name-txt {
-        color: #502A15;
+        color: #092635;
         font-size: 26px;
         font-family:Microsoft YaHei;
         font-weight: 400;
@@ -499,7 +499,7 @@
     .introduce {
       position: absolute;
       margin-top: 10px;
-      color: #502A15;
+      color: #092635;
       text-align: left;
     }
   }
