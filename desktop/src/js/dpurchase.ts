@@ -47,11 +47,13 @@ let channelId: string; //
       appId: sessionStorage.getItem('appId'),
       userId: sessionStorage.getItem('userId'),
       channelId: channelId,
-      consumerId: server.value + ',' + characterName.value, // playerId
+      consumerId: characterName.value, // playerId
       consumerName: characterName.options[_characterNameIndex].text, // playerId
       orderDetail: amount.options[_amountIndex].text, // amount id
       productId: amount.value,
-      currencyCode: gameCurrency.value // 币种
+      currencyCode: gameCurrency.value, // 币种
+      serverId: server.value,
+      serverName: server.options[server.selectedIndex].text
     };
     let hash:string = createncryption(obj);
     obj.sign = hash
@@ -85,12 +87,13 @@ let channelId: string; //
   }
 };
 const httpRequest = new Request(
-  "http://interface.18183g.top/interface/h5/game",
+  // "http://interface.18183g.top/interface/h5/game",
+  "http://192.168.1.16:8091/interface/h5/game",
   jwt
 ); // 请求
 const httpRequest1 = new Request(
-  // "http://192.168.1.16:8091/interface/user-pay/paypal"
-  "http://interface.18183g.top/interface/user-pay/paypal"
+  "http://192.168.1.16:8091/interface/user-pay/paypal"
+  // "http://interface.18183g.top/interface/user-pay/paypal"
 ); // 请求
 const httpRequest2 = new Request(
   "http://interface.18183g.top/interface/user-pay/razer"
@@ -134,42 +137,43 @@ function init(): void {
     // divDom.innerHTML = "Recharge Now";
     btnBox.appendChild(divDom);
     replacePalpayScript("USD")
-    // @ts-ignore
     // 获取币种
-    divDom.addEventListener("click", function () {
-      if (!data.btnLoading) {
-        data.btnLoading = true;
-        let _characterNameIndex = characterName.selectedIndex;
-        let _amountIndex = amount.selectedIndex;
-        let obj: any = {
-          appId: sessionStorage.getItem("appId"),
-          userId: sessionStorage.getItem("userId"),
-          channelId: channelId,
-          consumerId: server.value + "," + characterName.value, // playerId
-          consumerName: characterName.options[_characterNameIndex].text, // playerId
-          orderDetail: amount.options[_amountIndex].text, // amount id
-          productId: amount.value,
-          currencyCode: gameCurrency.value // 币种
-        };
-        let hash: string = createncryption(obj);
-        obj.sign = hash;
-        orderId = "";
-        httpRequest1
-          .getfetch("/create", obj)
-          .then(res => {
-            console.log("创建订单", res);
-            data.btnLoading = false;
-            if (res.code === 200) {
-              location.href = res.content;
-            } else {
-              alert(res.message);
-            }
-          })
-          .catch(() => {
-            data.btnLoading = false;
-          });
-      }
-    });
+    // divDom.addEventListener("click", function () {
+    //   if (!data.btnLoading) {
+    //     data.btnLoading = true;
+    //     let _characterNameIndex = characterName.selectedIndex;
+    //     let _amountIndex = amount.selectedIndex;
+    //     let obj: any = {
+    //       appId: sessionStorage.getItem("appId"),
+    //       userId: sessionStorage.getItem("userId"),
+    //       channelId: channelId,
+    //       consumerId: characterName.value, // playerId
+    //       consumerName: characterName.options[_characterNameIndex].text, // playerId
+    //       orderDetail: amount.options[_amountIndex].text, // amount id
+    //       productId: amount.value,
+    //       currencyCode: gameCurrency.value, // 币种
+    //       serverId: server.value,
+    //       serverName: server.options[server.selectedIndex].text
+    //     };
+    //     let hash: string = createncryption(obj);
+    //     obj.sign = hash;
+    //     orderId = "";
+    //     httpRequest1
+    //       .getfetch("/create", obj)
+    //       .then(res => {
+    //         console.log("创建订单", res);
+    //         data.btnLoading = false;
+    //         if (res.code === 200) {
+    //           location.href = res.content;
+    //         } else {
+    //           alert(res.message);
+    //         }
+    //       })
+    //       .catch(() => {
+    //         data.btnLoading = false;
+    //       });
+    //   }
+    // });
   }
   paymentMethodDom.innerHTML = paymentMethod;
   orderId = "";
@@ -187,7 +191,6 @@ function init(): void {
   });
   // 币种 change 是否选中角色，如果选中请求充值道具未选中不请求
   gameCurrency.addEventListener("change", function () {
-    console.log("---", this.value)
     let playerId: string = characterName.value;
     if (playerId) {
       let serverId: string = server.value;
@@ -328,7 +331,8 @@ function submit() {
           currencyCode: gameCurrency.value, // 币种
           roleName: characterName.options[_characterNameIndex].text, // playerId
           description: amount.options[_amountIndex].text, // amount id
-          productId: amount.value
+          productId: amount.value,
+          serverName: server.options[server.selectedIndex].text
         };
         let hash: string = createncryption(obj);
         obj.sign = hash;
@@ -346,6 +350,7 @@ function createncryption(param: any): string {
   }, []);
   console.log(result.join("&"));
   console.log(result.join("&") + md5(sign));
+  console.log("----",md5(md5(123123)))
   console.log(md5(result.join("&") + md5(sign)));
   return md5(result.join("&") + md5(sign));
 }
@@ -411,8 +416,8 @@ function replacePalpayScript(currency) {
     btnBox.removeChild(paypalbuttoncontainer);
   }
   let paypalScriptUrl = paypalUrl(
-    // "AQQb0039GJAgHsqzTX1QCC_waO7_eBHk5RIHWBVVM2i2eQU3mothZPId8-V_tm4cLJGxfwriAfoJhces",
-    "ARUZtMVLoboHDijPhH-Rye-vdtd8R5ddNmaRQMMrquVECB_vxQq1VDUzATuB3auuD3W5rxaPkBrzT2kU",
+    "AQQb0039GJAgHsqzTX1QCC_waO7_eBHk5RIHWBVVM2i2eQU3mothZPId8-V_tm4cLJGxfwriAfoJhces",
+    // "ARUZtMVLoboHDijPhH-Rye-vdtd8R5ddNmaRQMMrquVECB_vxQq1VDUzATuB3auuD3W5rxaPkBrzT2kU",
     currency
   );
   let script = document.createElement("script");

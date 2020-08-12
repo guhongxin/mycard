@@ -10,7 +10,8 @@ const downGoogle:HTMLElement = document.getElementById("downGoogle");
 const indicator:HTMLElement = document.querySelector(".indicator");
 const heroName:HTMLElement = document.querySelector(".hero-name");
 const heroGallery:HTMLElement = document.querySelector(".hero-gallery");
-
+const arrowUp:HTMLElement = document.querySelector(".arrow-up");
+const arrowDown:HTMLElement = document.querySelector(".arrow-down");
 const checkpointDom:any = document.querySelectorAll(".page2 .checkpoint");
 const heroData = [
   {
@@ -116,11 +117,19 @@ function init() {
   let swiper1 = new Swiper('.swiper-container-v', {
     direction: 'horizontal',
     mousewheel: true,
-    initialSlide: 0,
-    updateOnImagesReady : true,
-    slidesPerView: 'auto'
+    slidesPerView: 'auto',
+    freeMode: true
   });
-
+  let swiper2 = new Swiper('.swiper-container-v2', {
+    direction: 'horizontal',
+    mousewheel: true,
+    slidesPerView : "auto",
+    spaceBetween: 10,
+    initialSlide: 1,
+    centeredSlides: true,
+    grabCursor: true,
+    centeredSlidesBounds: true
+  });
   // 支付点击事件
   recharge.addEventListener("click", function(e:any) {
     // 用户是否登录，未登录先登录，登录直接跳转到支付页面
@@ -173,6 +182,14 @@ function init() {
       document.querySelector(".description-wz .description-txt").innerHTML = txt;
     })
   });
+  // 第四屏向上翻页
+  arrowUp.addEventListener("click", function() {
+    swiper.slideTo(2);
+  })
+  // 第四屏向下翻页
+  arrowDown.addEventListener("click", function() {
+    swiper.slideTo(4);
+  })
 }
 
 // 指示器

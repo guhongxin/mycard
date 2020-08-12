@@ -585,7 +585,23 @@
       }
     }
   }
-  
+  .arrow {
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+  }
+  .arrow-up {
+    left: 50%;
+    transform: translateX(-50%);
+    animation: arrowUpMove 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  .arrow-down {
+    left: 50%;
+    bottom:0%;
+    transform: translateX(-50%);
+    animation: arrowDownMove 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    
+  }
 }
 
 @keyframes heroName {
@@ -623,7 +639,27 @@
   100% {
     transform: scale(1.1) translateY(2px);
   }
-} 
+}
+@keyframes arrowUpMove {
+  0% {
+    opacity: 0;
+    top: 20px
+  }
+  100% {
+    opacity: 1;
+    top: 0px;
+  }
+}
+@keyframes arrowDownMove {
+  0% {
+    opacity: 0;
+    bottom: 20px
+  }
+  100% {
+    opacity: 1;
+    bottom: 0px;
+  }
+}
 @media screen and (max-width: 1439px) {
   .page2 {
     .cloud2 {
@@ -739,6 +775,46 @@
       background: url("../assets/img/bj5.png") no-repeat center;
       background-size: cover;
       height: 530px;
+      position: relative;
+      .swiper-container {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        .swiper-slide {
+          text-align: center;
+          font-size: 18px;
+          background: transparent;
+          /* Center slide text vertically */
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          -webkit-align-items: center;
+          align-items: center;
+          width: 760px;
+          .swiper-slide-content {
+            width: 100%;
+            position: relative;
+            .video-img {
+              width: 100%;
+              display: block;
+            }
+            .play-img {
+              width: 80px;
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%);
+            }
+          }
+        }
+      }
     }
   }
   .footer {
