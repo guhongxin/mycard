@@ -12,8 +12,8 @@ const submitBtn:HTMLElement = document.querySelector("#submitBtn");
 let paymentMethod:string;
 let channelId: string;
 
-// const httpRequest = new Request("http://interface.18183g.top/interface/h5");
-const httpRequest = new Request("http://192.168.1.16:8091/interface/h5")
+const httpRequest = new Request("http://interface.18183g.top/interface/h5");
+// const httpRequest = new Request("http://192.168.1.16:8091/interface/h5")
 let submitBtnLoading:boolean = false; // 登录按钮等待状态
 
 function init() {

@@ -70,7 +70,6 @@ let channelId: string; //
     });
   },
   onApprove: function (data, actions) {
-    console.log("llll", data);
     let obj:any = {
       orderId: orderId
     };
@@ -87,13 +86,13 @@ let channelId: string; //
   }
 };
 const httpRequest = new Request(
-  // "http://interface.18183g.top/interface/h5/game",
-  "http://192.168.1.16:8091/interface/h5/game",
+  "http://interface.18183g.top/interface/h5/game",
+  // "http://192.168.1.16:8091/interface/h5/game",
   jwt
 ); // 请求
 const httpRequest1 = new Request(
-  "http://192.168.1.16:8091/interface/user-pay/paypal"
-  // "http://interface.18183g.top/interface/user-pay/paypal"
+  // "http://192.168.1.16:8091/interface/user-pay/paypal"
+  "http://interface.18183g.top/interface/user-pay/paypal"
 ); // 请求
 const httpRequest2 = new Request(
   "http://interface.18183g.top/interface/user-pay/razer"
@@ -348,10 +347,6 @@ function createncryption(param: any): string {
     total.push(item + "=" + param[item]);
     return total;
   }, []);
-  console.log(result.join("&"));
-  console.log(result.join("&") + md5(sign));
-  console.log("----",md5(md5(123123)))
-  console.log(md5(result.join("&") + md5(sign)));
   return md5(result.join("&") + md5(sign));
 }
 
@@ -416,8 +411,8 @@ function replacePalpayScript(currency) {
     btnBox.removeChild(paypalbuttoncontainer);
   }
   let paypalScriptUrl = paypalUrl(
-    "AQQb0039GJAgHsqzTX1QCC_waO7_eBHk5RIHWBVVM2i2eQU3mothZPId8-V_tm4cLJGxfwriAfoJhces",
-    // "ARUZtMVLoboHDijPhH-Rye-vdtd8R5ddNmaRQMMrquVECB_vxQq1VDUzATuB3auuD3W5rxaPkBrzT2kU",
+    // "AQQb0039GJAgHsqzTX1QCC_waO7_eBHk5RIHWBVVM2i2eQU3mothZPId8-V_tm4cLJGxfwriAfoJhces",
+    "ARUZtMVLoboHDijPhH-Rye-vdtd8R5ddNmaRQMMrquVECB_vxQq1VDUzATuB3auuD3W5rxaPkBrzT2kU",
     currency
   );
   let script = document.createElement("script");
