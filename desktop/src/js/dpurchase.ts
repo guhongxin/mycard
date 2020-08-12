@@ -365,10 +365,10 @@ function jzPayment(params: any) {
     .getfetch("/getOrderNo", params)
     .then(res => {
       console.log("res", res);
-      data.btnLoading = false;
       if (res.code === 200) {
         window.location.href = res.content;
       } else {
+        data.btnLoading = false;
         alert(res.content);
       }
     })
