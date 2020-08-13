@@ -433,17 +433,15 @@
   background: url("../assets/img/bj5.png") no-repeat center;
   .hero-infor {
     position: absolute;
-    width: 250px;
     min-height: 200px;
     top: 30px;
     left: 50px;
     z-index: 3;
     padding: 20px;
     box-sizing: border-box;
-    overflow: hidden;
     .hero-infor-title {
       color: #092635;
-      font-size: 30px;
+      font-size: 60px;
       font-family:Microsoft YaHei;
       font-weight: 400;
       letter-spacing: 3px;
@@ -504,21 +502,44 @@
     }
   }
   .hero-pictures {
-    width: 80%;
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
     z-index: 2;
     img {
-      width: 100%;
       display: block;
+      transition: all 1s linear;
+    }
+    .nezha {
+      margin: -979px 0px 0px -1170px;
+    }
+    .yangjian {
+      margin: -609px 0px 0px -920px;
+    }
+    .gonggong {
+      margin: -609px 0px 0px -920px;
+    }
+    .randenɡ {
+      margin: -776px 0px 0px -680px;
+    }
+    .suwukong {
+      margin: -755px 0px 0px -1170px;
+    }
+    .guhongniao {
+      margin: -960px 0px 0px -820px;
+    }
+    .mazu {
+      margin: -720px 0px 0px -966px;
+    }
+    .jiumaoming {
+      margin: -607px 0px 0px -816px;
     }
   }
   .hero-gallery {
     width: 400px;
     position: absolute;
-    right: 60px;
-    top: 50%;
+    right: 20px;
+    top: 40%;
     transform: translateY(-50%);
     display: flex;
     justify-content: space-between;
@@ -660,66 +681,19 @@
     bottom: 0px;
   }
 }
-@media screen and (max-width: 1439px) {
-  .page2 {
-    .cloud2 {
-      position: absolute;
-      height: 130px;
-    }
-    .checkpoint4 {
-      top: 18%;
-      left: 38%;
-    }
-    .checkpoint5 {
-      top: 36%;
-      left: 33%;
-    }
-    .checkpoint7 {
-      top: 4%;
-      left: 54%;
-    }
-    .checkpoint8 {
-      top: 21%;
-      left: 57%;
-    }
-    .checkpoint13 {
-      z-index: 5;
-    }
-    .description-box {
-      width: 300px;
-      .description-wz {
-        padding: 20px 10px;
-        p {
-          font-size: 16px;
-        }
-        .title {
-          font-size: 24px;
-        }
-        .hz-line {
-          width: 70%;
-          height: 1px;
-          background-color: #D2BDA4;
-          margin: 10px auto;
-        }
-      }
-    }
-  }
-}
 .page5 {
   background: url("../assets/img/bj5.png") no-repeat center;
   .page5-infor {
     position: absolute;
-    width: 250px;
     min-height: 200px;
     top: 30px;
     left: 50px;
     z-index: 3;
     padding: 20px;
     box-sizing: border-box;
-    overflow: hidden;
     .page5-infor-title {
       color: #092635;
-      font-size: 30px;
+      font-size: 60px;
       font-family:Microsoft YaHei;
       font-weight: 400;
       letter-spacing: 3px;
@@ -779,7 +753,6 @@
       .swiper-container {
         width: 100%;
         height: 100%;
-        position: absolute;
         .swiper-slide {
           text-align: center;
           font-size: 18px;
@@ -811,6 +784,7 @@
               left: 50%;
               top: 50%;
               transform: translate(-50%, -50%);
+              cursor: pointer;
             }
           }
         }
@@ -855,6 +829,76 @@
         box-sizing: border-box;
         list-style-type: square;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 1439px) {
+  .page2 {
+    .cloud2 {
+      position: absolute;
+      height: 130px;
+    }
+    .checkpoint4 {
+      top: 18%;
+      left: 38%;
+    }
+    .checkpoint5 {
+      top: 36%;
+      left: 33%;
+    }
+    .checkpoint7 {
+      top: 4%;
+      left: 54%;
+    }
+    .checkpoint8 {
+      top: 21%;
+      left: 57%;
+    }
+    .checkpoint13 {
+      z-index: 5;
+    }
+    .description-box {
+      width: 300px;
+      .description-wz {
+        padding: 20px 10px;
+        p {
+          font-size: 16px;
+        }
+        .title {
+          font-size: 24px;
+        }
+        .hz-line {
+          width: 70%;
+          height: 1px;
+          background-color: #D2BDA4;
+          margin: 10px auto;
+        }
+      }
+    }
+  }
+  .page3 {
+    .hero-infor {
+      .hero-infor-title {
+        font-size: 30px;
+      }
+    }
+  }
+  .page5 {
+    .page5-infor{
+      .page5-infor-title {
+        font-size: 30px;
+      }
+    }
+    .video-box {
+      .video-list {
+        height: 300px;
+        padding: 20px 0px;
+        box-sizing: border-box;
+      }
+    }
+    .footer {
+      bottom: 20px;
     }
   }
 }

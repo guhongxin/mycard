@@ -18,42 +18,58 @@ const heroData = [
   {
     name: "哪吒",
     type: require('../assets/img/ren.png'),
-    introduce: "灼烧队辅助"
+    introduce: "灼烧队辅助",
+    img: require('../assets/img/nezha1.png'),
+    className: "nezha"
   },
   {
     name: "杨戬",
     type: require('../assets/img/ren.png'),
-    introduce: "灼烧队辅助"
+    introduce: "灼烧队辅助",
+    img: require('../assets/img/yangjian1.png'),
+    className: "yangjian"
   },
   {
     name: "共工",
     type: require('../assets/img/yao.png'),
-    introduce: "永动队辅助"
+    introduce: "永动队辅助",
+    img: require('../assets/img/gonggong1.png'),
+    className: "gonggong"
   },
   {
     name: "燃灯",
     type: require('../assets/img/fo.png'),
-    introduce: "暴力队辅助"
+    introduce: "暴力队辅助",
+    img: require('../assets/img/randenɡ1.png'),
+    className: "randenɡ"
   },
   {
     name: "孙悟空",
     type: require('../assets/img/fo.png'),
-    introduce: "暴力队输出"
+    introduce: "暴力队输出",
+    img: require('../assets/img/suwukong1.png'),
+    className: "suwukong"
   },
   {
     name: "姑获鸟",
     type: require('../assets/img/yao.png'),
-    introduce: "永动队控制"
+    introduce: "永动队控制",
+    img: require('../assets/img/guhongniao1.png'),
+    className: "guhongniao"
   },
   {
     name: "妈祖",
     type: require('../assets/img/ren.png'),
-    introduce: "灼烧队输出"
+    introduce: "灼烧队输出",
+    img: require('../assets/img/mazu1.png'),
+    className: "mazu"
   },
   {
     name: "九命猫",
     type: require('../assets/img/yao.png'),
-    introduce: "永动队辅助"
+    introduce: "永动队辅助",
+    img: require('../assets/img/jiumaoming1.png'),
+    className: "jiumaoming"
   }
 ]
 const levelDescript = [{
@@ -125,6 +141,8 @@ function init() {
           createHeroInfor(0)
         } else {
           removeClass(heroName, "hero-name-move");
+          let heroImg:any = document.getElementById("hero-img");
+          heroImg.className = "";
         }
       }
     }
@@ -229,10 +247,13 @@ function createHeroInfor(index:number) {
   (document.querySelector(".hero-name .hero-name-txt") as any).innerHTML = heroData[index]["name"];
   (document.querySelector(".hero-name .introduce") as HTMLElement).innerHTML = heroData[index]["introduce"];
   let herotype:any = document.getElementById("herotype");
-  console.log(herotype)
+  let heroImg:any = document.getElementById("hero-img");
   herotype.src = heroData[index].type;
+  heroImg.src = heroData[index].img
+  heroImg.className = "";
   let timer = setTimeout(() => {
     heroName.classList.add("hero-name-move");
+    heroImg.classList.add(heroData[index].className);
     clearTimeout(timer)
   }, 50)
 }

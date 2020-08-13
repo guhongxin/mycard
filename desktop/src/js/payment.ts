@@ -145,7 +145,6 @@ function login(param:LoginParam) {
   if (!submitBtnLoading) {
     submitBtnLoading = true;
     httpRequest.postfetch(`/user/auth?username=${param.username}&password=${passwordMd5}`).then(res => {
-      submitBtnLoading = false;
       if (res.code === 0) {
         // 
         let data = res.data; 
@@ -155,6 +154,7 @@ function login(param:LoginParam) {
         sessionStorage.setItem("_channelId", data.channelId);
         location.href = `./dpurchase.html?paymentMethod=payPal&channelId=${data.channelId}`
       } else {
+        submitBtnLoading = false;
         alert(res.code)
       }
     }).catch(err => {

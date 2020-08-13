@@ -139,7 +139,6 @@ function login(param:LoginParam) {
   if (!submitBtnLoading) {
     submitBtnLoading = true;
     httpRequest.postfetch(`/user/auth?username=${param.username}&password=${passwordMd5}`).then(res => {
-      submitBtnLoading = false;
       if (res.code === 0) {
         //
         let country:string = getQueryVariable("country"); // 获取选中的国家
@@ -149,6 +148,7 @@ function login(param:LoginParam) {
         sessionStorage.setItem("userId", data.userId);
         location.href = `./dpurchase.html?country=${country}&paymentMethod=${paymentMethod}&channelId=${channelId}`
       } else {
+        submitBtnLoading = false;
         alert(res.code)
       }
     }).catch(err => {
