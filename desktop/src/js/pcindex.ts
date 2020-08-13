@@ -126,6 +126,7 @@ function init() {
   let swiper = new Swiper('.swiper-container-h', {
     direction: 'vertical',
     mousewheel: true,
+    threshold: 20,
     on: {
       slideChangeTransitionStart: function(){
         // 第三部分的时候禁用外面滚动

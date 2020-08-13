@@ -621,7 +621,18 @@
     bottom:0%;
     transform: translateX(-50%);
     animation: arrowDownMove 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-    
+  }
+  .ts-movelrt {
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    z-index: 9;
+    transform: translateX(-50%);
+    width: 100px;
+    img {
+      width: 100%;
+      display: block;
+    }
   }
 }
 
