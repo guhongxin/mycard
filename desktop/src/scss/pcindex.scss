@@ -844,6 +844,126 @@
   }
 }
 
+.page6 {
+  background: url("../assets/img/bj6.jpg") no-repeat center;
+  .page6-infor {
+    position: absolute;
+    min-height: 200px;
+    top: 30px;
+    left: 50px;
+    z-index: 3;
+    padding: 20px;
+    box-sizing: border-box;
+    .page6-infor-title {
+      color: #092635;
+      font-size: 60px;
+      font-family:Microsoft YaHei;
+      font-weight: 400;
+      letter-spacing: 3px;
+    }
+    .page6-infor-line {
+      margin: 10px 0px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .hz-line {
+        flex: 1;
+        height: 1px;
+        background-color: #092635;
+      }
+      .square1 {
+        width: 8px;
+        height: 8px;
+        border: 1px solid #092635;
+        transform: rotate(45deg);
+      }
+      .square2 {
+        width: 10px;
+        height: 10px;
+        background-color: #092635;
+        transform: rotate(45deg);
+        margin-left: 3px;
+      }
+    }
+  }
+  .video-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    #swiper2 {
+      .swiper-slide {
+        background: transparent;
+      }
+    }
+    .video-content {
+      .swiper-container-v2 {
+        width: 900px;
+        overflow: hidden;
+      }
+      .swiper-slide-content {
+        position: relative;
+        .video-img {
+          height: 400px;
+          display: block;
+        }
+        .play-img {
+          width: 40px;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .footer {
+    width: 800px;
+    box-sizing: border-box;
+    padding: 0px 10px;
+    background-color: #c0b6af;
+    border-radius: 5px;
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .footer-left {
+    width: 250px;
+    margin-right: 40px;
+    .kiwi-logo {
+      width: 100%;
+      display: block;
+    }
+  }
+  .footer-right {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    img{
+      height: 40px;
+    }
+    ul {
+      padding-inline-start: 20px;
+      li {
+        color: #ffffff;
+        font-size: 12px;
+        text-align: left;
+        padding: 2px 0px;
+        box-sizing: border-box;
+        list-style-type: square;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 1439px) {
   .page2 {
     .cloud2 {
@@ -895,21 +1015,20 @@
       }
     }
   }
-  .page5 {
-    .page5-infor{
-      .page5-infor-title {
+  .page6 {
+    .page6-infor{
+      .page6-infor-title {
         font-size: 30px;
-      }
-    }
-    .video-box {
-      .video-list {
-        height: 300px;
-        padding: 20px 0px;
-        box-sizing: border-box;
       }
     }
     .footer {
       bottom: 20px;
     }
   }
+}
+.video-box .swiper-button-prev {
+  left:-60px;
+}
+.video-box  .swiper-button-next {
+  right: -60px;
 }

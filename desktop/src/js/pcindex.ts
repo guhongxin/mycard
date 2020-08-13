@@ -156,15 +156,34 @@ function init() {
     slidesPerView: 'auto',
     freeMode: true
   });
+  // let swiper2 = new Swiper('.swiper-container-v2', {
+  //   direction: 'horizontal',
+  //   mousewheel: true,
+  //   slidesPerView : "auto",
+  //   spaceBetween: 10,
+  //   initialSlide: 1,
+  //   centeredSlides: true,
+  //   grabCursor: true,
+  //   centeredSlidesBounds: true
+  // });
   let swiper2 = new Swiper('.swiper-container-v2', {
-    direction: 'horizontal',
-    mousewheel: true,
-    slidesPerView : "auto",
-    spaceBetween: 10,
-    initialSlide: 1,
+    effect: 'coverflow',
+    slidesPerView: "auto",
     centeredSlides: true,
-    grabCursor: true,
-    centeredSlidesBounds: true
+    loop: true,
+    observer: true,
+    observeParents:true,
+    coverflowEffect: {
+      rotate: 0,
+      stretch: 10,
+      depth: 130,
+      modifier: 4,
+      slideShadows: false
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
   });
   // 支付点击事件
   recharge.addEventListener("click", function(e:any) {
