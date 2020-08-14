@@ -52,6 +52,8 @@
           <div class="indicator-icon indicator-noActive" data-swiper="switchSwiper" data-index="2"></div>
           <div class="vertical-line"></div>
           <div class="indicator-icon indicator-noActive" data-swiper="switchSwiper" data-index="3"></div>
+          <div class="vertical-line"></div>
+          <div class="indicator-icon indicator-noActive" data-swiper="switchSwiper" data-index="4"></div>
         </div>
       </li>
     </ul>
@@ -164,48 +166,59 @@
         </div>
         <div class="swiper-slide">
           <div class="box box3">
-            <div class="hero-img">
-              <img src="<%= require('../assets/img/box3-2.png') %>" class="hero-img-move" />
+            <div class="hero-img-box" id="heroImgBox">
+              
             </div>
             <div class="box3-title">
               人物展示
             </div>
-            <div class="hero-js">
-              <div class="hero-name">
-                <img src="<%= require('../assets/img/z_icon_fo.png') %>" />
-                <p>东陵圣母</p>
-              </div>
-              <div class="hero-js-txt">
-                东陵圣母介绍东陵圣母介绍
-              </div>
+            
+            <div id="heroParent">
             </div>
             <div class="hero-gallery">
               <div class="hero-gallery-item"></div>
               <div class="hero-gallery-item"></div>
-              <div class="hero-gallery-item">
-                <img src="<%= require('../assets/img/hero2.png') %>" data-gallery-img="img" data-gallery-index="1"/>
-              </div>
-              <div class="hero-gallery-item">
-                <img src="<%= require('../assets/img/hero1.png') %>" data-gallery-img="img" data-gallery-index="2"/>
-              </div>
               <div class="hero-gallery-item"></div>
               <div class="hero-gallery-item">
-                <img src="<%= require('../assets/img/hero4.png') %>" data-gallery-img="img" data-gallery-index="4"/>
+                <img src="<%= require('../assets/img/nezha.png') %>" data-gallery-img="img" data-gallery-index="0"/>
               </div>
               <div class="hero-gallery-item">
-                <img src="<%= require('../assets/img/hero3.png') %>" data-gallery-img="img" data-gallery-index="5"/>
+                <img src="<%= require('../assets/img/yangjian.png') %>" data-gallery-img="img" data-gallery-index="1"/>
               </div>
-              <div class="hero-gallery-item"></div>
-              <div class="hero-gallery-item">
-                <img src="<%= require('../assets/img/key.png') %>" data-gallery-img="img" data-gallery-index="5"/>
-              </div>
-              <div class="hero-gallery-item">
-                <img src="<%= require('../assets/img/key.png') %>" data-gallery-img="img" data-gallery-index="5"/>
-              </div>
+
               <div class="hero-gallery-item"></div>
               <div class="hero-gallery-item"></div>
               <div class="hero-gallery-item">
-                <img src="<%= require('../assets/img/key.png') %>" data-gallery-img="img" data-gallery-index="5"/>
+                <img src="<%= require('../assets/img/gonggong.png') %>" data-gallery-img="img" data-gallery-index="2"/>
+              </div>
+              <div class="hero-gallery-item">
+                <img src="<%= require('../assets/img/randenɡ.png') %>" data-gallery-img="img" data-gallery-index="3"/>
+              </div>
+              <div class="hero-gallery-item"></div>
+
+              
+              <div class="hero-gallery-item"></div>
+              <div class="hero-gallery-item">
+                <img src="<%= require('../assets/img/suwukong.png') %>" data-gallery-img="img" data-gallery-index="4"/>
+              </div>
+              <div class="hero-gallery-item">
+                <img src="<%= require('../assets/img/guhongniao.png') %>" data-gallery-img="img" data-gallery-index="5"/>
+              </div>
+              <div class="hero-gallery-item"></div>
+              <div class="hero-gallery-item"></div>
+              
+              <div class="hero-gallery-item">
+                <img src="<%= require('../assets/img/mazu.png') %>" data-gallery-img="img" data-gallery-index="6"/>
+              </div>
+              <div class="hero-gallery-item">
+                <img src="<%= require('../assets/img/jiumaoming.png') %>" data-gallery-img="img" data-gallery-index="7"/>
+              </div>
+              <div class="hero-gallery-item"></div>
+              <div class="hero-gallery-item"></div>
+              <div class="hero-gallery-item"></div>
+
+              <div class="hero-gallery-item">
+                <img src="<%= require('../assets/img/key.png') %>" data-gallery-img="img" data-lock="1" />
               </div>
             </div>
           </div>
@@ -214,6 +227,42 @@
           <div class="box box4">
             <div class="box4-img">
               <img src="<%= require('../assets/img/weapondisplay.jpg') %>"  height="100%"/>
+            </div>
+          </div>
+        </div>
+        <div  class="swiper-slide">
+          <div class="box box5">
+            <div class="box5-title">
+              游戏特色
+            </div>
+            <div class="box-content5">
+              <div class="swiper-container-v2" id="swiper2">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="swiper-slide-content">
+                      <img src="<%= require('../assets/img/video1.png') %>" class="video-img"/>
+                      <img src="<%= require('../assets/img/play.png') %>" class="play-img"/>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="swiper-slide-content">
+                      <img src="<%= require('../assets/img/video2.png') %>" class="video-img"/>
+                      <img src="<%= require('../assets/img/play.png') %>" class="play-img"/>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="swiper-slide-content">
+                      <img src="<%= require('../assets/img/video3.png') %>" class="video-img"/>
+                      <img src="<%= require('../assets/img/play.png') %>" class="play-img"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer">
+              <div class="footer-logo">
+                <img src="<%= require('../assets/img/hfooter.png') %>"/>
+              </div>
             </div>
           </div>
         </div>

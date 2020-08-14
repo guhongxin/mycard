@@ -52,12 +52,72 @@ $(function() {
     title: "危机之城·拾伍",
     text: ["妖临城下，御水之危", "人心惶惶，满城风雨", "阳城一笑，非我所念", "浪里孤舟，干城之将"]
   }]
+
+  const heroData = [
+    {
+      name: "哪吒",
+      type: require('../assets/img/ren.png'),
+      introduce: "灼烧队辅助",
+      img: require('../assets/img/nezha2.png'),
+      className: "nezha"
+    },
+    {
+      name: "杨戬",
+      type: require('../assets/img/ren.png'),
+      introduce: "灼烧队辅助",
+      img: require('../assets/img/yangjian2.png'),
+      className: "yangjian"
+    },
+    {
+      name: "共工",
+      type: require('../assets/img/yao.png'),
+      introduce: "永动队辅助",
+      img: require('../assets/img/gonggong2.png'),
+      className: "gonggong"
+    },
+    {
+      name: "燃灯",
+      type: require('../assets/img/fo.png'),
+      introduce: "暴力队辅助",
+      img: require('../assets/img/randenɡ2.png'),
+      className: "randenɡ"
+    },
+    {
+      name: "孙悟空",
+      type: require('../assets/img/fo.png'),
+      introduce: "暴力队输出",
+      img: require('../assets/img/suwukong2.png'),
+      className: "suwukong"
+    },
+    {
+      name: "姑获鸟",
+      type: require('../assets/img/yao.png'),
+      introduce: "永动队控制",
+      img: require('../assets/img/guhongniao2.png'),
+      className: "guhongniao"
+    },
+    {
+      name: "妈祖",
+      type: require('../assets/img/ren.png'),
+      introduce: "灼烧队输出",
+      img: require('../assets/img/mazu2.png'),
+      className: "mazu"
+    },
+    {
+      name: "九命猫",
+      type: require('../assets/img/yao.png'),
+      introduce: "永动队辅助",
+      img: require('../assets/img/jiumaoming2.png'),
+      className: "jiumaoming"
+    }
+  ]
+
   let data = {
     page: 1 // 当前页
   }
   function init() {
     // 初始化
-    // var vConsole = new VConsole();
+    var vConsole = new VConsole();
     swiper = new Swiper('.swiper-container-h', {
       direction: 'vertical',
       mousewheel: true,
@@ -65,23 +125,37 @@ $(function() {
         slideChangeTransitionStart: function(){
           // 第三部分的时候禁用外面滚动
           if (this.activeIndex === 3) {
-            this.mousewheel.disable()
+            this.mousewheel.disable();
           } else {
             if (!this.mousewheel.enabled) {
-              this.mousewheel.enable()
+              this.mousewheel.enable();
             }
           }
           pagination(this.activeIndex);
           if (this.activeIndex === 2) {
-            $(".hero-js").addClass("hero-js-move")
-            $(".hero-img img").addClass("hero-img-move")
+            createHeroInfor(0);
           } else {
-            $(".hero-js").removeClass("hero-js-move")
-            $(".hero-img img").removeClass("hero-img-move")
+            heroHidden();
           }
         }
       }
     });
+    let swiper2 = new Swiper('.swiper-container-v2', {
+      effect: 'coverflow',
+      slidesPerView: "auto",
+      centeredSlides: true,
+      loop: true,
+      observer: true,
+      observeParents:true,
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 10,
+        depth: 130,
+        modifier: 4,
+        slideShadows: false
+      }
+    })
+    createHeroInfor(0);
   }
   // 充值
   $("#recharge").click(function() {
@@ -123,4 +197,44 @@ $(function() {
       tump = value
     }
   })
+
+  $(".hero-gallery-item img").click(function() {
+    if (this.dataset.lock === "1") {
+      return false;
+    }
+    let index = Number(this.dataset.galleryIndex)
+    createHeroInfor(index);
+  })
+
+  function createHeroInfor(index) {
+    heroHidden();
+    // $("#herotype").attr("src", heroData[index].type);
+    // $(".hero-name-txt").text(heroData[index].name);
+    // $(".introduce").text(heroData[index].introduce);
+    heroDispaly(heroData[index]);
+  };
+
+  // 英雄显示
+  function heroDispaly(data) {
+    // $(".hero-js").addClass("");
+    let heroStr = '<div class="hero-js hero-js-move">'
+      + '<div class="hero-name">'
+      + '<img src="'+ data.type +'" id="herotype"/>'
+      + '<p class="hero-name-txt">'+ data.name +'</p>'
+      + '</div>'
+      + '<div class="introduce">'
+      + data.introduce
+      + '</div>'
+    + '</div>'
+    $("#heroParent").append(heroStr)
+    $("#heroImgBox").append('<img src="'+ data.img + '" id="hero-img" class="hero-img-move '+data.className+'" />')
+  };
+  // 英雄隐藏
+  function heroHidden() {
+    // $(".hero-js").removeClass("hero-js-move");
+    $("#heroParent").empty()
+    $("#hero-img").remove()
+  };
+
 })
+

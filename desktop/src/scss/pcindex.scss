@@ -508,31 +508,39 @@
     z-index: 2;
     img {
       display: block;
-      transition: all 1s linear;
+      transition: margin 1s linear;
     }
     .nezha {
-      margin: -979px 0px 0px -1170px;
+      margin: -1100px 0px 0px -1170px;
+      transform: scale(0.7);
     }
     .yangjian {
-      margin: -609px 0px 0px -920px;
+      transform: scale(0.8);
+      margin: -822px 0px 0px -920px;
     }
     .gonggong {
-      margin: -609px 0px 0px -920px;
+      transform: scale(0.8);
+      margin: -711px 0px 0px -920px;
     }
     .randenɡ {
-      margin: -776px 0px 0px -680px;
+      transform: scale(0.8);
+      margin: -915px 0px 0px -680px;
     }
     .suwukong {
-      margin: -755px 0px 0px -1170px;
+      transform: scale(0.8);
+      margin: -926px 0px 0px -1170px;
     }
     .guhongniao {
-      margin: -960px 0px 0px -820px;
+      transform: scale(0.8);
+      margin: -1075px 0px 0px -820px;
     }
     .mazu {
-      margin: -720px 0px 0px -966px;
+      transform: scale(0.8);
+      margin: -738px 0px 0px -966px;
     }
     .jiumaoming {
-      margin: -607px 0px 0px -816px;
+      transform: scale(0.8);
+      margin: -710px 0px 0px -816px;
     }
   }
   .hero-gallery {
