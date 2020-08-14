@@ -318,9 +318,8 @@
   border: 2px solid blue;
 }
 .box4 {
-  background-color: #000000;
-  overflow: hidden;
-  overflow-x: auto;
+  background: url("../assets/img/box3-1.png") no-repeat center;
+  background-size: cover;
 }
 .box4-img {
   width: 100%;
@@ -568,5 +567,55 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
+}
+.box4 .swiper-container-v {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+.box4 .swiper-container-v .swiper-slide {
+  position: relative;
+}
+.box4 .swiper-container-v  .swiper-slide .scroll-box {
+  width: 100%;
+}
+.box4 .swiper-container-v .swiper-slide .gif-box {
+  height: 80%;
+  position: absolute;
+  top: 50%;
+}
+.gif-box1 {
+  left: 40%;
+  transform: translate(-50%, -50%);
+}
+.gif-box3 {
+  left: 45%;
+  transform: translate(-50%, -50%);
+}
+.gif-box4 {
+  left: 45%;
+  transform: translate(-50%, -50%);
+}
+.gif-box5 {
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.gif-box6 {
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.gif-box8 {
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.gif-box9 {
+  left: 50%;
+  transform: translate(-40%, -50%);
+}
+.gif-box10 {
+  left: 40%;
   transform: translate(-50%, -50%);
 }

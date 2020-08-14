@@ -140,6 +140,12 @@ $(function() {
         }
       }
     });
+    let swiper1 = new Swiper('.swiper-container-v', {
+      direction: 'horizontal',
+      mousewheel: true,
+      slidesPerView: 'auto',
+      freeMode: true
+    });
     let swiper2 = new Swiper('.swiper-container-v2', {
       effect: 'coverflow',
       slidesPerView: "auto",
@@ -154,7 +160,7 @@ $(function() {
         modifier: 4,
         slideShadows: false
       }
-    })
+    });
     createHeroInfor(0);
   }
   // 充值
