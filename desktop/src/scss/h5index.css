@@ -180,6 +180,7 @@
 }
 .menu-ul-li {
   position: relative;
+  margin-left: 5px;
 }
 .menu-ul-li  a > img:first-child {
   display: block;
