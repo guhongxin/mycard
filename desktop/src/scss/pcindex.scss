@@ -630,6 +630,7 @@
       height: 100px;
       padding: 8px;
       box-sizing: border-box;
+      position: relative;
       img {
         height: 100%;
         display: block;
@@ -639,6 +640,7 @@
         border:2px solid blue;
       }
     }
+    
   }
 }
 .page4 {
@@ -661,17 +663,20 @@
       .gif-box1 {
         left: 20%;
       }
+      .gif-box2 {
+        left: 24%;
+      }
       .gif-box3 {
         left: 5%;
       }
       .gif-box4 {
-        left: 33%;
+        left: 3%;
       }
       .gif-box5 {
         left: 20%;
       }
       .gif-box6 {
-        left: -18%;
+        left: -6%;
       }
       .gif-box8 {
         left: 20%;

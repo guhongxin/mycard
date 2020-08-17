@@ -268,6 +268,15 @@ function createHeroInfor(index:number) {
   (document.querySelector(".hero-name .introduce") as HTMLElement).innerHTML = heroData[index]["introduce"];
   let herotype:any = document.getElementById("herotype");
   let heroImg:any = document.getElementById("hero-img");
+  let herogalleryItem:any = document.querySelectorAll(".hero-gallery-item img")
+  for (let i = 0; i < herogalleryItem.length; i++) {
+    if (i === index) {
+      herogalleryItem[i].style = ""
+    } else {
+      herogalleryItem[i].style = "filter: contrast(50%)"
+    }
+  }
+  console.log(herogalleryItem)
   herotype.src = heroData[index].type;
   heroImg.src = heroData[index].img
   heroImg.className = "";

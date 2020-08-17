@@ -214,15 +214,19 @@ $(function() {
 
   function createHeroInfor(index) {
     heroHidden();
-    // $("#herotype").attr("src", heroData[index].type);
-    // $(".hero-name-txt").text(heroData[index].name);
-    // $(".introduce").text(heroData[index].introduce);
+    let heroGalleryImg = $(".hero-gallery-item img")
+    for (let i = 0; i < heroGalleryImg.length; i++) {
+      if (i === index) {
+        heroGalleryImg[i].style = ""
+      } else {
+        heroGalleryImg[i].style = "filter: contrast(50%)"
+      }
+    }
     heroDispaly(heroData[index]);
   };
 
   // 英雄显示
   function heroDispaly(data) {
-    // $(".hero-js").addClass("");
     let heroStr = '<div class="hero-js hero-js-move">'
       + '<div class="hero-name">'
       + '<img src="'+ data.type +'" id="herotype"/>'
