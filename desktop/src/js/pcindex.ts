@@ -16,59 +16,59 @@ const checkpointDom:any = document.querySelectorAll(".page2 .checkpoint");
 // @ts-ignore
 const heroData = [
   {
-    name: "哪吒",
-    type: require('../assets/img/ren.png'),
-    introduce: "灼烧队辅助",
-    img: require('../assets/img/nezha1.png'),
+    name: "通天教主",
+    type: require('../assets/img/dao.png'),
+    introduce: "灼烧队输出",
+    img: require('../assets/img/hero1.png'),
     className: "nezha"
   },
   {
-    name: "杨戬",
-    type: require('../assets/img/ren.png'),
-    introduce: "灼烧队辅助",
-    img: require('../assets/img/yangjian1.png'),
+    name: "太阴星君",
+    type: require('../assets/img/dao.png'),
+    introduce: "灼烧队输出",
+    img: require('../assets/img/hero2.png'),
     className: "yangjian"
   },
   {
-    name: "共工",
-    type: require('../assets/img/yao.png'),
-    introduce: "永动队辅助",
-    img: require('../assets/img/gonggong1.png'),
+    name: "净光天女",
+    type: require('../assets/img/fo.png'),
+    introduce: "灼烧队输出",
+    img: require('../assets/img/hero3.png'),
     className: "gonggong"
   },
   {
-    name: "燃灯",
+    name: "金翅大鹏",
     type: require('../assets/img/fo.png'),
-    introduce: "暴力队辅助",
-    img: require('../assets/img/randenɡ1.png'),
+    introduce: "灼烧队输出",
+    img: require('../assets/img/hero4.png'),
     className: "randenɡ"
   },
   {
-    name: "孙悟空",
-    type: require('../assets/img/fo.png'),
-    introduce: "暴力队输出",
-    img: require('../assets/img/suwukong1.png'),
+    name: "百花仙子",
+    type: require('../assets/img/yao.png'),
+    introduce: "灼烧队输出",
+    img: require('../assets/img/hero5.png'),
     className: "suwukong"
   },
   {
-    name: "姑获鸟",
+    name: "精卫",
     type: require('../assets/img/yao.png'),
-    introduce: "永动队控制",
-    img: require('../assets/img/guhongniao1.png'),
+    introduce: "灼烧队输出",
+    img: require('../assets/img/hero6.png'),
     className: "guhongniao"
   },
   {
-    name: "妈祖",
+    name: "慈航道人",
     type: require('../assets/img/ren.png'),
     introduce: "灼烧队输出",
-    img: require('../assets/img/mazu1.png'),
+    img: require('../assets/img/hero7.png'),
     className: "mazu"
   },
   {
-    name: "九命猫",
-    type: require('../assets/img/yao.png'),
-    introduce: "永动队辅助",
-    img: require('../assets/img/jiumaoming1.png'),
+    name: "蚩尤",
+    type: require('../assets/img/ren.png'),
+    introduce: "灼烧队输出",
+    img: require('../assets/img/hero8.png'),
     className: "jiumaoming"
   }
 ]
@@ -142,8 +142,9 @@ function init() {
           createHeroInfor(0)
         } else {
           removeClass(heroName, "hero-name-move");
-          let heroImg:any = document.getElementById("hero-img");
-          heroImg.className = "";
+          let heropictures:any = document.getElementById("heropictures");
+          heropictures.innerHTML = ""
+          // heroImg.className = "";
         }
       }
     }
@@ -267,7 +268,8 @@ function createHeroInfor(index:number) {
   (document.querySelector(".hero-name .hero-name-txt") as any).innerHTML = heroData[index]["name"];
   (document.querySelector(".hero-name .introduce") as HTMLElement).innerHTML = heroData[index]["introduce"];
   let herotype:any = document.getElementById("herotype");
-  let heroImg:any = document.getElementById("hero-img");
+  // let heroImg:any = document.getElementById("hero-img");
+  let heropictures:any = document.getElementById("heropictures");
   let herogalleryItem:any = document.querySelectorAll(".hero-gallery-item img")
   for (let i = 0; i < herogalleryItem.length; i++) {
     if (i === index) {
@@ -276,15 +278,22 @@ function createHeroInfor(index:number) {
       herogalleryItem[i].style = "filter: contrast(50%)"
     }
   }
-  console.log(herogalleryItem)
   herotype.src = heroData[index].type;
-  heroImg.src = heroData[index].img
-  heroImg.className = "";
-  let timer = setTimeout(() => {
-    heroName.classList.add("hero-name-move");
-    heroImg.classList.add(heroData[index].className);
-    clearTimeout(timer)
-  }, 50)
+  heropictures.className = "";
+  heropictures.innerHTML = "";
+  let timer1 = setTimeout(() => {
+    heropictures.className = "hero-pictures";
+    heropictures.innerHTML = "";
+    let timer = setTimeout(() => {
+      heroName.classList.add("hero-name-move");
+      heropictures.innerHTML = '<img src="'+ heroData[index].img +'"/>'
+      heropictures.classList.add(heroData[index].className)
+      clearTimeout(timer)
+    }, 50)
+    clearTimeout(timer1)
+  })
+
+  
 }
 
 init();
