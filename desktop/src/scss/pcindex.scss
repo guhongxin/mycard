@@ -1,3 +1,7 @@
+@font-face {
+  font-family: mm;
+  src: url(../assets/font/TTZhiLiJ.ttf);
+}
 .box {
   position: relative;
 }
@@ -569,6 +573,11 @@
       margin-top: 10px;
       color: #092635;
       text-align: left;
+      writing-mode: vertical-rl;
+      height: 200px;
+      line-height: 28px;
+      padding-left: 40px;
+      font-family: mm;
     }
   }
   .hero-pictures {
