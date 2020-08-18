@@ -582,45 +582,45 @@
     }
   }
   .nezha {
-    bottom: 30%;
-    right: 50%;
-    transform: translate(50%, 50%) scale(1.5);
-  }
-  .yangjian {
     bottom: 20%;
     right: 50%;
-    transform: translate(50%, 50%) scale(1.5);
+    transform: translate(50%, 50%) scale(0.8);
+  }
+  .yangjian {
+    bottom: 10%;
+    right: 50%;
+    transform: translate(50%, 50%) scale(0.8);
   }
   .gonggong {
-    bottom: 40%;
+    bottom: 30%;
     right: 50%;
-    transform: translate(50%, 50%) scale(1.5);
+    transform: translate(50%, 50%) scale(0.8);
   }
   .randenɡ {
     bottom: 30%;
     right: 50%;
-    transform: translate(50%, 50%) scale(1.5);
+    transform: translate(50%, 50%) scale(0.9);
   }
   .suwukong {
     bottom: 35%;
     right: 50%;
-    transform: translate(50%, 50%) scale(1.5);
+    transform: translate(50%, 50%) scale(0.9);
 
   }
   .guhongniao {
     bottom: 30%;
     right: 50%;
-    transform: translate(50%, 50%) scale(1.5);
+    transform: translate(50%, 50%) scale(0.9);
   }
   .mazu {
     bottom: 50%;
     right: 50%;
-    transform: translate(50%, 60%) scale(0.8);
+    transform: translate(50%, 60%) scale(0.9);
   }
   .jiumaoming {
     bottom: 30%;
     right: 50%;
-    transform: translate(50%, 50%) scale(1.5);
+    transform: translate(50%, 50%) scale(0.9);
   }
   .hero-gallery {
     width: 400px;
@@ -1120,10 +1120,74 @@
       bottom: 20px;
     }
   }
+  .page4 {
+    .page4-infor{
+      .page4-infor-title {
+        font-size: 30px;
+      }
+    }
+    .footer {
+      bottom: 20px;
+    }
+  }
 }
 .video-box .swiper-button-prev {
   left:-60px;
 }
+.video-box .swiper-button-prev::after {
+  content: "";
+  width: 60px;
+  height: 60px;
+  background: url("../assets/img/left.png") no-repeat center;
+  background-size: cover;
+}
 .video-box  .swiper-button-next {
   right: -60px;
+}
+.video-box  .swiper-button-next::after {
+  content: "";
+  width: 60px;
+  height: 60px;
+  background: url("../assets/img/right.png") no-repeat center;
+  background-size: cover;
+}
+.page4-infor {
+  position: absolute;
+  min-height: 200px;
+  top: 30px;
+  left: 14%;
+  z-index: 3;
+  padding: 20px;
+  box-sizing: border-box;
+  .page4-infor-title {
+    color: #F4C280;
+    font-size: 60px;
+    font-family:Microsoft YaHei;
+    font-weight: 400;
+    letter-spacing: 3px;
+  }
+  .page4-infor-line {
+    margin: 10px 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .hz-line {
+      flex: 1;
+      height: 1px;
+      background-color: #F4C280;
+    }
+    .square1 {
+      width: 8px;
+      height: 8px;
+      border: 1px solid #F4C280;
+      transform: rotate(45deg);
+    }
+    .square2 {
+      width: 10px;
+      height: 10px;
+      background-color: #F4C280;
+      transform: rotate(45deg);
+      margin-left: 3px;
+    }
+  }
 }
