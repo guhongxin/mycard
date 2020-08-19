@@ -486,28 +486,28 @@
   }
 }
 .nezha {
-  transform: scale(1.2) translateX(-8vw);
+  transform: translate(-10vw, 10vh);
 }
 .yangjian {
-  transform: scale(1.1) translate(-8vw, 4vh);
+  transform: translate(-20vw, 8vh);
 }
 .gonggong {
-  transform: scale(0.9) translateX(-30vw);
+  transform: translate(-19vw, 10vh);
 }
 .randenɡ {
-  transform: scale(1.02) translate(-6vw, 2vh);
+  transform:translate(-20vw, 2vh);
 }
 .suwukong {
-  transform: scale(1.1) translate(-6vw, 2vh);
+  transform:translate(-18vw, 10vh);
 }
 .guhongniao {
-  transform: scale(1.1) translate(-6vw, 0vh);
+  transform:translate(-20vw, 5vh);
 }
 .mazu {
-  transform: scale(1) translate(-20vw, 5vh);
+  transform:translate(-13vw, 10vh);
 }
 .jiumaoming {
-  transform: scale(1) translate(-20vw, 8vh);
+  transform:translate(-26vw, 8vh);
 }
 .box5 {
   background: url("../assets/img/hbj5.png") no-repeat center;
@@ -593,12 +593,16 @@
   left: 40%;
   transform: translate(-50%, -50%);
 }
+.gif-box2 {
+  left: 55%;
+  transform: translate(-50%, -50%);
+}
 .gif-box3 {
-  left: 45%;
+  left: 37%;
   transform: translate(-50%, -50%);
 }
 .gif-box4 {
-  left: 45%;
+  left: 32%;
   transform: translate(-50%, -50%);
 }
 .gif-box5 {
@@ -609,15 +613,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.gif-box8 {
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.gif-box9 {
-  left: 50%;
-  transform: translate(-40%, -50%);
-}
-.gif-box10 {
-  left: 40%;
+.gif-box7 {
+  left: 30%;
   transform: translate(-50%, -50%);
 }

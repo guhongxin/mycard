@@ -55,59 +55,59 @@ $(function() {
 
   const heroData = [
     {
-      name: "哪吒",
-      type: require('../assets/img/ren.png'),
-      introduce: "灼烧队辅助",
-      img: require('../assets/img/nezha2.png'),
+      name: "通天教主",
+      type: require('../assets/img/dao.png'),
+      introduce: "截教教主，居于碧游宫，称混元大罗金仙，是为圣人。被鸿钧老祖赐予诛仙四剑，掌杀伐之事，又得到混元金斗先天灵宝",
+      img: require('../assets/img/hero1.png'),
       className: "nezha"
     },
     {
-      name: "杨戬",
-      type: require('../assets/img/ren.png'),
-      introduce: "灼烧队辅助",
-      img: require('../assets/img/yangjian2.png'),
+      name: "太阴星君",
+      type: require('../assets/img/dao.png'),
+      introduce: "月之女神。上古时期三皇五帝之一帝喾的女儿，美貌非凡。与后羿结为夫妻，后升天住于月宫，成为月宫之母。",
+      img: require('../assets/img/hero2.png'),
       className: "yangjian"
     },
     {
-      name: "共工",
-      type: require('../assets/img/yao.png'),
-      introduce: "永动队辅助",
-      img: require('../assets/img/gonggong2.png'),
+      name: "净光天女",
+      type: require('../assets/img/fo.png'),
+      introduce: "曾在灯佛那里听过大涅盘经，由此因缘释迦佛在世时生为净光天女。受持五戒，守护正法，摧伏外道各种邪见",
+      img: require('../assets/img/hero3.png'),
       className: "gonggong"
     },
     {
-      name: "燃灯",
+      name: "金翅大鹏",
       type: require('../assets/img/fo.png'),
-      introduce: "暴力队辅助",
-      img: require('../assets/img/randenɡ2.png'),
+      introduce: "走兽以麒麟为之长，飞禽以凤凰为之长。交合之气，育生孔雀与大鹏。如来将其安置于灵山之上，修成六丈金身",
+      img: require('../assets/img/hero4.png'),
       className: "randenɡ"
     },
     {
-      name: "孙悟空",
-      type: require('../assets/img/fo.png'),
-      introduce: "暴力队输出",
-      img: require('../assets/img/suwukong2.png'),
+      name: "百花仙子",
+      type: require('../assets/img/yao.png'),
+      introduce: "传说中的神仙，担任最美丽的任务，管理天上人间花卉，并统领白花之王。负责百花的开放、衰败、香味等所有事务",
+      img: require('../assets/img/hero5.png'),
       className: "suwukong"
     },
     {
-      name: "姑获鸟",
+      name: "精卫",
       type: require('../assets/img/yao.png'),
-      introduce: "永动队控制",
-      img: require('../assets/img/guhongniao2.png'),
+      introduce: "炎帝最小女儿，后化为精卫后住发鸠山。形状与乌鸦相似，但头部有花纹。常用嘴夹小碎石，去填东海。",
+      img: require('../assets/img/hero6.png'),
       className: "guhongniao"
     },
     {
-      name: "妈祖",
+      name: "慈航道人",
       type: require('../assets/img/ren.png'),
-      introduce: "灼烧队输出",
-      img: require('../assets/img/mazu2.png'),
+      introduce: "天生至孝纯真，后被女娲娘娘安置于玄都洞八景宫太上老君之处，并传她千手千眼之术，被封为十二金仙之一。",
+      img: require('../assets/img/hero7.png'),
       className: "mazu"
     },
     {
-      name: "九命猫",
-      type: require('../assets/img/yao.png'),
-      introduce: "永动队辅助",
-      img: require('../assets/img/jiumaoming2.png'),
+      name: "蚩尤",
+      type: require('../assets/img/ren.png'),
+      introduce: "人身牛蹄，四目六手，耳鬓如剑戟，铜头铁额，刀枪不入。与诸神杀天昏地暗，黄帝不能力敌，后被尊为兵主，即战争之神。",
+      img: require('../assets/img/hero8.png'),
       className: "jiumaoming"
     }
   ]
@@ -231,9 +231,6 @@ $(function() {
       + '<div class="hero-name">'
       + '<img src="'+ data.type +'" id="herotype"/>'
       + '<p class="hero-name-txt">'+ data.name +'</p>'
-      + '</div>'
-      + '<div class="introduce">'
-      + data.introduce
       + '</div>'
     + '</div>'
     $("#heroParent").append(heroStr)
