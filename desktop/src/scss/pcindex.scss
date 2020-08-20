@@ -101,80 +101,10 @@
 .page2 {
   background-image: url("../assets/img/bj2.jpg");
   background-size: 100% 100%;
-  .page-infor {
-    position: absolute;
-    min-height: 200px;
-    top: 30px;
-    left: 50px;
-    z-index: 3;
-    padding: 20px;
-    box-sizing: border-box;
-    .page-infor-title {
-      color: #F5C381;
-      font-size: 60px;
-      font-family:Microsoft YaHei;
-      font-weight: 400;
-      letter-spacing: 3px;
-    }
-    .page-infor-line {
-      margin: 10px 0px;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      .hz-line {
-        flex: 1;
-        height: 1px;
-        background-color: #F5C381;
-      }
-      .square1 {
-        width: 8px;
-        height: 8px;
-        border: 1px solid #F5C381;
-        transform: rotate(45deg);
-      }
-      .square2 {
-        width: 10px;
-        height: 10px;
-        background-color: #F5C381;
-        transform: rotate(45deg);
-        margin-left: 3px;
-      }
-    }
-    .hero-name {
-      padding: 0px 20px;
-      position: absolute;
-      left: -300px;
-      text-align: left;
-      box-sizing: border-box;
-      img {
-        width: 40px;
-        vertical-align: middle;
-      }
-      .hero-name-txt {
-        color: #092635;
-        font-size: 26px;
-        font-family:Microsoft YaHei;
-        font-weight: 400;
-        vertical-align: middle;
-        display: inline-block;
-      }
-    }
-    .hero-name-move {
-      transition: all 500ms linear;
-      transform: translateX(300px);
-    }
-    .introduce {
-      position: absolute;
-      margin-top: 10px;
-      color: #092635;
-      text-align: left;
-    }
-  }
   .cloud {
     width: 100%;
     opacity: 0.7;
     display: block;
-   
   }
   .cloud1 {
     position: absolute;
@@ -513,11 +443,15 @@
     padding: 20px;
     box-sizing: border-box;
     .hero-infor-title {
-      color: #092635;
       font-size: 60px;
       font-family:Microsoft YaHei;
       font-weight: 400;
       letter-spacing: 3px;
+      color: transparent;
+      -webkit-line-clamp: 2;
+      background:linear-gradient(0deg,rgba(9,38,52,1) 0.1220703125%, rgba(29,67,90,1) 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
     }
     .hero-infor-line {
       margin: 10px 0px;
@@ -795,46 +729,6 @@
 }
 .page5 {
   background: url("../assets/img/bj5.png") no-repeat center;
-  .page5-infor {
-    position: absolute;
-    min-height: 200px;
-    top: 30px;
-    left: 50px;
-    z-index: 3;
-    padding: 20px;
-    box-sizing: border-box;
-    .page5-infor-title {
-      color: #092635;
-      font-size: 60px;
-      font-family:Microsoft YaHei;
-      font-weight: 400;
-      letter-spacing: 3px;
-    }
-    .page5-infor-line {
-      margin: 10px 0px;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      .hz-line {
-        flex: 1;
-        height: 1px;
-        background-color: #092635;
-      }
-      .square1 {
-        width: 8px;
-        height: 8px;
-        border: 1px solid #092635;
-        transform: rotate(45deg);
-      }
-      .square2 {
-        width: 10px;
-        height: 10px;
-        background-color: #092635;
-        transform: rotate(45deg);
-        margin-left: 3px;
-      }
-    }
-  }
   .video-box {
     width: 100%;
     position: absolute;
@@ -947,46 +841,6 @@
 
 .page6 {
   background: url("../assets/img/bj6.jpg") no-repeat center;
-  .page6-infor {
-    position: absolute;
-    min-height: 200px;
-    top: 30px;
-    left: 50px;
-    z-index: 3;
-    padding: 20px;
-    box-sizing: border-box;
-    .page6-infor-title {
-      color: #092635;
-      font-size: 60px;
-      font-family:Microsoft YaHei;
-      font-weight: 400;
-      letter-spacing: 3px;
-    }
-    .page6-infor-line {
-      margin: 10px 0px;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      .hz-line {
-        flex: 1;
-        height: 1px;
-        background-color: #092635;
-      }
-      .square1 {
-        width: 8px;
-        height: 8px;
-        border: 1px solid #092635;
-        transform: rotate(45deg);
-      }
-      .square2 {
-        width: 10px;
-        height: 10px;
-        background-color: #092635;
-        transform: rotate(45deg);
-        margin-left: 3px;
-      }
-    }
-  }
   .video-box {
     position: absolute;
     top: 50%;
@@ -1065,7 +919,101 @@
   }
 }
 
+
+.video-box .swiper-button-prev {
+  left:-60px;
+}
+.video-box .swiper-button-prev::after {
+  content: "";
+  width: 60px;
+  height: 60px;
+  background: url("../assets/img/left.png") no-repeat center;
+  background-size: cover;
+}
+.video-box  .swiper-button-next {
+  right: -60px;
+}
+.video-box  .swiper-button-next::after {
+  content: "";
+  width: 60px;
+  height: 60px;
+  background: url("../assets/img/right.png") no-repeat center;
+  background-size: cover;
+}
+.box-head {
+  position: absolute;
+  min-height: 200px;
+  top: 30px;
+  left: 50px;
+  z-index: 3;
+  padding: 20px;
+  box-sizing: border-box;
+  .box-title {
+    color: #F5C381;
+    font-size: 60px;
+    font-family:Microsoft YaHei;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: transparent;
+  }
+  .box-title-color1 {
+    -webkit-line-clamp: 2;
+    background:linear-gradient(0deg,rgba(245,193,129,1) 0.1220703125%, rgba(255,244,186,1) 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .box-title-color2 {
+    color: transparent;
+    -webkit-line-clamp: 2;
+    background:linear-gradient(0deg,rgba(9,38,52,1) 0.1220703125%, rgba(29,67,90,1) 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .hero-infor-line {
+    margin: 10px 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .hz-line {
+      flex: 1;
+      height: 1px;
+      background:linear-gradient(0deg,rgba(245,193,129,1) 0.1220703125%, rgba(255,244,186,1) 100%);
+    }
+    .hz-line-color2 {
+      background:linear-gradient(0deg,rgba(9,38,52,1) 0.1220703125%, rgba(29,67,90,1) 100%);
+    }
+    .square1 {
+      width: 8px;
+      height: 8px;
+      border: 1px solid;
+      border-color: rgba(245,193,129,1);
+      transform: rotate(45deg);
+    }
+    .square1-color2 {
+      border-color:rgba(9,38,52,1);
+    }
+    .square2 {
+      width: 10px;
+      height: 10px;
+      background: linear-gradient(0deg,rgba(245,193,129,1) 0.1220703125%, rgba(255,244,186,1) 100%);
+      transform: rotate(45deg);
+      margin-left: 3px;
+    }
+    .square2-color2 {
+      background: linear-gradient(0deg,rgba(9,38,52,1) 0.1220703125%, rgba(29,67,90,1) 100%);
+    }
+  }
+}
+.box-head-wz1 {
+  left: 160px;
+}
 @media screen and (max-width: 1439px) {
+  .box-head .box-title {
+    font-size: 30px;
+  }
+  .box-head-wz1 {
+    left: 100px;
+  }
   .page2 {
     .cloud2 {
       position: absolute;
@@ -1117,83 +1065,13 @@
     }
   }
   .page6 {
-    .page6-infor{
-      .page6-infor-title {
-        font-size: 30px;
-      }
-    }
     .footer {
       bottom: 20px;
     }
   }
   .page4 {
-    .page4-infor{
-      .page4-infor-title {
-        font-size: 30px;
-      }
-    }
     .footer {
       bottom: 20px;
-    }
-  }
-}
-.video-box .swiper-button-prev {
-  left:-60px;
-}
-.video-box .swiper-button-prev::after {
-  content: "";
-  width: 60px;
-  height: 60px;
-  background: url("../assets/img/left.png") no-repeat center;
-  background-size: cover;
-}
-.video-box  .swiper-button-next {
-  right: -60px;
-}
-.video-box  .swiper-button-next::after {
-  content: "";
-  width: 60px;
-  height: 60px;
-  background: url("../assets/img/right.png") no-repeat center;
-  background-size: cover;
-}
-.page4-infor {
-  position: absolute;
-  min-height: 200px;
-  top: 30px;
-  left: 14%;
-  z-index: 3;
-  padding: 20px;
-  box-sizing: border-box;
-  .page4-infor-title {
-    color: #F4C280;
-    font-size: 60px;
-    font-family:Microsoft YaHei;
-    font-weight: 400;
-    letter-spacing: 3px;
-  }
-  .page4-infor-line {
-    margin: 10px 0px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    .hz-line {
-      flex: 1;
-      height: 1px;
-      background-color: #F4C280;
-    }
-    .square1 {
-      width: 8px;
-      height: 8px;
-      border: 1px solid #F4C280;
-      transform: rotate(45deg);
-    }
-    .square2 {
-      width: 10px;
-      height: 10px;
-      background-color: #F4C280;
-      transform: rotate(45deg);
-      margin-left: 3px;
     }
   }
 }
