@@ -43,11 +43,12 @@ let channelId: string; //
   createOrder: function (data, actions) {
     let _characterNameIndex = characterName.selectedIndex;
     let _amountIndex = amount.selectedIndex;
+    let _character = characterName.value.split("-");
     let obj:any = {
-      appId: sessionStorage.getItem('appId'),
+      appId:  _character[1],
       userId: sessionStorage.getItem('userId'),
       channelId: channelId,
-      consumerId: characterName.value, // playerId
+      consumerId: _character[0], // playerId
       consumerName: characterName.options[_characterNameIndex].text, // playerId
       orderDetail: amount.options[_amountIndex].text, // amount id
       productId: amount.value,
@@ -185,12 +186,12 @@ function init(): void {
     // 监听服务器列表下拉change
     amount.innerHTML = ""; // 复位道具
     getCharacterList(this.value).then((res: any) => {
-      createOptionDom(characterName, res, "playerId", "intro");
+      createOptionDom1(characterName, res, "playerId", "intro");
     });
   });
   // 币种 change 是否选中角色，如果选中请求充值道具未选中不请求
   gameCurrency.addEventListener("change", function () {
-    let playerId: string = characterName.value;
+    let playerId: string = characterName.value.split("-")[0];
     if (playerId) {
       let serverId: string = server.value;
       let obj = {
@@ -303,6 +304,19 @@ function createOptionDom(
   }, "<option style='display: none'></option>");
   dom.innerHTML = result;
 }
+// 创建select option
+function createOptionDom1(
+  dom: HTMLElement,
+  options: Array<any>,
+  valKey,
+  textkey
+) {
+  let result = options.reduce((total, itme) => {
+    total += `<option value ="${itme[valKey]}-${itme['appId']}">${itme[textkey]}</option>`;
+    return total;
+  }, "<option style='display: none'></option>");
+  dom.innerHTML = result;
+}
 
 // 创建amount option
 function createAmountOptionDom(dom: HTMLElement, options: Array<any>) {
@@ -321,12 +335,13 @@ function submit() {
       if (!data.btnLoading) {
         let _characterNameIndex = characterName.selectedIndex;
         let _amountIndex = amount.selectedIndex;
+        let _character = characterName.value.split("-");
         let obj: any = {
-          appId: sessionStorage.getItem("appId"),
+          appId: _character[1],
           channelId: channelId,
           userId: sessionStorage.getItem("userId"),
           serverId: server.value,
-          playerId: characterName.value, // playerId
+          playerId: _character[0], // playerId
           currencyCode: gameCurrency.value, // 币种
           roleName: characterName.options[_characterNameIndex].text, // playerId
           description: amount.options[_amountIndex].text, // amount id
