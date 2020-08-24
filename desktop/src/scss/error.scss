@@ -1,0 +1,16 @@
+.box {
+  width: 100%;
+  height: 100vh;
+  background: url("../assets/img/error2.jpg") no-repeat center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.result {
+  width: 550px;
+  max-width: 550px;
+  height: 400px;
+  background: url("../assets/img/error1.png") no-repeat center;
+  background-size: contain;
+}

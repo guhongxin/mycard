@@ -78,10 +78,10 @@ let channelId: string; //
     obj.sign = hash
     return  httpRequest1.getfetch("/approve", obj).then(res => {
       if (res.code === 200) {
-        alert("支付成功")
-        location.href = "./index.html"
+        location.href = "./success.html"
       } else {
         alert(res.code)
+        location.href = "./error.html"
       }
     })
   }
@@ -385,6 +385,7 @@ function jzPayment(params: any) {
       } else {
         data.btnLoading = false;
         alert(res.content);
+        window.location.href = "./error.html"
       }
     })
     .catch(() => {
