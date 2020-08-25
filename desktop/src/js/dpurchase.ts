@@ -427,8 +427,8 @@ function replacePalpayScript(currency) {
     btnBox.removeChild(paypalbuttoncontainer);
   }
   let paypalScriptUrl = paypalUrl(
-    "AQQb0039GJAgHsqzTX1QCC_waO7_eBHk5RIHWBVVM2i2eQU3mothZPId8-V_tm4cLJGxfwriAfoJhces",
-    // "ARUZtMVLoboHDijPhH-Rye-vdtd8R5ddNmaRQMMrquVECB_vxQq1VDUzATuB3auuD3W5rxaPkBrzT2kU",
+    // "AQQb0039GJAgHsqzTX1QCC_waO7_eBHk5RIHWBVVM2i2eQU3mothZPId8-V_tm4cLJGxfwriAfoJhces",
+    "ARUZtMVLoboHDijPhH-Rye-vdtd8R5ddNmaRQMMrquVECB_vxQq1VDUzATuB3auuD3W5rxaPkBrzT2kU",
     currency
   );
   let script = document.createElement("script");
