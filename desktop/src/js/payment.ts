@@ -155,7 +155,18 @@ function login(param:LoginParam) {
         location.href = `./dpurchase.html?paymentMethod=payPal&channelId=${data.channelId}`
       } else {
         submitBtnLoading = false;
-        alert(res.code)
+        let lang = navigator.language || (navigator as any).userLanguage;
+        let msg = {}
+        if (['ms', 'zh-CN'].indexOf(lang) !== -1) {
+          msg = {
+            "5": "用户名或者密码错误，请重新输入！"
+          }
+        } else {
+          msg = {
+            "5": 5
+          }
+        }
+        alert(msg[res.code])
       }
     }).catch(err => {
       console.log("err", err)
