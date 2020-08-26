@@ -224,6 +224,10 @@ function init(): void {
       createAmountOptionDom(amount, res);
     });
   });
+  document.getElementById("goOut").addEventListener("click", function() {
+    sessionStorage.removeItem("jwt")
+    window.location.href = "./payment.html"
+  });
 }
 init();
 
@@ -236,7 +240,7 @@ function getServerList() {
         if (res.code === 0) {
           resolve(res.data);
         } else {
-          alert(res.message);
+          // alert(res.message);
         }
       })
       .catch(error => reject(error));
@@ -254,7 +258,7 @@ function getCharacterList(serverId: string) {
         if (res.code === 0) {
           resolve(res.data);
         } else {
-          alert(res.message);
+          // alert(res.message);
         }
       })
       .catch(error => reject(error));
@@ -285,7 +289,7 @@ function getitemsList(param: ItemRequestParam) {
         if (res.code === 0) {
           resolve(res.data);
         } else {
-          alert(res.message);
+          // alert(res.message);
         }
       })
       .catch(error => reject(error));
