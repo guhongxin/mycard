@@ -109,8 +109,17 @@ function init(): void {
   let country = getQueryVariable("country");
   // 国际是否存在，存在走俊忠支付，否则走payPa来支付
   
-  let _currency: any = country ? currency[channelId] : currency["0"];
-
+  // let _currency: any = country ? currency[channelId] : currency["0"];
+  let _currency: any;
+  let countryMoney = {
+    Malaysia: "MYR",
+    Singapore: "SGD"
+  }
+  if (!country) {
+    _currency = currency["0"];
+  } else {
+    _currency = [countryMoney[country]];
+  }
   // 生成币种下拉
   let currencyString = _currency.reduce((total, itme) => {
     total += `<option value ="${itme}">${itme}</option>`;
