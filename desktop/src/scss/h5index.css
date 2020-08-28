@@ -645,3 +645,63 @@
   background: url("../assets/img/box6.png") no-repeat center;
   background-size: cover;
 }
+
+.box6 .swiper-container-v1 {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 100%;
+}
+.box6 .swiper-container-v1 .swiper-slide {
+  width: 100%;
+  position: relative;
+}
+.box6 .swiper-container-v1 .swiper-slide .wq-tp {
+  height: 100%;
+  display: block;
+  transform: scale(0.7);
+}
+.hero-card {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  top: 0px;
+  z-index: 100;
+}
+.hero-card  .hearo-card-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -60%);
+}
+.hero-card  .hearo-card-content img {
+  display: block;
+}
+.closed {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  bottom: -5vh;
+  transform: translateX(-50%);
+}
+.closed img {
+  width: 100%;
+}
+
+.cardHero2 {
+  transform: scale(0.9) translate(10px, -30px);
+}
+.cardHero4 {
+  transform: scale(0.9) translate(50px, -20px);
+}
+.cardHero5 {
+  transform: scale(0.9) translate(60px, -10px);
+}
+.cardHero7 {
+  transform: scale(0.9) translate(-60px, -10px);
+}

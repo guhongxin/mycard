@@ -115,6 +115,16 @@ $(function() {
   let data = {
     page: 1 // 当前页
   }
+  const hhero = [
+    require('../assets/img/box6-11.png'),
+    require('../assets/img/box6-12.png'),
+    require('../assets/img/box6-13.png'),
+    require('../assets/img/box6-14.png'),
+    require('../assets/img/box6-15.png'),
+    require('../assets/img/box6-16.png'),
+    require('../assets/img/box6-17.png'),
+  ]
+  const closed = require('../assets/img/closed.png')
   function init() {
     // 初始化
     var vConsole = new VConsole();
@@ -160,6 +170,11 @@ $(function() {
         modifier: 4,
         slideShadows: false
       }
+    });
+    let swiper3 = new Swiper('.swiper-container-v1', {
+      direction: 'horizontal',
+      mousewheel: true,
+      slidesPerView: 'auto'
     });
     createHeroInfor(0);
   }
@@ -242,6 +257,26 @@ $(function() {
     $("#heroParent").empty()
     $("#hero-img").remove()
   };
-
+  $("#swiper2 img").click(function() {
+    let index = Number($(this).attr("data-imgIndex") || 0);
+    let htmlstr = `<div class="hero-card">
+      <div class="hearo-card-content">
+        <img src="${hhero[index - 1]}" class="cardHero${index}">
+        <div class="closed">
+          <img src="${closed}" />
+        </div>
+      </div>
+    </div>`
+    if ($(".hero-card")[0]) {
+      $(".hero-card").remove();
+      $(this).parent().append(htmlstr);
+    }  else {
+      $(this).parent().append(htmlstr);
+    }
+    let self = $(this)
+    $(".hero-card .closed").on("click", function() {
+      self.parent().find(".hero-card").remove();
+    })
+  })
 })
 
