@@ -57,23 +57,25 @@ export const ountryPaymentType = {
       name: "FPX",
       icon:"static/img/12.png",
       id: 12
-    }, {
-      name: "CIMB Clicks",
-      icon: "/static/img/21.png",
-      id: 21
-    }, {
-      name: "Hong Leong Connect",
-      icon: "/static/img/22.png",
-      id: 22
-    }, {
-      name: "Public Bank",
-      icon: "/static/img/24.png",
-      id: 24
-    }, {
-      name: "RHB Now",
-      icon: "/static/img/25.png",
-      id: 25
-    }]
+    }
+    // {
+    //   name: "CIMB Clicks",
+    //   icon: "/static/img/21.png",
+    //   id: 21
+    // }, {
+    //   name: "Hong Leong Connect",
+    //   icon: "/static/img/22.png",
+    //   id: 22
+    // }, {
+    //   name: "Public Bank",
+    //   icon: "/static/img/24.png",
+    //   id: 24
+    // }, {
+    //   name: "RHB Now",
+    //   icon: "/static/img/25.png",
+    //   id: 25
+    // }
+    ]
   },
   Singapore: {
     "E-Wallet": [{
