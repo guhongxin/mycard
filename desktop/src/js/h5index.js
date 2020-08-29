@@ -191,6 +191,7 @@ $(function() {
       loop: true,
       observer: true,
       observeParents:true,
+      
       coverflowEffect: {
         rotate: 0,
         stretch: 10,
