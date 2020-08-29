@@ -115,15 +115,28 @@ $(function() {
   let data = {
     page: 1 // 当前页
   }
-  const hhero = [
-    require('../assets/img/box6-11.png'),
-    require('../assets/img/box6-12.png'),
-    require('../assets/img/box6-13.png'),
-    require('../assets/img/box6-14.png'),
-    require('../assets/img/box6-15.png'),
-    require('../assets/img/box6-16.png'),
-    require('../assets/img/box6-17.png'),
-  ]
+  const hhero = [{
+    img: 'http://material-mhtsdk.jingmakeji.top/2020-08-13/6699613236997791744.gif',
+    name: "万龙甲：敖丙所属"
+  }, {
+    img: 'http://material-mhtsdk.jingmakeji.top/2020-08-17/6700952274354708480.gif',
+    name: "火尖枪：哪吒所属"
+  }, {
+    img: 'http://material-mhtsdk.jingmakeji.top/2020-08-13/6699613605454815232.gif',
+    name: "风雷翅：雷震子所属"
+  }, {
+    img: 'http://material-mhtsdk.jingmakeji.top/2020-08-17/6700952272953810944.gif',
+    name: "纯阳剑：吕洞宾所属"
+  }, {
+    img: 'http://material-mhtsdk.jingmakeji.top/2020-08-13/6699614050650824704.gif',
+    name: "金箍棒：孙悟空所属"
+  }, {
+    img: 'http://material-mhtsdk.jingmakeji.top/2020-08-17/6700952269468344320.gif',
+    name: "锦襕袈裟：唐僧所属"
+  }, {
+    img: "http://material-mhtsdk.jingmakeji.top/2020-08-18/6701332076483977216.gif",
+    name: "九齿钉耙：猪八戒所属"
+  },]
   const closed = require('../assets/img/closed.png')
   function init() {
     // 初始化
@@ -174,9 +187,23 @@ $(function() {
     let swiper3 = new Swiper('.swiper-container-v1', {
       direction: 'horizontal',
       mousewheel: true,
-      slidesPerView: 'auto'
+      slidesPerView: 'auto',
+      on: {
+        slideChangeTransitionStart: function(){
+          // 第三部分的时候禁用外面滚动
+          $('#swiper2 img').css("visibility","visible");
+          $(".hero-card").remove()
+        }
+      }
     });
+    
     createHeroInfor(0);
+    var srcImg = new Image();
+    srcImg.src = require("../assets/img/gameMap.jpg");
+    $(srcImg).on("load", function () {     //这里使用的jquery新建一个img对象进行添加attr属性,把src添加上去,然后进行载入事件
+      var  mapImgWt = $('.map-img').width();
+      $('.map-img').scrollLeft(mapImgWt/2);
+    })
   }
   // 充值
   $("#recharge").click(function() {
@@ -259,23 +286,28 @@ $(function() {
   };
   $("#swiper2 img").click(function() {
     let index = Number($(this).attr("data-imgIndex") || 0);
-    let htmlstr = `<div class="hero-card">
-      <div class="hearo-card-content">
-        <img src="${hhero[index - 1]}" class="cardHero${index}">
+    let htmlstr = `<div class="hero-card cardHero${index}">
+      <div class="hearo-card-content cardHerott${index}">
+        <img src="${hhero[index - 1]['img']}">
+        <div class="card-js">${hhero[index - 1]['name']}</div>
         <div class="closed">
           <img src="${closed}" />
         </div>
       </div>
     </div>`
+    let self = $(this)
     if ($(".hero-card")[0]) {
       $(".hero-card").remove();
       $(this).parent().append(htmlstr);
+      self.css("visibility","hidden");
     }  else {
       $(this).parent().append(htmlstr);
+      self.css("visibility","hidden");
     }
-    let self = $(this)
+    
     $(".hero-card .closed").on("click", function() {
       self.parent().find(".hero-card").remove();
+      $('#swiper2 img').css("visibility","visible");
     })
   })
 })
