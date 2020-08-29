@@ -663,6 +663,24 @@
   display: block;
   transform: scale(0.7);
 }
+.box6 .swiper-container-v1 .swiper-slide .wq-tp1 {
+  transform: scale(0.7) translate(10vw, 0px);
+}
+.box6 .swiper-container-v1 .swiper-slide .wq-tp2 {
+  transform: scale(0.7) translate(15vw, 4vh);
+}
+.box6 .swiper-container-v1 .swiper-slide .wq-tp3 {
+  transform: scale(0.7) translate(14vw, 0vh);
+}
+.box6 .swiper-container-v1 .swiper-slide .wq-tp4 {
+  transform: scale(0.7) translate(10vw, 5vh);
+}
+.box6 .swiper-container-v1 .swiper-slide .wq-tp5 {
+  transform: scale(0.7) translate(12vw, 0vh);
+}
+.box6 .swiper-container-v1 .swiper-slide .wq-tp6 {
+  transform: scale(0.7) translate(3vw, 0vh);
+}
 .hero-card {
   position: absolute;
   left: 0px;
@@ -699,13 +717,16 @@
   transform: scale(0.6) translate(10px, 20px);
 }
 .cardHero3 {
-  transform: scale(0.6) translate(12%, 20px);
+  transform: scale(0.6) translate(15%, 20px);
 }
 .cardHero4 {
   transform: scale(0.6) translate(50px, 20px);
 }
 .cardHero5 {
-  transform: scale(0.6) translate(60px, 20px);
+  transform: scale(0.6) translate(25vw, 0px);
+}
+.cardHero6 {
+  transform: scale(0.6) translate(25vw, 0px);
 }
 .hero-card .cardHerott4 {
   transform: translate(-42%, -60%);
@@ -720,7 +741,7 @@
   left: 35%;
 }
 .hero-card .cardHerott6 {
-  transform: translate(-42%, -60%);
+  transform: translate(-74vw, -65%);
 }
 .hero-card .cardHerott7 {
   transform: translate(-48%, -60%);

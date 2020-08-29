@@ -139,8 +139,23 @@ $(function() {
   },]
   const closed = require('../assets/img/closed.png')
   function init() {
+    var srcImg1 = new Image();
+    srcImg1.src = "http://material-mhtsdk.jingmakeji.top/2020-08-13/6699613236997791744.gif";
+    var srcImg2 = new Image();
+    srcImg2.src = "http://material-mhtsdk.jingmakeji.top/2020-08-17/6700952274354708480.gif";
+    var srcImg3 = new Image();
+    srcImg3.src = "http://material-mhtsdk.jingmakeji.top/2020-08-13/6699613605454815232.gif";
+    var srcImg4 = new Image();
+    srcImg4.src = 'http://material-mhtsdk.jingmakeji.top/2020-08-17/6700952272953810944.gif';
+    var srcImg5 = new Image();
+    srcImg5.src = 'http://material-mhtsdk.jingmakeji.top/2020-08-13/6699614050650824704.gif';
+    var srcImg6 = new Image();
+    srcImg6.src = 'http://material-mhtsdk.jingmakeji.top/2020-08-17/6700952269468344320.gif';
+    var srcImg7 = new Image();
+    srcImg7.src = 'http://material-mhtsdk.jingmakeji.top/2020-08-18/6701332076483977216.gif';
+    var srcImg8 = new Image();
     // 初始化
-    var vConsole = new VConsole();
+    // var vConsole = new VConsole();
     swiper = new Swiper('.swiper-container-h', {
       direction: 'vertical',
       mousewheel: true,
