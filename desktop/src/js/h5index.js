@@ -221,10 +221,6 @@ $(function() {
       $('.map-img').scrollLeft(mapImgWt/2);
     })
   }
-  // 充值
-  $("#recharge").click(function() {
-    location.href = "./payment.html"
-  })
   function pagination(index) {
     // 分页指示器
     data.page = index

@@ -4,9 +4,6 @@ import "normalize.css";
 import "../scss/pcindex.scss";
 import "../scss/swiper-bundle.min.css";
 import { removeClass } from "../utils/common";
-const recharge:HTMLElement = document.getElementById("recharge");
-const downApple:HTMLElement = document.getElementById("downApple");
-const downGoogle:HTMLElement = document.getElementById("downGoogle");
 const indicator:HTMLElement = document.querySelector(".indicator");
 const heroName:HTMLElement = document.querySelector(".hero-name");
 const heroGallery:HTMLElement = document.querySelector(".hero-gallery");
@@ -186,19 +183,7 @@ function init() {
       prevEl: '.swiper-button-prev',
     },
   });
-  // 支付点击事件
-  recharge.addEventListener("click", function(e:any) {
-    // 用户是否登录，未登录先登录，登录直接跳转到支付页面
-    location.href = "./payment.html";
-  })
-  // 下载apple官网
-  downApple.addEventListener("click", function(e:any) {
-    console.log("下载apple");
-  })
-  // 下载Google官网
-  downGoogle.addEventListener("click", function(e:any) {
-    console.log("下载Google官网");
-  })
+
   // 切换下标
   indicator.addEventListener("click", function (e:any) {
     let target = e.target;
