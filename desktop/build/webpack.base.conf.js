@@ -111,7 +111,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       // 打包输出HTML
-      title: "戒灵",
+      title: "Leandonplay.game",
       inject: "body", // 注入的位置不经相同
       filename: "index.html",
       chunks: [],
