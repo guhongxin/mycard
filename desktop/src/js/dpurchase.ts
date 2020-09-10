@@ -334,7 +334,8 @@ function createOptionDom1(
 // 创建amount option
 function createAmountOptionDom(dom: HTMLElement, options: Array<any>) {
   let result = options.reduce((total, itme) => {
-    total += `<option value ="${itme.id}">${itme.name}-${itme.intro}</option>`;
+    // total += `<option value ="${itme.id}">${itme.name}-${itme.intro}</option>`;
+    total += `<option value ="${itme.id}">${itme.intro}</option>`;
     return total;
   }, "<option style='display: none'></option>");
   dom.innerHTML = result;
