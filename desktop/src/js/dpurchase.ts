@@ -45,16 +45,16 @@ let channelId: string; //
     let _amountIndex = amount.selectedIndex;
     let _character = characterName.value.split("-");
     let obj:any = {
-      appId:  _character[1],
-      userId: sessionStorage.getItem('userId'),
-      channelId: channelId,
-      consumerId: _character[0], // playerId
-      consumerName: characterName.options[_characterNameIndex].text, // playerId
-      orderDetail: amount.options[_amountIndex].text, // amount id
-      productId: amount.value,
+      appId:  _character[1], // appId
+      userId: sessionStorage.getItem('userId'), // userId
+      channelId: channelId, // 渠道Id
+      consumerId: _character[0], // playerId 角色编号
+      consumerName: characterName.options[_characterNameIndex].text, // playerId 角色名
+      orderDetail: amount.options[_amountIndex].text, // 道具详情 
+      productId: amount.value, // 道具Id
       currencyCode: gameCurrency.value, // 币种
-      serverId: server.value,
-      serverName: server.options[server.selectedIndex].text
+      serverId: server.value, // 区服Id
+      serverName: server.options[server.selectedIndex].text // 区服名称
     };
     let hash:string = createncryption(obj);
 
@@ -354,17 +354,16 @@ function submit() {
         let _amountIndex = amount.selectedIndex;
         let _character = characterName.value.split("-");
         let obj: any = {
-          appId: _character[1],
-          channelId: channelId,
-          userId: sessionStorage.getItem("userId"),
-          serverId: server.value,
-          playerId: _character[0], // playerId
-          currencyCode: gameCurrency.value, // 币种
-          roleName: characterName.options[_characterNameIndex].text, // playerId
-
-          description: amount.options[_amountIndex].text, // amount id 
-          productId: amount.value,
-          serverName: server.options[server.selectedIndex].text
+          appId: _character[1], // appId
+          channelId: channelId, // 渠道Id
+          userId: sessionStorage.getItem("userId"), // 用户Id
+          serverId: server.value, // 区服Id
+          playerId: _character[0], // playerId 角色id
+          currencyCode: gameCurrency.value, // 币种  
+          roleName: characterName.options[_characterNameIndex].text, // 角色名
+          description: amount.options[_amountIndex].text, // 道具详情
+          productId: amount.value, // 道具Id
+          serverName: server.options[server.selectedIndex].text // 区服名称
         };
         let hash: string = createncryption(obj);
         obj.sign = hash;
