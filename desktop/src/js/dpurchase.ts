@@ -57,6 +57,7 @@ let channelId: string; //
       serverName: server.options[server.selectedIndex].text
     };
     let hash:string = createncryption(obj);
+
     obj.sign = hash
     orderId = "";
     return httpRequest1.getfetch("/create", obj).then(res => {
@@ -194,6 +195,7 @@ function init(): void {
   server.addEventListener("change", function () {
     // 监听服务器列表下拉change
     amount.innerHTML = ""; // 复位道具
+    characterName.innerHTML = "";
     getCharacterList(this.value).then((res: any) => {
       createOptionDom1(characterName, res, "playerId", "intro");
     });
@@ -219,6 +221,7 @@ function init(): void {
   // 角色 change 是否选中币种，如果未选中提示，否则请求接口
   characterName.addEventListener("change", function () {
     let currencyCode = gameCurrency.value;
+    let _value = this.value.split("-")[0]
     if (!currencyCode) {
       alert("Please select Character Name!");
       return false;
@@ -226,7 +229,7 @@ function init(): void {
     let serverId: string = server.value;
     let obj = {
       serverId: serverId,
-      playerId: this.value,
+      playerId: _value,
       currencyCode: currencyCode
     };
     getitemsList(obj).then((res: any) => {
@@ -335,7 +338,7 @@ function createOptionDom1(
 function createAmountOptionDom(dom: HTMLElement, options: Array<any>) {
   let result = options.reduce((total, itme) => {
     // total += `<option value ="${itme.id}">${itme.name}-${itme.intro}</option>`;
-    total += `<option value ="${itme.id}">${itme.intro}</option>`;
+    total += `<option value ="${itme.id}">${itme.name}：${itme.intro}</option>`;
     return total;
   }, "<option style='display: none'></option>");
   dom.innerHTML = result;
@@ -358,7 +361,8 @@ function submit() {
           playerId: _character[0], // playerId
           currencyCode: gameCurrency.value, // 币种
           roleName: characterName.options[_characterNameIndex].text, // playerId
-          description: amount.options[_amountIndex].text, // amount id
+
+          description: amount.options[_amountIndex].text, // amount id 
           productId: amount.value,
           serverName: server.options[server.selectedIndex].text
         };
