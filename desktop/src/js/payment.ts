@@ -185,6 +185,11 @@ function getUser(param:string) {
       sessionStorage.setItem("appId", data.appId);
       sessionStorage.setItem("userId", data.userId);
       sessionStorage.setItem("_channelId", data.channelId);
+      let payment: string = getQueryVariable("payment"); // 支付方式
+      if (payment === '0') {
+        // 进入paypay 支付页面
+        location.href = "./dpurchase.html"
+      }
     } else {
       alert(res.code)
     }
