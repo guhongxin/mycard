@@ -1,8 +1,63 @@
+
+.load-box {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+}
+.load-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.load-content img {
+  display: block;
+  width: 80px;
+  animation:loadMove 5s linear infinite;
+}
+.load-content p {
+  color: #FFE1A7;
+}
+.load-content p .dot {
+  font-size: 14px;
+  margin-right: 4px;
+}
+.load-content p .dot1 {
+  animation:dotMove 0.5s linear infinite;
+}
+.load-content p .dot2 {
+  animation:dotMove 0.5s 0.2s linear  infinite;
+}
+.load-content p .dot3 {
+  animation:dotMove 0.5s 0.4s linear  infinite;
+}
+@keyframes loadMove {
+  from {
+    transform:  rotate(0deg) ;
+  }
+  to {
+    transform:  rotate(360deg) ;
+  }
+}
+@keyframes dotMove {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .app {
   width: 100%;
   height: 100vh;
   position: relative;
   overflow: hidden;
+  /* display: none; */
 }
 .swiper-container-h {
   width: 100%;

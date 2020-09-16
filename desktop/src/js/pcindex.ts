@@ -298,3 +298,8 @@ function createHeroInfor(index:number) {
 
 init();
 
+function loadfun() {
+  // 等待
+  (document.querySelector('.load-box ') as any).style= "display: none";
+  (document.querySelector('.box ') as any).style= "display: block";
+}

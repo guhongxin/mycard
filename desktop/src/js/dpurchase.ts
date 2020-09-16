@@ -64,7 +64,6 @@ let channelId: string; //
       console.log("创建订单", res)
       if (res.code === 200) {
         orderId = res.content.orderNo
-        console.log("---", orderId);
         return orderId
       } else {
         alert(res.message)
@@ -441,7 +440,7 @@ function replacePalpayScript(currency) {
       "paypal-button-container"
     );
     document.body.removeChild(paypalScript);
-    btnBox.removeChild(paypalbuttoncontainer);
+    btnBox && btnBox.removeChild(paypalbuttoncontainer);
   }
   let paypalScriptUrl = paypalUrl(
     // "AQQb0039GJAgHsqzTX1QCC_waO7_eBHk5RIHWBVVM2i2eQU3mothZPId8-V_tm4cLJGxfwriAfoJhces",
