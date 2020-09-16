@@ -47,7 +47,7 @@
           display: inline-block;
           width: 370px;
           margin-right: 2em;
-          a {
+          &>span {
             display: block;
             padding: 0 0 0px 20px;
             box-sizing: border-box;

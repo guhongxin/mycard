@@ -190,14 +190,14 @@ function createPaymentChannelList(channel:Array<any>):string {
 // 创建单个支付渠道
 function createPaymentChannelItem(channel):string {
   let paymentTpe:string = `<li class="li channelItem">
-    <a href="javascript:void(0)"
+    <span
       class="channelItemButton" data-tag="channel" data-channelid=${channel.id} data-channelname=${channel.name} style="cursor:pointer">
       <img src="${channel.icon}" />
       ${channel.name}
       <div class="sub">
         <img src="${channel.icon}" />
       </div>
-    </a>
+    </span>
   </li>`
   return paymentTpe
 }
