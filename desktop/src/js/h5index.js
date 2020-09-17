@@ -207,6 +207,8 @@ $(function() {
       direction: 'horizontal',
       mousewheel: true,
       slidesPerView: 'auto',
+      observer: true,//修改swiper自己或子元素时，自动初始化swiper
+      observeParents: true,//修改swiper的父元素时，自动初始化swiper
       on: {
         slideChangeTransitionStart: function(){
           // 第三部分的时候禁用外面滚动
