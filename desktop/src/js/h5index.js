@@ -226,6 +226,10 @@ $(function() {
   $("#recharge").click(function() {
     location.href = "./payment.html"
   })
+  // 充值
+  $("#downGoogle").click(function() {
+    location.href = "https://play.google.com/store/apps/details?id=com.tcxaz.pass"
+  })
   function pagination(index) {
     // 分页指示器
     data.page = index
@@ -333,7 +337,6 @@ function loadfun() {
   let imgArr = Array.from($('img'));
   let num = 0;
   let total = imgArr.length; // img 总数
-  console.log(imgArr)
   imgArr.forEach(function(i) {
     let img = new Image(); // new 一个新对象
     img.onload = function () {

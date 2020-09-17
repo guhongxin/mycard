@@ -197,7 +197,7 @@ function init() {
   })
   // 下载Google官网
   downGoogle.addEventListener("click", function(e:any) {
-    console.log("下载Google官网");
+    location.href = 'https://play.google.com/store/apps/details?id=com.tcxaz.pass'
   })
   // 切换下标
   indicator.addEventListener("click", function (e:any) {
