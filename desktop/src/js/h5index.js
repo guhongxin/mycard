@@ -220,6 +220,7 @@ $(function() {
       var  mapImgWt = $('.map-img').width();
       $('.map-img').scrollLeft(mapImgWt/2);
     })
+    loadfun()
   }
   // 充值
   $("#recharge").click(function() {
@@ -328,3 +329,23 @@ $(function() {
   })
 })
 
+function loadfun() {
+  let imgArr = Array.from($('img'));
+  let num = 0;
+  let total = imgArr.length; // img 总数
+  console.log(imgArr)
+  imgArr.forEach(function(i) {
+    let img = new Image(); // new 一个新对象
+    img.onload = function () {
+      img.onload = null;
+      num++;
+      let percentage = (num*100 / total).toFixed(2)+ '%';
+      $('.load-percentage ').text(percentage);
+      if (num >= total) {
+        (document.querySelector('.load-box ')).style= "display: none";
+        (document.querySelector('.app ')).style= "display: block";
+      }
+    }
+    img.src = i.src
+  });
+}

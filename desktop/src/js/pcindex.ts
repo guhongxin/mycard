@@ -248,6 +248,8 @@ function init() {
   arrowDown.addEventListener("click", function() {
     swiper.slideTo(4);
   })
+  loadfun()
+
 }
 
 // 指示器
@@ -299,7 +301,21 @@ function createHeroInfor(index:number) {
 init();
 
 function loadfun() {
-  // 等待
-  (document.querySelector('.load-box ') as any).style= "display: none";
-  (document.querySelector('.box ') as any).style= "display: block";
+  let imgArr:Array<any> = Array.from(document.getElementsByTagName('img'));
+  let num = 1;
+  let total = imgArr.length; // img 总数
+  imgArr.forEach(function(i: any) {
+    let img:any = new Image(); // new 一个新对象
+    img.onload = function () {
+      img.onload = null;
+      num++;
+      let percentage = (num*100 / total).toFixed(2)+ '%';
+      (document.querySelector('.load-percentage ') as any).innerHTML= percentage;
+      if (num >= total) {
+        (document.querySelector('.load-box ') as any).style= "display: none";
+        (document.querySelector('.box ') as any).style= "display: block";
+      }
+    }
+    img.src = i.src
+  });
 }
