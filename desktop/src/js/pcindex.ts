@@ -127,6 +127,8 @@ function init() {
     direction: 'vertical',
     mousewheel: true,
     threshold: 20,
+    observer: true,//修改swiper自己或子元素时，自动初始化swiper
+　　observeParents: true,//修改swiper的父元素时，自动初始化swiper
     on: {
       slideChangeTransitionStart: function(){
         // 第三部分的时候禁用外面滚动
@@ -155,18 +157,10 @@ function init() {
     direction: 'horizontal',
     mousewheel: true,
     slidesPerView: 'auto',
-    freeMode: true
+    freeMode: true,
+    observer: true,//修改swiper自己或子元素时，自动初始化swiper
+　　observeParents: true,//修改swiper的父元素时，自动初始化swiper
   });
-  // let swiper2 = new Swiper('.swiper-container-v2', {
-  //   direction: 'horizontal',
-  //   mousewheel: true,
-  //   slidesPerView : "auto",
-  //   spaceBetween: 10,
-  //   initialSlide: 1,
-  //   centeredSlides: true,
-  //   grabCursor: true,
-  //   centeredSlidesBounds: true
-  // });
   let swiper2 = new Swiper('.swiper-container-v2', {
     effect: 'coverflow',
     slidesPerView: "auto",
