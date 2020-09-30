@@ -87,9 +87,9 @@
             cursor: pointer;
             border-radius: 8px;
             box-sizing: border-box;
-            width: 268px;
-            height: 50px;
-            line-height: 50px;
+            width: 65%;
+            height: 44px;
+            line-height: 44px;
             font-size: 18px;
             text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
             color: #FFF;
@@ -97,6 +97,7 @@
             background: #ea554f;
             padding: 0 0 3px 15px;
             border: none;
+            margin-top: 10px;
           }
           .button::before {
             display: none;
@@ -114,7 +115,7 @@
             animation: loadMove 0.5s infinite;
           }
           #paypal-button-container {
-            width: 300px;
+            width: 65%;
           }
         }
       }
@@ -177,7 +178,6 @@
             }
             .button {
               width: 92%;
-              margin-bottom: 2em;
             }
             #paypal-button-container {
               width: 92%;
@@ -207,7 +207,6 @@
   }
   #goOut {
     background: #666;
-    margin-top: 20px;
   }
 }
 @keyframes loadMove {
