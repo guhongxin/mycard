@@ -132,7 +132,8 @@ function createncryption(param: any): string {
     total.push(item + "=" + param[item]);
     return total;
   }, []);
-  return md5(result.join("&") + md5(sign));
+  let _result = result.join("&").replace(/\+/g, ' ')
+  return md5(_result + md5(sign));
 }
 $(function() {
   initial()
