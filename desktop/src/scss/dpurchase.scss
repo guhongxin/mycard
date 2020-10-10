@@ -83,6 +83,37 @@
             }
             margin-bottom: 15px;
           }
+          .button {
+            cursor: pointer;
+            border-radius: 8px;
+            box-sizing: border-box;
+            width: 65%;
+            height: 44px;
+            line-height: 44px;
+            font-size: 18px;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+            color: #FFF;
+            text-align: center;
+            background: #ea554f;
+            padding: 0 0 3px 15px;
+            border: none;
+            margin-top: 10px;
+          }
+          .button::before {
+            display: none;
+            content: "";
+            width: 20px;
+            height: 20px;
+            background: url("../assets/img/loading.png") no-repeat center;
+            background-size: cover;
+            vertical-align: middle;
+            margin-right: 5px;
+            
+          }
+          .buttonLoading::before {
+            display: inline-block;
+            animation: loadMove 0.5s infinite;
+          }
           #paypal-button-container {
             width: 65%;
           }
