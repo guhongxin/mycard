@@ -98,12 +98,12 @@ const httpRequest1 = new Request(
 const httpRequest2 = new Request(
   "http://interface.18183g.top/interface/user-pay/razer"
 ); // 请求俊忠
-// const httpRequestmyCard= new Request(
-//   "http://interface.18183g.top/interface/user-pay/mycard"
-// ); // myCard
 const httpRequestmyCard= new Request(
-  "http://192.168.1.16:8091/interface/user-pay/mycard"
-)
+  "http://interface.18183g.top/interface/user-pay/mycard"
+); // myCard
+// const httpRequestmyCard= new Request(
+//   "http://192.168.1.16:8091/interface/user-pay/mycard"
+// )
 function init(): void {
   // 初始化
   if (!jwt) {
