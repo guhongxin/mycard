@@ -10,14 +10,19 @@ const httpRequest1 = new Request(
 ); // 请求
 const httpRequest2 = new Request(
   "http://interface.18183g.top/interface/user-pay/razer"
-); // 请求俊忠
-
+);// RizeGode
+const httpRequestmyCard= new Request(
+  "http://interface.18183g.top/interface/user-pay/mycard"
+); // myCard
+// const httpRequestmyCard= new Request(
+//   "http://192.168.1.16:8091/interface/user-pay/mycard"
+// )
 const sign = "69a54ac4afafa44ec1ff5bae05a9010c";
 let orderId: string; // 订单编号
 let data: any = {
   btnLoading: false
 };
-
+let payMode = '2' // 支付方式
 function initial() {
   // 初始化
   // 获取参数
@@ -43,7 +48,7 @@ function initial() {
   let serverId: string = getQueryVariable('serverId')
   // 区服名
   let serverName: string = decodeURIComponent(getQueryVariable('serverName'))
-
+  payMode = payment
   if (payment === '1') {
     $('.paymentMethod').text('PayPal')
     $('#server').text(serverName)
@@ -69,7 +74,6 @@ function initial() {
         };
         let hash:string = createncryption(obj);
         obj.sign = hash;
-        console.log('obj', obj)
         orderId = "";
         return httpRequest1.getfetch("/create", obj).then(res => {
           console.log("创建订单", res)
@@ -99,30 +103,22 @@ function initial() {
     };
     // @ts-ignore
     paypal.Buttons(paypalOptions).render('#btn-box')
+  } else if (payment === '3') {
+    $('.paymentMethod').text('myCard')
+    $('#server').text(serverName)
+    $('#gameCurrency').text(currencyCode)
+    $('#characterName').text(consumerName)
+    $('#amount').text(orderDetail)
+    $('.paypal-box').css('display', 'none');
+    $('.razerGold-box').css('display', 'block');
   } else {
     $('.paymentMethod').text('Razer Gold')
     $('.paypal-box').css('display', 'none');
     $('.razerGold-box').css('display', 'block');
-    let obj: any = {
-      appId: appId, // appId
-      channelId: channelId, // 渠道Id
-      userId: userId, // 用户Id
-      serverId: serverId, // 区服Id
-      playerId: getQueryVariable('playerId'), // playerId 角色id
-      currencyCode: currencyCode, // 币种  
-      roleName: decodeURIComponent(getQueryVariable('roleName')), // 角色名
-      description: decodeURIComponent(getQueryVariable('description')), // 道具详情
-      productId: decodeURIComponent(getQueryVariable('productId')), // 道具Id
-      serverName: decodeURIComponent(getQueryVariable('serverName')) // 区服名称
-    };
-    let hash: string = createncryption(obj);
-    obj.sign = hash;
-    console.log('obj', obj)
-    $('#server').text(obj.serverName)
-    $('#gameCurrency').text(obj.currencyCode)
-    $('#characterName').text(obj.roleName)
-    $('#amount').text(obj.description)
-   
+    $('#server').text(decodeURIComponent(getQueryVariable('serverName')))
+    $('#gameCurrency').text(currencyCode)
+    $('#characterName').text(decodeURIComponent(getQueryVariable('roleName')))
+    $('#amount').text(decodeURIComponent(getQueryVariable('description')))
   }
 }
 
@@ -138,23 +134,40 @@ function createncryption(param: any): string {
 $(function() {
   initial()
   $('#btn-razerGold').on('click', function() {
-    console.log(12)
-    let obj: any = {
-      appId: getQueryVariable('appId'), // appId
-      channelId: getQueryVariable('channelId'), // 渠道Id
-      userId: getQueryVariable('userId'), // 用户Id
-      serverId: getQueryVariable('serverId'), // 区服Id
-      playerId: getQueryVariable('playerId'), // playerId 角色id
-      currencyCode: getQueryVariable('currencyCode'), // 币种  
-      roleName: decodeURIComponent(getQueryVariable('roleName')), // 角色名
-      description: decodeURIComponent(getQueryVariable('description')), // 道具详情
-      productId: decodeURIComponent(getQueryVariable('productId')), // 道具Id
-      serverName: decodeURIComponent(getQueryVariable('serverName')) // 区服名称
-    };
-    let hash: string = createncryption(obj);
-    obj.sign = hash;
-    console.log('obj', obj)
-    jzPayment(obj);
+    if (payMode === '2') {
+      let obj: any = {
+        appId: getQueryVariable('appId'), // appId
+        channelId: getQueryVariable('channelId'), // 渠道Id
+        userId: getQueryVariable('userId'), // 用户Id
+        serverId: getQueryVariable('serverId'), // 区服Id
+        playerId: getQueryVariable('playerId'), // playerId 角色id
+        currencyCode: getQueryVariable('currencyCode'), // 币种  
+        roleName: decodeURIComponent(getQueryVariable('roleName')), // 角色名
+        description: decodeURIComponent(getQueryVariable('description')), // 道具详情
+        productId: decodeURIComponent(getQueryVariable('productId')), // 道具Id
+        serverName: decodeURIComponent(getQueryVariable('serverName')) // 区服名称
+      };
+      let hash: string = createncryption(obj);
+      obj.sign = hash;
+      jzPayment(obj);
+    } else {
+      let obj:any = {
+        appId:  getQueryVariable('appId'), // appId
+        userId: getQueryVariable('userId'), // userId
+        channelId: getQueryVariable('channelId'), // 渠道Id
+        consumerId: getQueryVariable('consumerId'), // playerId 角色编号
+        consumerName: decodeURIComponent(getQueryVariable('consumerName')), // playerId 角色名
+        orderDetail: decodeURIComponent(getQueryVariable('orderDetail')), // 道具详情 
+        productId: getQueryVariable('productId'), // 道具Id
+        currencyCode: getQueryVariable('currencyCode'), // 币种
+        serverId: getQueryVariable('serverId'), // 区服Id
+        serverName: decodeURIComponent(getQueryVariable('serverName')) // 区服名称
+      };
+      let hash:string = createncryption(obj);
+      obj.sign = hash;
+      jzMyCard(obj)
+    }
+   
   })
 })
 
@@ -176,7 +189,24 @@ function jzPayment(params: any) {
       data.btnLoading = false;
     });
 }
-
+function jzMyCard(params: any) {
+  data.btnLoading = true;
+  httpRequestmyCard
+    .getfetch("/create", params)
+    .then(res => {
+      console.log("res", res);
+      if (res.code === 200) {
+        window.location.href = res.content;
+      } else {
+        data.btnLoading = false;
+        alert(res.content);
+        window.location.href = "./error.html"
+      }
+    })
+    .catch(() => {
+      data.btnLoading = false;
+    });
+}
 // 监听
 let temp = null;
 Object.defineProperty(data, "btnLoading", {

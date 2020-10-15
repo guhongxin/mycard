@@ -98,6 +98,12 @@ const httpRequest1 = new Request(
 const httpRequest2 = new Request(
   "http://interface.18183g.top/interface/user-pay/razer"
 ); // 请求俊忠
+// const httpRequestmyCard= new Request(
+//   "http://interface.18183g.top/interface/user-pay/mycard"
+// ); // myCard
+const httpRequestmyCard= new Request(
+  "http://192.168.1.16:8091/interface/user-pay/mycard"
+)
 function init(): void {
   // 初始化
   if (!jwt) {
@@ -116,7 +122,11 @@ function init(): void {
     Singapore: "SGD"
   }
   if (!country) {
-    _currency = currency["0"];
+    if (paymentMethod === 'myCard') {
+      _currency = ['USD']
+    } else {
+      _currency = currency["0"];
+    }
   } else {
     _currency = [countryMoney[country]];
   }
@@ -138,51 +148,20 @@ function init(): void {
     divDom.id = "submintBtn";
     divDom.innerHTML = "Recharge Now";
     btnBox.appendChild(divDom);
-    // _currency = currency[channelId];
   } else {
-    let divDom: any = document.createElement("div");
-    divDom.id = "paypal-button-container";
-    // divDom.classList.add("button");
-    // divDom.innerHTML = "Recharge Now";
-    btnBox.appendChild(divDom);
-    replacePalpayScript("USD")
-    // 获取币种
-    // divDom.addEventListener("click", function () {
-    //   if (!data.btnLoading) {
-    //     data.btnLoading = true;
-    //     let _characterNameIndex = characterName.selectedIndex;
-    //     let _amountIndex = amount.selectedIndex;
-    //     let obj: any = {
-    //       appId: sessionStorage.getItem("appId"),
-    //       userId: sessionStorage.getItem("userId"),
-    //       channelId: channelId,
-    //       consumerId: characterName.value, // playerId
-    //       consumerName: characterName.options[_characterNameIndex].text, // playerId
-    //       orderDetail: amount.options[_amountIndex].text, // amount id
-    //       productId: amount.value,
-    //       currencyCode: gameCurrency.value, // 币种
-    //       serverId: server.value,
-    //       serverName: server.options[server.selectedIndex].text
-    //     };
-    //     let hash: string = createncryption(obj);
-    //     obj.sign = hash;
-    //     orderId = "";
-    //     httpRequest1
-    //       .getfetch("/create", obj)
-    //       .then(res => {
-    //         console.log("创建订单", res);
-    //         data.btnLoading = false;
-    //         if (res.code === 200) {
-    //           location.href = res.content;
-    //         } else {
-    //           alert(res.message);
-    //         }
-    //       })
-    //       .catch(() => {
-    //         data.btnLoading = false;
-    //       });
-    //   }
-    // });
+    if (paymentMethod === 'myCard') {
+      let divDom: any = document.createElement("div");
+      divDom.classList.add("button");
+      divDom.id = "submintBtn";
+      divDom.innerHTML = "Recharge Now";
+      btnBox.appendChild(divDom);
+    } else {
+      let divDom: any = document.createElement("div");
+      divDom.id = "paypal-button-container";
+      btnBox.appendChild(divDom);
+      replacePalpayScript("USD")
+    }
+    
   }
   paymentMethodDom.innerHTML = paymentMethod;
   orderId = "";
@@ -352,21 +331,41 @@ function submit() {
         let _characterNameIndex = characterName.selectedIndex;
         let _amountIndex = amount.selectedIndex;
         let _character = characterName.value.split("-");
-        let obj: any = {
-          appId: _character[1], // appId
-          channelId: channelId, // 渠道Id
-          userId: sessionStorage.getItem("userId"), // 用户Id
-          serverId: server.value, // 区服Id
-          playerId: _character[0], // playerId 角色id
-          currencyCode: gameCurrency.value, // 币种  
-          roleName: characterName.options[_characterNameIndex].text, // 角色名
-          description: amount.options[_amountIndex].text, // 道具详情
-          productId: amount.value, // 道具Id
-          serverName: server.options[server.selectedIndex].text // 区服名称
-        };
-        let hash: string = createncryption(obj);
-        obj.sign = hash;
-        jzPayment(obj);
+       
+        let paymentMethodDomtxt:string = paymentMethodDom.innerHTML   
+        if (paymentMethodDomtxt === 'myCard') {
+          let obj:any = {
+            appId:  _character[1], // appId
+            userId: sessionStorage.getItem('userId'), // userId
+            channelId: channelId, // 渠道Id
+            consumerId: _character[0], // playerId 角色编号
+            consumerName: characterName.options[_characterNameIndex].text, // playerId 角色名
+            orderDetail: amount.options[_amountIndex].text, // 道具详情 
+            productId: amount.value, // 道具Id
+            currencyCode: gameCurrency.value, // 币种
+            serverId: server.value, // 区服Id
+            serverName: server.options[server.selectedIndex].text // 区服名称
+          };
+          let hash:string = createncryption(obj);
+          obj.sign = hash
+          jzMyCard(obj);
+        } else {
+          let obj: any = {
+            appId: _character[1], // appId
+            channelId: channelId, // 渠道Id
+            userId: sessionStorage.getItem("userId"), // 用户Id
+            serverId: server.value, // 区服Id
+            playerId: _character[0], // playerId 角色id
+            currencyCode: gameCurrency.value, // 币种  
+            roleName: characterName.options[_characterNameIndex].text, // 角色名
+            description: amount.options[_amountIndex].text, // 道具详情
+            productId: amount.value, // 道具Id
+            serverName: server.options[server.selectedIndex].text // 区服名称
+          };
+          let hash: string = createncryption(obj);
+          obj.sign = hash;
+          jzPayment(obj);
+        }
       }
     };
   }
@@ -397,6 +396,24 @@ function jzPayment(params: any) {
     .getfetch("/getOrderNo", params)
     .then(res => {
       console.log("res", res);
+      if (res.code === 200) {
+        window.location.href = res.content;
+      } else {
+        data.btnLoading = false;
+        alert(res.content);
+        window.location.href = "./error.html"
+      }
+    })
+    .catch(() => {
+      data.btnLoading = false;
+    });
+}
+// myCard 支付
+function jzMyCard(params: any) {
+  data.btnLoading = true;
+  httpRequestmyCard
+    .getfetch("/create", params)
+    .then(res => {
       if (res.code === 200) {
         window.location.href = res.content;
       } else {

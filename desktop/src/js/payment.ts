@@ -9,6 +9,7 @@ import Request from "../utils/request";
 let i18n:any = ($ as any).i18n;
 let countryUl = document.querySelector(".country-ul");
 let payPalClick:HTMLElement = document.getElementById("payPalClick");
+let myCardClick:HTMLElement = document.getElementById("myCardClick");
 const modal:HTMLElement = document.querySelector(".modal");
 const submitBtn:HTMLElement = document.querySelector("#submitBtn");
 const payPalbox:HTMLElement = document.getElementById("payPalbox");
@@ -65,6 +66,32 @@ function init() {
       let _channelId = sessionStorage.getItem("_channelId")
       setTimeout(() => {
         location.href = `./dpurchase.html?paymentMethod=PayPal&channelId=${_channelId}`;
+      }, 2)
+    } else {
+      modal.classList.add("show");
+      let login:HTMLElement = document.querySelector(".login");
+      let timer = setTimeout(() => {
+        login.classList.add("login-scale");
+        let isRememberPassword = Cookies.get('isRememberPassword');
+        if (isRememberPassword === '1') {
+          let userNameDom = document.getElementById("userName") as HTMLInputElement;
+          let passwordDom = document.getElementById("password") as HTMLInputElement;
+          let rememberPasswordDom = document.getElementById("rememberPassword") as HTMLInputElement;
+          userNameDom.value = Cookies.get('userName');
+          passwordDom.value = Cookies.get('password');
+          rememberPasswordDom.checked = true
+        } 
+        clearTimeout(timer)
+      }, 2)
+    }
+  })
+  // mycard支付
+  myCardClick.addEventListener("click", function() {
+    let jwt:string = sessionStorage.getItem("jwt")
+    if (jwt) {
+      let _channelId = sessionStorage.getItem("_channelId")
+      setTimeout(() => {
+        location.href = `./dpurchase.html?paymentMethod=myCard&channelId=${_channelId}`;
       }, 2)
     } else {
       modal.classList.add("show");
